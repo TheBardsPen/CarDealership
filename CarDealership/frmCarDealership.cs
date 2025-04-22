@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace CarDealership
 {
-    public partial class Form1 : Form
+    public partial class frmCarDealership : Form
     {
-        public Form1()
+        // Variables
+        public SortedList<Car, DateTime> carList = new SortedList<Car, DateTime>();
+
+        public frmCarDealership()
         {
             InitializeComponent();
+        }
+
+        public void Test(Car car)
+        {
+            
         }
     }
 }
