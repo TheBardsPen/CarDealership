@@ -61,8 +61,10 @@
       <DependentUpon>frmCarDealership.cs</DependentUpon>
     </Compile>
     <Compile Include="Make.cs" />
+    <Compile Include="Nissan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Toyota.cs" />
     <Compile Include="Transmission.cs" />
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="frmAddCar.resx">
