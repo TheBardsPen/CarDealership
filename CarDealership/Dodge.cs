@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace CarDealership
 {
-    public class Ford : Car
+    class Dodge : Car
     {
-        public string Trim { get ; set; }
+        public string Engine { get; set; }
 
-        public Ford(string make, string model, string color, int age, decimal price, string trim)
+        public Dodge(string make, string model, string color, int age, decimal price, string engine)
             : base(make, model, color, age, price)
         {
-            Trim = trim;
+            this.Engine = engine;
         }
 
         public override string GetDisplayText()
         {
-            return base.GetDisplayText() + $"\nTrim: {Trim}";
+            return base.GetDisplayText() + $"\nEngine: {Engine}";
         }
     }
 }
