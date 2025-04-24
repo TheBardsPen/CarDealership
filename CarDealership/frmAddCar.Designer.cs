@@ -1,4 +1,6 @@
-﻿namespace CarDealership
+﻿using System;
+
+namespace CarDealership
 {
     partial class frmAddCar
     {
@@ -161,9 +163,9 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 44);
             this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Upload";
             this.btnSave.UseVisualStyleBackColor = true;
-
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -207,6 +209,7 @@
             this.PerformLayout();
 
         }
+
 
         #endregion
 

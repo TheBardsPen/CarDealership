@@ -12,9 +12,11 @@ namespace CarDealership
 {
     public partial class frmAddCar: Form
     {
+  
         public frmAddCar()
         {
             InitializeComponent();
+ 
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -70,6 +72,11 @@ namespace CarDealership
             {
                 lblModelSpecific.Text = "";
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
