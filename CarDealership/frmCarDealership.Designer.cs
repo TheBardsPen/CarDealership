@@ -139,6 +139,7 @@
             this.Controls.Add(this.lbCarList);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmCarDealership";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Car Dealership";
             this.ResumeLayout(false);
 

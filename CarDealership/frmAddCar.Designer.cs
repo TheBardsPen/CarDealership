@@ -38,7 +38,7 @@
             this.lblYear = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.lblPrice = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtbModelSpecific = new System.Windows.Forms.TextBox();
             this.lblModelSpecific = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -62,6 +62,7 @@
             this.cboMake.Name = "cboMake";
             this.cboMake.Size = new System.Drawing.Size(238, 33);
             this.cboMake.TabIndex = 0;
+            this.cboMake.SelectedIndexChanged += new System.EventHandler(this.cboMake_SelectedIndexChanged);
             // 
             // lblModel
             // 
@@ -135,14 +136,14 @@
             this.lblPrice.TabIndex = 12;
             this.lblPrice.Text = "Price:";
             // 
-            // textBox5
+            // txtbModelSpecific
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(160, 292);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(238, 31);
-            this.textBox5.TabIndex = 5;
+            this.txtbModelSpecific.Enabled = false;
+            this.txtbModelSpecific.Location = new System.Drawing.Point(160, 292);
+            this.txtbModelSpecific.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtbModelSpecific.Name = "txtbModelSpecific";
+            this.txtbModelSpecific.Size = new System.Drawing.Size(238, 31);
+            this.txtbModelSpecific.TabIndex = 5;
             // 
             // lblModelSpecific
             // 
@@ -150,9 +151,8 @@
             this.lblModelSpecific.Location = new System.Drawing.Point(24, 298);
             this.lblModelSpecific.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblModelSpecific.Name = "lblModelSpecific";
-            this.lblModelSpecific.Size = new System.Drawing.Size(71, 25);
+            this.lblModelSpecific.Size = new System.Drawing.Size(0, 25);
             this.lblModelSpecific.TabIndex = 13;
-            this.lblModelSpecific.Text = "Label:";
             // 
             // btnSave
             // 
@@ -185,7 +185,7 @@
             this.ClientSize = new System.Drawing.Size(464, 462);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtbModelSpecific);
             this.Controls.Add(this.lblModelSpecific);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.lblPrice);
@@ -199,6 +199,7 @@
             this.Controls.Add(this.lblMake);
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmAddCar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Car";
             this.Load += new System.EventHandler(this.frmAddCar_Load);
             this.ResumeLayout(false);
@@ -218,7 +219,7 @@
         private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtbModelSpecific;
         private System.Windows.Forms.Label lblModelSpecific;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
