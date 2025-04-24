@@ -58,7 +58,7 @@
             // 
             this.cboMake.FormattingEnabled = true;
             this.cboMake.Location = new System.Drawing.Point(160, 40);
-            this.cboMake.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cboMake.Margin = new System.Windows.Forms.Padding(6);
             this.cboMake.Name = "cboMake";
             this.cboMake.Size = new System.Drawing.Size(238, 33);
             this.cboMake.TabIndex = 0;
@@ -77,7 +77,7 @@
             // txtModel
             // 
             this.txtModel.Location = new System.Drawing.Point(160, 92);
-            this.txtModel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtModel.Margin = new System.Windows.Forms.Padding(6);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(238, 31);
             this.txtModel.TabIndex = 1;
@@ -85,7 +85,7 @@
             // txtColor
             // 
             this.txtColor.Location = new System.Drawing.Point(160, 142);
-            this.txtColor.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtColor.Margin = new System.Windows.Forms.Padding(6);
             this.txtColor.Name = "txtColor";
             this.txtColor.Size = new System.Drawing.Size(238, 31);
             this.txtColor.TabIndex = 2;
@@ -103,7 +103,7 @@
             // txtYear
             // 
             this.txtYear.Location = new System.Drawing.Point(160, 192);
-            this.txtYear.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtYear.Margin = new System.Windows.Forms.Padding(6);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(238, 31);
             this.txtYear.TabIndex = 3;
@@ -121,7 +121,7 @@
             // txtPrice
             // 
             this.txtPrice.Location = new System.Drawing.Point(160, 242);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(6);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(238, 31);
             this.txtPrice.TabIndex = 4;
@@ -139,7 +139,7 @@
             // txtModelSpecific
             // 
             this.txtModelSpecific.Location = new System.Drawing.Point(160, 292);
-            this.txtModelSpecific.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtModelSpecific.Margin = new System.Windows.Forms.Padding(6);
             this.txtModelSpecific.Name = "txtModelSpecific";
             this.txtModelSpecific.Size = new System.Drawing.Size(238, 31);
             this.txtModelSpecific.TabIndex = 5;
@@ -157,18 +157,19 @@
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(90, 387);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(6);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(150, 44);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(252, 387);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(6);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 44);
             this.btnCancel.TabIndex = 7;
@@ -197,7 +198,7 @@
             this.Controls.Add(this.lblModel);
             this.Controls.Add(this.cboMake);
             this.Controls.Add(this.lblMake);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmAddCar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Car";
