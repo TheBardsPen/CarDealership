@@ -138,12 +138,12 @@
             // 
             // txtModelSpecific
             // 
-            this.txtModelSpecific.Enabled = false;
             this.txtModelSpecific.Location = new System.Drawing.Point(160, 292);
             this.txtModelSpecific.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtModelSpecific.Name = "txtModelSpecific";
             this.txtModelSpecific.Size = new System.Drawing.Size(238, 31);
             this.txtModelSpecific.TabIndex = 5;
+            this.txtModelSpecific.Visible = false;
             // 
             // lblModelSpecific
             // 

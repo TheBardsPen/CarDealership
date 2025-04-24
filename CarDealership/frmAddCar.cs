@@ -29,6 +29,9 @@ namespace CarDealership
             cboMake.Items.Add("Nissan");
             cboMake.Items.Add("Toyota");
 
+            lblModelSpecific.Visible = false;
+            txtModelSpecific.Visible = false; 
+
         }
 
         private void cboMake_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,6 +41,10 @@ namespace CarDealership
             {
                 // Get the selected make from the combo box
                 string selectedMake = cboMake.SelectedItem.ToString();
+
+                txtModelSpecific.Visible = true;
+                lblModelSpecific.Visible = true;
+
 
 
                 switch (selectedMake)
