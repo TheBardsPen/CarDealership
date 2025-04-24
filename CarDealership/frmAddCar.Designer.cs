@@ -47,106 +47,119 @@
             // lblMake
             // 
             this.lblMake.AutoSize = true;
-            this.lblMake.Location = new System.Drawing.Point(12, 24);
+            this.lblMake.Location = new System.Drawing.Point(24, 46);
+            this.lblMake.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblMake.Name = "lblMake";
-            this.lblMake.Size = new System.Drawing.Size(37, 13);
+            this.lblMake.Size = new System.Drawing.Size(71, 25);
             this.lblMake.TabIndex = 8;
             this.lblMake.Text = "Make:";
             // 
             // cboMake
             // 
             this.cboMake.FormattingEnabled = true;
-            this.cboMake.Location = new System.Drawing.Point(80, 21);
+            this.cboMake.Location = new System.Drawing.Point(160, 40);
+            this.cboMake.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cboMake.Name = "cboMake";
-            this.cboMake.Size = new System.Drawing.Size(121, 21);
+            this.cboMake.Size = new System.Drawing.Size(238, 33);
             this.cboMake.TabIndex = 0;
             // 
             // lblModel
             // 
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(12, 51);
+            this.lblModel.Location = new System.Drawing.Point(24, 98);
+            this.lblModel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(39, 13);
+            this.lblModel.Size = new System.Drawing.Size(77, 25);
             this.lblModel.TabIndex = 9;
             this.lblModel.Text = "Model:";
             // 
             // txtModel
             // 
-            this.txtModel.Location = new System.Drawing.Point(80, 48);
+            this.txtModel.Location = new System.Drawing.Point(160, 92);
+            this.txtModel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtModel.Name = "txtModel";
-            this.txtModel.Size = new System.Drawing.Size(121, 20);
+            this.txtModel.Size = new System.Drawing.Size(238, 31);
             this.txtModel.TabIndex = 1;
             // 
             // txtColor
             // 
-            this.txtColor.Location = new System.Drawing.Point(80, 74);
+            this.txtColor.Location = new System.Drawing.Point(160, 142);
+            this.txtColor.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtColor.Name = "txtColor";
-            this.txtColor.Size = new System.Drawing.Size(121, 20);
+            this.txtColor.Size = new System.Drawing.Size(238, 31);
             this.txtColor.TabIndex = 2;
             // 
             // lblColor
             // 
             this.lblColor.AutoSize = true;
-            this.lblColor.Location = new System.Drawing.Point(12, 77);
+            this.lblColor.Location = new System.Drawing.Point(24, 148);
+            this.lblColor.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblColor.Name = "lblColor";
-            this.lblColor.Size = new System.Drawing.Size(34, 13);
+            this.lblColor.Size = new System.Drawing.Size(69, 25);
             this.lblColor.TabIndex = 10;
             this.lblColor.Text = "Color:";
             // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(80, 100);
+            this.txtYear.Location = new System.Drawing.Point(160, 192);
+            this.txtYear.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtYear.Name = "txtYear";
-            this.txtYear.Size = new System.Drawing.Size(121, 20);
+            this.txtYear.Size = new System.Drawing.Size(238, 31);
             this.txtYear.TabIndex = 3;
             // 
             // lblYear
             // 
             this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(12, 103);
+            this.lblYear.Location = new System.Drawing.Point(24, 198);
+            this.lblYear.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(32, 13);
+            this.lblYear.Size = new System.Drawing.Size(64, 25);
             this.lblYear.TabIndex = 11;
             this.lblYear.Text = "Year:";
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(80, 126);
+            this.txtPrice.Location = new System.Drawing.Point(160, 242);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(121, 20);
+            this.txtPrice.Size = new System.Drawing.Size(238, 31);
             this.txtPrice.TabIndex = 4;
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(12, 129);
+            this.lblPrice.Location = new System.Drawing.Point(24, 248);
+            this.lblPrice.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(34, 13);
+            this.lblPrice.Size = new System.Drawing.Size(67, 25);
             this.lblPrice.TabIndex = 12;
             this.lblPrice.Text = "Price:";
             // 
             // textBox5
             // 
             this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(80, 152);
+            this.textBox5.Location = new System.Drawing.Point(160, 292);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(121, 20);
+            this.textBox5.Size = new System.Drawing.Size(238, 31);
             this.textBox5.TabIndex = 5;
             // 
             // lblModelSpecific
             // 
             this.lblModelSpecific.AutoSize = true;
-            this.lblModelSpecific.Location = new System.Drawing.Point(12, 155);
+            this.lblModelSpecific.Location = new System.Drawing.Point(24, 298);
+            this.lblModelSpecific.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblModelSpecific.Name = "lblModelSpecific";
-            this.lblModelSpecific.Size = new System.Drawing.Size(36, 13);
+            this.lblModelSpecific.Size = new System.Drawing.Size(71, 25);
             this.lblModelSpecific.TabIndex = 13;
             this.lblModelSpecific.Text = "Label:";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(45, 201);
+            this.btnSave.Location = new System.Drawing.Point(90, 387);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(150, 44);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -154,20 +167,22 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(126, 201);
+            this.btnCancel.Location = new System.Drawing.Point(252, 387);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(150, 44);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmAddCar
             // 
             this.AcceptButton = this.btnSave;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(221, 240);
+            this.ClientSize = new System.Drawing.Size(464, 462);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.textBox5);
@@ -182,6 +197,7 @@
             this.Controls.Add(this.lblModel);
             this.Controls.Add(this.cboMake);
             this.Controls.Add(this.lblMake);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmAddCar";
             this.Text = "Add Car";
             this.ResumeLayout(false);
