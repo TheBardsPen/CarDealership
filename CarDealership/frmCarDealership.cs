@@ -13,7 +13,7 @@ namespace CarDealership
     public partial class frmCarDealership : Form
     {
         // Variables
-        public SortedList<Car, DateTime> carList = new SortedList<Car, DateTime>();
+        public CarList cars = new CarList();
 
         public frmCarDealership()
         {

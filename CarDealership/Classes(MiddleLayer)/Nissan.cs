@@ -10,8 +10,8 @@ namespace CarDealership
     {
         public string Transmission { get; set; }
 
-        public Nissan(string make, string model, string color, int age, decimal price, string transmisson)
-            : base(make, model, color, age, price)
+        public Nissan(string make, string model, string color, int year, decimal price, string transmisson, DateTime dateAdded)
+            : base(make, model, color, year, price, dateAdded)
         {
             Transmission = transmisson;
         }

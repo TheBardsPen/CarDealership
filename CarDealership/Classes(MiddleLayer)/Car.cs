@@ -15,21 +15,24 @@ namespace CarDealership
         public string Color { get; set; }
         public int Year { get; set; }
         public decimal Price { get; set; }
+        public DateTime DateAdded { get; set; }
 
         // Build constructor
-        public Car(string make, string model, string color, int age, decimal price)
+        public Car(string make, string model, string color, int year, decimal price, DateTime dateAdded)
         {
             Make = make;
             Model = model;
             Color = color;
-            Year = age;
+            Year = year;
             Price = price;
+            DateAdded = dateAdded;
         }
 
         // Overrideable method to display string
         public virtual string GetDisplayText()
         {
-            string display = $"{Make} - {Model}\n" +
+            string display = $"\t{DateAdded.ToString()}" +
+                $"{Make} - {Model}\n" +
                 $"{Color}\n" +
                 $"{Year}\n" +
                 $"{Price.ToString("c")}";
