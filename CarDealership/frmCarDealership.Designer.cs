@@ -43,7 +43,7 @@
             this.lbCarList.FormattingEnabled = true;
             this.lbCarList.ItemHeight = 25;
             this.lbCarList.Location = new System.Drawing.Point(24, 79);
-            this.lbCarList.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lbCarList.Margin = new System.Windows.Forms.Padding(6);
             this.lbCarList.Name = "lbCarList";
             this.lbCarList.Size = new System.Drawing.Size(766, 429);
             this.lbCarList.TabIndex = 7;
@@ -51,7 +51,7 @@
             // btnViewAll
             // 
             this.btnViewAll.Location = new System.Drawing.Point(24, 23);
-            this.btnViewAll.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnViewAll.Margin = new System.Windows.Forms.Padding(6);
             this.btnViewAll.Name = "btnViewAll";
             this.btnViewAll.Size = new System.Drawing.Size(150, 44);
             this.btnViewAll.TabIndex = 0;
@@ -62,7 +62,7 @@
             // 
             this.cboFilterType.FormattingEnabled = true;
             this.cboFilterType.Location = new System.Drawing.Point(244, 23);
-            this.cboFilterType.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cboFilterType.Margin = new System.Windows.Forms.Padding(6);
             this.cboFilterType.Name = "cboFilterType";
             this.cboFilterType.Size = new System.Drawing.Size(238, 33);
             this.cboFilterType.TabIndex = 1;
@@ -74,7 +74,7 @@
             this.cboFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFilter.FormattingEnabled = true;
             this.cboFilter.Location = new System.Drawing.Point(498, 23);
-            this.cboFilter.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cboFilter.Margin = new System.Windows.Forms.Padding(6);
             this.cboFilter.Name = "cboFilter";
             this.cboFilter.Size = new System.Drawing.Size(292, 34);
             this.cboFilter.Sorted = true;
@@ -84,18 +84,19 @@
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(836, 119);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(6);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(150, 44);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add Car";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
             this.btnDelete.Location = new System.Drawing.Point(836, 175);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(6);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(150, 44);
             this.btnDelete.TabIndex = 5;
@@ -105,7 +106,7 @@
             // btnExit
             // 
             this.btnExit.Location = new System.Drawing.Point(836, 467);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(6);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(150, 44);
             this.btnExit.TabIndex = 6;
@@ -116,7 +117,7 @@
             // btnFilter
             // 
             this.btnFilter.Location = new System.Drawing.Point(836, 23);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(6);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(150, 44);
             this.btnFilter.TabIndex = 3;
@@ -136,7 +137,7 @@
             this.Controls.Add(this.cboFilterType);
             this.Controls.Add(this.btnViewAll);
             this.Controls.Add(this.lbCarList);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmCarDealership";
             this.Text = "Car Dealership";
             this.ResumeLayout(false);

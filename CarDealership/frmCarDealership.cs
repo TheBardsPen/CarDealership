@@ -29,5 +29,11 @@ namespace CarDealership
         {
             this.Close();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmAddCar addCar = new frmAddCar();// Create an instance of the frmAddCar form
+            addCar.ShowDialog(); 
+        }
     }
 }
