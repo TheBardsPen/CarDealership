@@ -200,6 +200,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmAddCar";
             this.Text = "Add Car";
+            this.Load += new System.EventHandler(this.frmAddCar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

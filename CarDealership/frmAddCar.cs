@@ -20,5 +20,15 @@ namespace CarDealership
         {
             this.Close();
         }
+
+        private void frmAddCar_Load(object sender, EventArgs e)
+        {
+            // Populate the make combo box with car makes
+            cboMake.Items.Add("Dodge");
+            cboMake.Items.Add("Ford");
+            cboMake.Items.Add("Honda");
+            cboMake.Items.Add("Toyota");
+
+        }
     }
 }
