@@ -38,7 +38,7 @@
             this.lblYear = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.lblPrice = new System.Windows.Forms.Label();
-            this.txtbModelSpecific = new System.Windows.Forms.TextBox();
+            this.txtModelSpecific = new System.Windows.Forms.TextBox();
             this.lblModelSpecific = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -136,14 +136,14 @@
             this.lblPrice.TabIndex = 12;
             this.lblPrice.Text = "Price:";
             // 
-            // txtbModelSpecific
+            // txtModelSpecific
             // 
-            this.txtbModelSpecific.Enabled = false;
-            this.txtbModelSpecific.Location = new System.Drawing.Point(160, 292);
-            this.txtbModelSpecific.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.txtbModelSpecific.Name = "txtbModelSpecific";
-            this.txtbModelSpecific.Size = new System.Drawing.Size(238, 31);
-            this.txtbModelSpecific.TabIndex = 5;
+            this.txtModelSpecific.Enabled = false;
+            this.txtModelSpecific.Location = new System.Drawing.Point(160, 292);
+            this.txtModelSpecific.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtModelSpecific.Name = "txtModelSpecific";
+            this.txtModelSpecific.Size = new System.Drawing.Size(238, 31);
+            this.txtModelSpecific.TabIndex = 5;
             // 
             // lblModelSpecific
             // 
@@ -185,7 +185,7 @@
             this.ClientSize = new System.Drawing.Size(464, 462);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtbModelSpecific);
+            this.Controls.Add(this.txtModelSpecific);
             this.Controls.Add(this.lblModelSpecific);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.lblPrice);
@@ -219,7 +219,7 @@
         private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.TextBox txtbModelSpecific;
+        private System.Windows.Forms.TextBox txtModelSpecific;
         private System.Windows.Forms.Label lblModelSpecific;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
