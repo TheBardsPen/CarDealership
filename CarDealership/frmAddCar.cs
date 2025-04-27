@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YearlyAcademicPlan;
 
 namespace CarDealership
 {
@@ -52,16 +53,16 @@ namespace CarDealership
                 switch (selectedMake)
                 {
                     case "Dodge":
-                        lblModelSpecific.Text = "Engine: ";
+                        lblModelSpecific.Text = "Engine:";
                         break;
                     case "Ford":
-                        lblModelSpecific.Text = "Trim: ";
+                        lblModelSpecific.Text = "Trim:";
                         break;
                     case "Nissan":
-                        lblModelSpecific.Text = "Transmission: ";
+                        lblModelSpecific.Text = "Transmission:";
                         break;
                     case "Toyota":
-                        lblModelSpecific.Text = "Mileage: ";
+                        lblModelSpecific.Text = "Mileage:";
                         break;
                     default:
                         lblModelSpecific.Text = "";
@@ -77,6 +78,23 @@ namespace CarDealership
         private void btnSave_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private bool IsComplete()
+        {
+            if (Validation.IsComboSelected("'Make:'", cboMake) &&
+                Validation.IsTextboxString("'Model:'", txtModel) &&
+                Validation.IsTextboxString("'Color:'", txtColor) &&
+                Validation.IsTextboxInt("'Year:'", txtYear) &&
+                Validation.IsTextboxDecimal("'Price:'", txtPrice))
+            {
+                if (cboMake.Text == "Toyota" && Validation.IsTextboxInt($"'{lblModelSpecific}'", txtModelSpecific))
+                    return true;
+                else if (Validation.IsTextboxString($"'{lblModelSpecific}'", txtModelSpecific))
+                    return true;                    
+            }
+
+            return false;
         }
     }
 }

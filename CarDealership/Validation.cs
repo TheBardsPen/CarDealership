@@ -12,7 +12,9 @@ namespace YearlyAcademicPlan
     /// </summary>
     public static class Validation
     {
-        private static string requiredTextField = " is a required field.";
+        private static string requiredInt = " should be a valid integer value.";
+        private static string requiredDecimal = " should be a valid decimal value.";
+        private static string requiredString = " is a required field.";
         private static string requiredComboField = " is a required field. Please make a selection.";
 
         #region Text Box
@@ -23,11 +25,47 @@ namespace YearlyAcademicPlan
         /// <param name="name">The name of the text field</param>
         /// <param name="box">The textbox that is selected</param>
         /// <returns>True if textbox is not empty, false and an error message if it is empty.</returns>
-        public static bool IsTextboxFilled(string name, TextBox box)
+        public static bool IsTextboxString(string name, TextBox box)
         {
             if (box.Text == "")
             {
-                MessageBox.Show(name + requiredTextField, "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(name + requiredString, "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                box.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Used to verify if a textbox can be converted to an integer.
+        /// </summary>
+        /// <param name="name">The name of the text field</param>
+        /// <param name="box">The textbox that is selected</param>
+        /// <returns>True if textbox can be converted to an integer, false and an error message if not.</returns>
+        public static bool IsTextboxInt(string name, TextBox box)
+        {
+            if (int.TryParse(box.Text, out _))
+            {
+                MessageBox.Show(name + requiredInt, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                box.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Used to verify if a textbox can be converted to a decimal.
+        /// </summary>
+        /// <param name="name">The name of the text field</param>
+        /// <param name="box">The textbox that is selected</param>
+        /// <returns>True if textbox can be converted to an decimal, false and an error message if not.</returns>
+        public static bool IsTextboxDecimal(string name, TextBox box)
+        {
+            if (int.TryParse(box.Text, out _))
+            {
+                MessageBox.Show(name + requiredDecimal, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 box.Focus();
                 return false;
             }
