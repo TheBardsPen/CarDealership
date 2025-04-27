@@ -35,5 +35,18 @@ namespace CarDealership
             frmAddCar addCar = new frmAddCar();// Create an instance of the frmAddCar form
             addCar.ShowDialog(); 
         }
+
+        private void cboFilterType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<string> filters = new List<string>();
+
+            if (cboFilterType.Text == "Make")
+            {
+                cboFilter.Items.Add("Toyota");
+                cboFilter.Items.Add("Nissan");
+                cboFilter.Items.Add("Dodge");
+                cboFilter.Items.Add("Ford");
+            }
+        }
     }
 }
