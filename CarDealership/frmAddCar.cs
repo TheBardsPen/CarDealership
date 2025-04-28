@@ -107,7 +107,8 @@ namespace CarDealership
                     car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded);
                     break;
                 case "Toyota":
-                    car = new Toyota(make, model, color, year, price, modelSpecific, dateAdded);
+                    int mileage = int.Parse(modelSpecific); // Assuming mileage is an integer
+                    car = new Toyota(make, model, color, year, price, mileage, dateAdded);
                     break;
                 default:
                     MessageBox.Show("Invalid make selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

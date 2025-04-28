@@ -59,7 +59,7 @@ namespace CarDealership
                             columns[2],
                             Convert.ToInt32(columns[3]),
                             Convert.ToInt32(columns[4]),
-                            columns[5],
+                            Convert.ToInt32(columns[5]),
                             Convert.ToDateTime(columns[6]));
                         break;
                     case "Nissan":

@@ -8,9 +8,9 @@ namespace CarDealership
 {
     public class Toyota : Car
     {
-        public string Mileage { get; set; }
+        public int Mileage { get; set; }
 
-        public Toyota(string make, string model, string color, int year, int price, string mileage, DateTime dateAdded)
+        public Toyota(string make, string model, string color, int year, int price, int mileage, DateTime dateAdded)
             : base(make, model, color, year, price, dateAdded)
         {
             Mileage = mileage;
