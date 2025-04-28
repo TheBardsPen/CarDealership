@@ -121,5 +121,10 @@ namespace CarDealership
             // Add each string to the filter dropdown
             cboFilter.Items.AddRange(filters.ToArray());
         }
+
+        private void frmCarDealership_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
