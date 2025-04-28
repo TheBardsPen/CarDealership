@@ -47,6 +47,7 @@
             this.btnViewAll.TabIndex = 0;
             this.btnViewAll.Text = "View All";
             this.btnViewAll.UseVisualStyleBackColor = true;
+            this.btnViewAll.Click += new System.EventHandler(this.btnViewAll_Click);
             // 
             // cboFilterType
             // 
@@ -79,6 +80,7 @@
             this.cboFilter.Size = new System.Drawing.Size(292, 34);
             this.cboFilter.TabIndex = 2;
             this.cboFilter.Text = "Filter...";
+            this.cboFilter.SelectedIndexChanged += new System.EventHandler(this.cboFilter_SelectedIndexChanged);
             // 
             // btnAdd
             // 
@@ -123,6 +125,7 @@
             this.btnFilter.TabIndex = 3;
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // rTxtBoxDisplayListing
             // 
