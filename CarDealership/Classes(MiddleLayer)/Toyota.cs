@@ -10,7 +10,7 @@ namespace CarDealership
     {
         public int Mileage { get; set; }
 
-        public Toyota(string make, string model, string color, int year, decimal price, int mileage, DateTime dateAdded)
+        public Toyota(string make, string model, string color, int year, int price, int mileage, DateTime dateAdded)
             : base(make, model, color, year, price, dateAdded)
         {
             Mileage = mileage;

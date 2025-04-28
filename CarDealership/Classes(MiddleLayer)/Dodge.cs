@@ -10,7 +10,7 @@ namespace CarDealership
     {
         public string Engine { get; set; }
 
-        public Dodge(string make, string model, string color, int year, decimal price, string engine, DateTime dateAdded)
+        public Dodge(string make, string model, string color, int year, int price, string engine, DateTime dateAdded)
             : base(make, model, color, year, price, dateAdded)
         {
             this.Engine = engine;

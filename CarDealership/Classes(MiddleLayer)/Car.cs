@@ -14,11 +14,11 @@ namespace CarDealership
         public string Model { get; set; }
         public string Color { get; set; }
         public int Year { get; set; }
-        public decimal Price { get; set; }
+        public int Price { get; set; }
         public DateTime DateAdded { get; set; }
 
         // Build constructor
-        public Car(string make, string model, string color, int year, decimal price, DateTime dateAdded)
+        public Car(string make, string model, string color, int year, int price, DateTime dateAdded)
         {
             Make = make;
             Model = model;

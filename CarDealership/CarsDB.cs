@@ -38,7 +38,7 @@ namespace CarDealership
                             columns[1],
                             columns[2],
                             Convert.ToInt32(columns[3]),
-                            Convert.ToDecimal(columns[4]),
+                            Convert.ToInt32(columns[4]),
                             columns[5],
                             Convert.ToDateTime(columns[6]));
                         break;
@@ -48,7 +48,7 @@ namespace CarDealership
                             columns[1],
                             columns[2],
                             Convert.ToInt32(columns[3]),
-                            Convert.ToDecimal(columns[4]),
+                            Convert.ToInt32(columns[4]),
                             columns[5],
                             Convert.ToDateTime(columns[6]));
                         break;
@@ -58,7 +58,7 @@ namespace CarDealership
                             columns[1],
                             columns[2],
                             Convert.ToInt32(columns[3]),
-                            Convert.ToDecimal(columns[4]),
+                            Convert.ToInt32(columns[4]),
                             Convert.ToInt32(columns[5]),
                             Convert.ToDateTime(columns[6]));
                         break;
@@ -68,7 +68,7 @@ namespace CarDealership
                             columns[1],
                             columns[2],
                             Convert.ToInt32(columns[3]),
-                            Convert.ToDecimal(columns[4]),
+                            Convert.ToInt32(columns[4]),
                             columns[5],
                             Convert.ToDateTime(columns[6]));
                         break;

@@ -10,7 +10,7 @@ namespace CarDealership
     {
         public string Trim { get ; set; }
 
-        public Ford(string make, string model, string color, int year, decimal price, string trim, DateTime dateAdded)
+        public Ford(string make, string model, string color, int year, int price, string trim, DateTime dateAdded)
             : base(make, model, color, year, price, dateAdded)
         {
             Trim = trim;

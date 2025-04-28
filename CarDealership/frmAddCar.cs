@@ -86,7 +86,7 @@ namespace CarDealership
                 Validation.IsTextboxString("'Model:'", txtModel) &&
                 Validation.IsTextboxString("'Color:'", txtColor) &&
                 Validation.IsTextboxInt("'Year:'", txtYear) &&
-                Validation.IsTextboxDecimal("'Price:'", txtPrice))
+                Validation.IsTextboxInt("'Price:'", txtPrice))
             {
                 if (cboMake.Text == "Toyota" && Validation.IsTextboxInt($"'{lblModelSpecific}'", txtModelSpecific))
                     return true;
