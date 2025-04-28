@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbCarList = new System.Windows.Forms.ListBox();
             this.btnViewAll = new System.Windows.Forms.Button();
             this.cboFilterType = new System.Windows.Forms.ComboBox();
             this.cboFilter = new System.Windows.Forms.ComboBox();
@@ -36,17 +35,8 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
+            this.rTxtBoxDisplayListing = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
-            // 
-            // lbCarList
-            // 
-            this.lbCarList.FormattingEnabled = true;
-            this.lbCarList.ItemHeight = 25;
-            this.lbCarList.Location = new System.Drawing.Point(24, 79);
-            this.lbCarList.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.lbCarList.Name = "lbCarList";
-            this.lbCarList.Size = new System.Drawing.Size(766, 429);
-            this.lbCarList.TabIndex = 7;
             // 
             // btnViewAll
             // 
@@ -103,7 +93,6 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Enabled = false;
             this.btnDelete.Location = new System.Drawing.Point(836, 175);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnDelete.Name = "btnDelete";
@@ -111,6 +100,7 @@
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete Car";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnExit
             // 
@@ -134,11 +124,20 @@
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
             // 
+            // rTxtBoxDisplayListing
+            // 
+            this.rTxtBoxDisplayListing.Location = new System.Drawing.Point(24, 76);
+            this.rTxtBoxDisplayListing.Name = "rTxtBoxDisplayListing";
+            this.rTxtBoxDisplayListing.Size = new System.Drawing.Size(766, 422);
+            this.rTxtBoxDisplayListing.TabIndex = 7;
+            this.rTxtBoxDisplayListing.Text = "";
+            // 
             // frmCarDealership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 542);
+            this.Controls.Add(this.rTxtBoxDisplayListing);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
@@ -146,7 +145,6 @@
             this.Controls.Add(this.cboFilter);
             this.Controls.Add(this.cboFilterType);
             this.Controls.Add(this.btnViewAll);
-            this.Controls.Add(this.lbCarList);
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmCarDealership";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -157,8 +155,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lbCarList;
         private System.Windows.Forms.Button btnViewAll;
         private System.Windows.Forms.ComboBox cboFilterType;
         private System.Windows.Forms.ComboBox cboFilter;
@@ -166,6 +162,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.RichTextBox rTxtBoxDisplayListing;
     }
 }
 

@@ -33,7 +33,22 @@ namespace CarDealership
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmAddCar addCar = new frmAddCar();// Create an instance of the frmAddCar form
-            addCar.ShowDialog(); 
+            if ( addCar.ShowDialog() == DialogResult.OK) // Show the form as a dialog
+            {
+                // Get the new car from the addCar form
+                Car newCar = addCar.NewCar;
+
+                // Add the new car to the list
+                cars.Add(newCar);
+
+                // Save the list to the database
+               // cars.Save();
+
+                // Refresh the list view
+                rTxtBoxDisplayListing.AppendText(newCar.GetDisplayText() + "\n\n");
+
+
+            }
         }
 
         private void cboFilterType_SelectedIndexChanged(object sender, EventArgs e)
@@ -123,6 +138,11 @@ namespace CarDealership
         }
 
         private void frmCarDealership_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
         {
 
         }
