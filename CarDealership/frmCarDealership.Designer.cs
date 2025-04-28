@@ -144,6 +144,7 @@
             this.Name = "frmCarDealership";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Car Dealership";
+            this.Load += new System.EventHandler(this.frmCarDealership_Load);
             this.ResumeLayout(false);
 
         }

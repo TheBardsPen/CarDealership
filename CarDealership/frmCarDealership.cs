@@ -20,16 +20,28 @@ namespace CarDealership
             InitializeComponent();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void frmCarDealership_Load(object sender, EventArgs e)
         {
-            this.Close();
+            // Load carlist from database on form load
+            cars.Load();
         }
+
+        #region Event Handlers
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmAddCar addCar = new frmAddCar();// Create an instance of the frmAddCar form
-            addCar.ShowDialog();
+            Car newCar = addCar.ReturnCar();// Run method to return a car object
+
+            // Add new car to list
+            if (addCar.DialogResult == DialogResult.OK)
+                cars.Add(newCar);
+
+            // Save to database
+            cars.Save();
         }
+
         private void btnViewAll_Click(object sender, EventArgs e)
         {
             // Clear the list to repopulate
@@ -156,6 +168,19 @@ namespace CarDealership
             // Clear the list to repopulate
             lbCarList.Text = "";
 
+            Filter();
+        }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void Filter()
+        {
             // Switch to handle what type of filter is selected
             switch (cboFilterType.Text)
             {
@@ -315,5 +340,7 @@ namespace CarDealership
                     break;
             }
         }
+
+        #endregion
     }
 }
