@@ -31,7 +31,7 @@ namespace CarDealership
         // Overrideable method to display string
         public virtual string GetDisplayText()
         {
-            string display = $"\t{DateAdded.ToString()} " +
+            string display = $"\t{DateAdded.ToString()}\n" +
                 $"{Make} -  {Model}\n" +
                 $"{Color}\n" +
                 $"{Year}\n" +

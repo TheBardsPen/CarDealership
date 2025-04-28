@@ -157,7 +157,7 @@ namespace CarDealership
         private void btnFilter_Click(object sender, EventArgs e)
         {
             // Clear the list to repopulate
-            lbCarList.Text = "";
+            rTxtBoxDisplayListing.Text = "";
 
             Filter();
         }
@@ -337,21 +337,15 @@ namespace CarDealership
             // Add each list item to the text display
             foreach (string s in carDisplay)
             {
-                lbCarList.Text += s;
+                rTxtBoxDisplayListing.Text += s;
             }
-        }
-
-
-        private void frmCarDealership_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
 
         }
-=======
+
         #endregion
 
     }

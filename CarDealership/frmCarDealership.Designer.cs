@@ -47,7 +47,6 @@
             this.btnViewAll.TabIndex = 0;
             this.btnViewAll.Text = "View All";
             this.btnViewAll.UseVisualStyleBackColor = true;
-            this.btnViewAll.Click += new System.EventHandler(this.btnViewAll_Click);
             // 
             // cboFilterType
             // 
