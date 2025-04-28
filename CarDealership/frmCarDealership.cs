@@ -181,6 +181,9 @@ namespace CarDealership
 
         private void Filter()
         {
+            // List of strings to display
+            List<string> carDisplay = new List<string>();
+
             // Switch to handle what type of filter is selected
             switch (cboFilterType.Text)
             {
@@ -189,7 +192,7 @@ namespace CarDealership
                     foreach (Car c in cars)
                     {
                         if (c.Make == cboFilter.Text)
-                            lbCarList.Text += c.GetDisplayText();
+                            carDisplay.Add(c.GetDisplayText());
                     }
                     break;
 
@@ -198,7 +201,7 @@ namespace CarDealership
                     foreach (Car c in cars)
                     {
                         if (c.Color == cboFilter.Text)
-                            lbCarList.Text += c.GetDisplayText();
+                            carDisplay.Add(c.GetDisplayText());
                     }
                     break;
 
@@ -210,21 +213,21 @@ namespace CarDealership
                             foreach (Car c in cars)
                             {
                                 if (c.Price < 5000)
-                                    lbCarList.Text += c.GetDisplayText();
+                                    carDisplay.Add(c.GetDisplayText()   );
                             }
                             break;
                         case 1: // 5,000 - 9,999
                             foreach (Car c in cars)
                             {
                                 if (c.Price < 10000 && c.Price >= 5000)
-                                    lbCarList.Text += c.GetDisplayText();
+                                    carDisplay.Add(c.GetDisplayText());
                             }
                             break;
                         case 2: // 10,000+
                             foreach (Car c in cars)
                             {
                                 if (c.Price >= 10000)
-                                    lbCarList.Text += c.GetDisplayText();
+                                    carDisplay.Add(c.GetDisplayText());
                             }
                             break;
                     }
@@ -240,21 +243,21 @@ namespace CarDealership
                             foreach (Car c in cars)
                             {
                                 if (todaysDate.Year - c.Year < 6)
-                                    lbCarList.Text += c.GetDisplayText();
+                                    carDisplay.Add(c.GetDisplayText());
                             }
                             break;
                         case 1: // 6 - 10
                             foreach (Car c in cars)
                             {
                                 if (todaysDate.Year - c.Year < 11 && todaysDate.Year - c.Year >= 6)
-                                    lbCarList.Text += c.GetDisplayText();
+                                    carDisplay.Add(c.GetDisplayText());
                             }
                             break;
                         case 2: // 11+
                             foreach (Car c in cars)
                             {
                                 if (todaysDate.Year - c.Year >= 11)
-                                    lbCarList.Text += c.GetDisplayText();
+                                    carDisplay.Add(c.GetDisplayText());
                             }
                             break;
                     }
@@ -268,7 +271,7 @@ namespace CarDealership
                         {
                             Dodge d = (Dodge)c;
                             if (d.Engine == cboFilter.Text)
-                                lbCarList.Text += c.GetDisplayText();
+                                carDisplay.Add(c.GetDisplayText());
                         }
                     }
                     break;
@@ -284,7 +287,7 @@ namespace CarDealership
                                 {
                                     Toyota t = (Toyota)c;
                                     if (t.Mileage < 50000)
-                                        lbCarList.Text += c.GetDisplayText();
+                                        carDisplay.Add(c.GetDisplayText());
                                 }
                             }
                             break;
@@ -295,7 +298,7 @@ namespace CarDealership
                                 {
                                     Toyota t = (Toyota)c;
                                     if (t.Mileage < 100000 && t.Mileage >= 50000)
-                                        lbCarList.Text += c.GetDisplayText();
+                                        carDisplay.Add(c.GetDisplayText());
                                 }
                             }
                             break;
@@ -306,7 +309,7 @@ namespace CarDealership
                                 {
                                     Toyota t = (Toyota)c;
                                     if (t.Mileage >= 100000)
-                                        lbCarList.Text += c.GetDisplayText();
+                                        carDisplay.Add(c.GetDisplayText());
                                 }
                             }
                             break;
@@ -321,7 +324,7 @@ namespace CarDealership
                         {
                             Nissan n = (Nissan)c;
                             if (n.Transmission == cboFilter.Text)
-                                lbCarList.Text += c.GetDisplayText();
+                                carDisplay.Add(c.GetDisplayText());
                         }
                     }
                     break;
@@ -334,10 +337,16 @@ namespace CarDealership
                         {
                             Ford f = (Ford)c;
                             if (f.Trim == cboFilter.Text)
-                                lbCarList.Text += c.GetDisplayText();
+                                carDisplay.Add(c.GetDisplayText());
                         }
                     }
                     break;
+            }
+
+            // Add each list item to the text display
+            foreach (string s in carDisplay)
+            {
+                lbCarList.Text += s;
             }
         }
 
