@@ -13,7 +13,8 @@ namespace CarDealership
 {
     public partial class frmAddCar: Form
     {
-  
+        public Car NewCar { get; set; } // Property to hold the new car object
+
         public frmAddCar()
         {
             InitializeComponent();
@@ -77,7 +78,48 @@ namespace CarDealership
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (!IsComplete())
+            {
+                MessageBox.Show("Please fill in all required fields.", "Incomplete Form", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Get the values from the form controls
+            string make = cboMake.Text;
+            string model = txtModel.Text;
+            string color = txtColor.Text;
+            int year = int.Parse(txtYear.Text);
+            int price = int.Parse(txtPrice.Text);
+            string modelSpecific = txtModelSpecific.Text;
+            DateTime dateAdded = DateTime.Now;
+
+            Car car = null;
+
+            switch (make)
+            {
+                case "Ford":
+                    car = new Ford(make, model, color, year, price, modelSpecific, dateAdded);
+                    break;
+                case "Dodge":
+                    car = new Dodge(make, model, color, year, price, modelSpecific, dateAdded);
+                    break;
+                case "Nissan":
+                    car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded);
+                    break;
+                case "Toyota":
+                    int mileage = int.Parse(modelSpecific); // Assuming mileage is an integer
+                    car = new Toyota(make, model, color, year, price, mileage, dateAdded);
+                    break;
+                default:
+                    MessageBox.Show("Invalid make selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+            }
+
+
+            this.NewCar = car;
+
+            this.DialogResult = DialogResult.OK;
+
         }
 
         private bool IsComplete()

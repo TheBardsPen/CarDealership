@@ -47,12 +47,20 @@ namespace YearlyAcademicPlan
         {
             if (int.TryParse(box.Text, out _))
             {
+                return true; // Parsing successful, so valid
+            }
+            else
+            {
                 MessageBox.Show(name + requiredInt, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 box.Focus();
-                return false;
+                return false; // Parsing failed, so invalid
             }
+            //    MessageBox.Show(name + requiredInt, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    box.Focus();
+            //    return false;
+            //}
 
-            return true;
+            //return true;
         }
 
         /// <summary>
@@ -65,12 +73,20 @@ namespace YearlyAcademicPlan
         {
             if (int.TryParse(box.Text, out _))
             {
-                MessageBox.Show(name + requiredDecimal, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                box.Focus();
-                return false;
+                return true; // Parsing successful, so valid
             }
+            else
+            {
+                MessageBox.Show(name + requiredInt, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                box.Focus();
+                return false; // Parsing failed, so invalid
+            }
+            //    MessageBox.Show(name + requiredDecimal, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    box.Focus();
+            //    return false;
+            //}
 
-            return true;
+            //return true;
         }
 
         #endregion
