@@ -101,6 +101,7 @@
             // 
             // btnExit
             // 
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Location = new System.Drawing.Point(418, 243);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
@@ -123,7 +124,7 @@
             // rTxtBoxDisplayListing
             // 
             this.rTxtBoxDisplayListing.Location = new System.Drawing.Point(12, 40);
-            this.rTxtBoxDisplayListing.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rTxtBoxDisplayListing.Margin = new System.Windows.Forms.Padding(2);
             this.rTxtBoxDisplayListing.Name = "rTxtBoxDisplayListing";
             this.rTxtBoxDisplayListing.ReadOnly = true;
             this.rTxtBoxDisplayListing.Size = new System.Drawing.Size(385, 221);
@@ -134,6 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(506, 282);
             this.Controls.Add(this.rTxtBoxDisplayListing);
             this.Controls.Add(this.btnFilter);

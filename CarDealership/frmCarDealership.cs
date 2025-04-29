@@ -167,6 +167,16 @@ namespace CarDealership
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            frmDeleteCar deleteCar = new frmDeleteCar();
+            deleteCar.cars = this.cars;
+            deleteCar.ShowDialog();
+
+            if (deleteCar.DialogResult == DialogResult.OK)
+            {
+                cars.RemoveAt((int)deleteCar.Tag);
+            }
+            ViewAll();
+            cars.Save();
 
         }
 
