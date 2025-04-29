@@ -18,7 +18,7 @@ namespace CarDealership
 
         public override string GetDisplayText()
         {
-            return base.GetDisplayText() + $"\nEngine: {Engine}";
+            return base.GetDisplayText() + $"\nEngine: {Engine}\n";
         }
     }
 }

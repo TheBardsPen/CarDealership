@@ -18,7 +18,7 @@ namespace CarDealership
 
         public override string GetDisplayText()
         {
-            return base.GetDisplayText() + $"\nMiles: {Mileage}";
+            return base.GetDisplayText() + $"\nMiles: {Mileage}\n";
         }
     }
 }
