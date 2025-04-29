@@ -38,7 +38,6 @@
             this.lB1.FormattingEnabled = true;
             this.lB1.Location = new System.Drawing.Point(8, 10);
             this.lB1.Name = "lB1";
-            this.lB1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lB1.Size = new System.Drawing.Size(618, 433);
             this.lB1.TabIndex = 0;
             // 
@@ -64,9 +63,11 @@
             // 
             // frmDeleteCar
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.CancelButton = this.btnCancelDel;
+            this.ClientSize = new System.Drawing.Size(823, 490);
             this.Controls.Add(this.btnCancelDel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lB1);

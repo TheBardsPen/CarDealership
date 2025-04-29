@@ -19,7 +19,7 @@ namespace CarDealership
         {
             foreach (Car c in cars)
             {
-                lB1.Items.Add(c.DateAdded.ToShortDateString() + " " + c.Make + " " + c.Model);
+                lB1.Items.Add(c.DateAdded.ToShortDateString() + " " + c.Year + " " + c.Make + " " + c.Model);
             }
         }
 
@@ -28,35 +28,6 @@ namespace CarDealership
             InitializeComponent();
         }
 
-        // private CarList GetCars()
-        // {
-        //   return cars;
-        // }
-
-        // private void frmDeleteCar_Load(object sender, EventArgs e, CarList cars)
-        // {
-        // 
-
-        //   List<string> MyList = new List<string>();
-        //  MyList.Add("HELLO");
-        //  MyList.Add("WORLD");
-
-        //  lB1.DataSource = MyList;
-
-        // Load carlist from database on form load
-        //cars.Load();
-        // lB1.DataSource = cars;
-        // for (int i = 0; i < cars.Count; i++)
-        //  {
-        //       lB1.Items.Add(cars.ElementAt(i));
-        // }
-        //for (int q = 0; q < cars.Count; q++)
-        //{
-        //   Car c = cars[q];
-        //  lB1.Text += c.GetDisplayText();
-        // }
-        // }
-
         private void btnCancelDel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -64,9 +35,20 @@ namespace CarDealership
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Tag = lB1.SelectedIndex;
-            DialogResult = DialogResult.OK;
-        }
+
+            // Show a confirmation dialog
+            DialogResult button = MessageBox.Show(
+                                    $"Are you sure you want to delete this {cars[lB1.SelectedIndex].Make}? This action cannot be undone.",
+                                    "Confirm Delete",
+                                    MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Question);
+
+            if (button == DialogResult.Yes)
+            {
+                Tag = lB1.SelectedIndex;
+                DialogResult = DialogResult.OK;
+            }
+            }
 
         private void frmDeleteCar_Load(object sender, EventArgs e)
         {
