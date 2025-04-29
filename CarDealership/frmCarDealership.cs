@@ -26,7 +26,7 @@ namespace CarDealership
             cars.Load();
 
             ViewAll();
-        }
+                }
 
         #region Event Handlers
 
@@ -43,7 +43,7 @@ namespace CarDealership
                 cars.Add(newCar);
 
                 // Save the list to the database
-                // cars.Save();
+                cars.Save();
 
                 // Refresh the text box
                 ViewAll();
