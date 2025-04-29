@@ -24,10 +24,11 @@ namespace CarDealership
         {
             // Load carlist from database on form load
             cars.Load();
+
+            ViewAll();
         }
 
         #region Event Handlers
-
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -42,12 +43,10 @@ namespace CarDealership
                 cars.Add(newCar);
 
                 // Save the list to the database
-               // cars.Save();
+                // cars.Save();
 
-                // Refresh the list view
-                rTxtBoxDisplayListing.AppendText(newCar.GetDisplayText() + "\n\n");
-
-
+                // Refresh the text box
+                ViewAll();
             }
         }
 
@@ -166,6 +165,16 @@ namespace CarDealership
             this.Close();
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnViewAll_Click(object sender, EventArgs e)
+        {
+            ViewAll();
+        }
+
         #endregion
 
         #region Methods
@@ -198,60 +207,12 @@ namespace CarDealership
 
                 // Return cars in price range selected
                 case "Price":
-                    switch (cboFilter.SelectedIndex)
-                    {
-                        case 0: // 0 - 4,999
-                            foreach (Car c in cars)
-                            {
-                                if (c.Price < 5000)
-                                    carDisplay.Add(c.GetDisplayText()   );
-                            }
-                            break;
-                        case 1: // 5,000 - 9,999
-                            foreach (Car c in cars)
-                            {
-                                if (c.Price < 10000 && c.Price >= 5000)
-                                    carDisplay.Add(c.GetDisplayText());
-                            }
-                            break;
-                        case 2: // 10,000+
-                            foreach (Car c in cars)
-                            {
-                                if (c.Price >= 10000)
-                                    carDisplay.Add(c.GetDisplayText());
-                            }
-                            break;
-                    }
+                    PriceFilterSwitch();
                     break;
 
                 // Return cars in age range selected
                 case "Age":
-                    DateTime todaysDate = DateTime.Now;
-
-                    switch (cboFilter.SelectedIndex)
-                    {
-                        case 0: // 0 - 5
-                            foreach (Car c in cars)
-                            {
-                                if (todaysDate.Year - c.Year < 6)
-                                    carDisplay.Add(c.GetDisplayText());
-                            }
-                            break;
-                        case 1: // 6 - 10
-                            foreach (Car c in cars)
-                            {
-                                if (todaysDate.Year - c.Year < 11 && todaysDate.Year - c.Year >= 6)
-                                    carDisplay.Add(c.GetDisplayText());
-                            }
-                            break;
-                        case 2: // 11+
-                            foreach (Car c in cars)
-                            {
-                                if (todaysDate.Year - c.Year >= 11)
-                                    carDisplay.Add(c.GetDisplayText());
-                            }
-                            break;
-                    }
+                    AgeFilterSwitch();
                     break;
 
                 // Return cars based on engine selected
@@ -269,42 +230,7 @@ namespace CarDealership
 
                 // Return cars in mileage range selected
                 case "Mileage":
-                    switch (cboFilter.SelectedIndex)
-                    {
-                        case 0: // 0 - 49,999
-                            foreach (Car c in cars)
-                            {
-                                if (c.GetType() == typeof(Toyota))
-                                {
-                                    Toyota t = (Toyota)c;
-                                    if (t.Mileage < 50000)
-                                        carDisplay.Add(c.GetDisplayText());
-                                }
-                            }
-                            break;
-                        case 1: // 50,000 - 99,999
-                            foreach (Car c in cars)
-                            {
-                                if (c.GetType() == typeof(Toyota))
-                                {
-                                    Toyota t = (Toyota)c;
-                                    if (t.Mileage < 100000 && t.Mileage >= 50000)
-                                        carDisplay.Add(c.GetDisplayText());
-                                }
-                            }
-                            break;
-                        case 2: // 100,000+
-                            foreach (Car c in cars)
-                            {
-                                if (c.GetType() == typeof(Toyota))
-                                {
-                                    Toyota t = (Toyota)c;
-                                    if (t.Mileage >= 100000)
-                                        carDisplay.Add(c.GetDisplayText());
-                                }
-                            }
-                            break;
-                    }
+                    MileageFilterSwitch();
                     break;
 
                 // Return cars based on transmission selected
@@ -341,12 +267,147 @@ namespace CarDealership
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void PriceFilterSwitch()
         {
+            // List of strings to display
+            List<string> carDisplay = new List<string>();
 
+            switch (cboFilter.SelectedIndex)
+            {
+                case 0: // 0 - 4,999
+                    foreach (Car c in cars)
+                    {
+                        if (c.Price < 5000)
+                            carDisplay.Add(c.GetDisplayText());
+                    }
+                    break;
+                case 1: // 5,000 - 9,999
+                    foreach (Car c in cars)
+                    {
+                        if (c.Price < 10000 && c.Price >= 5000)
+                            carDisplay.Add(c.GetDisplayText());
+                    }
+                    break;
+                case 2: // 10,000+
+                    foreach (Car c in cars)
+                    {
+                        if (c.Price >= 10000)
+                            carDisplay.Add(c.GetDisplayText());
+                    }
+                    break;
+            }
+
+            // Add each list item to the text display
+            foreach (string s in carDisplay)
+            {
+                rTxtBoxDisplayListing.Text += s;
+            }
+        }
+
+        private void AgeFilterSwitch()
+        {
+            // List of strings to display
+            List<string> carDisplay = new List<string>();
+
+            DateTime todaysDate = DateTime.Now;
+
+            switch (cboFilter.SelectedIndex)
+            {
+                case 0: // 0 - 5
+                    foreach (Car c in cars)
+                    {
+                        if (todaysDate.Year - c.Year < 6)
+                            carDisplay.Add(c.GetDisplayText());
+                    }
+                    break;
+                case 1: // 6 - 10
+                    foreach (Car c in cars)
+                    {
+                        if (todaysDate.Year - c.Year < 11 && todaysDate.Year - c.Year >= 6)
+                            carDisplay.Add(c.GetDisplayText());
+                    }
+                    break;
+                case 2: // 11+
+                    foreach (Car c in cars)
+                    {
+                        if (todaysDate.Year - c.Year >= 11)
+                            carDisplay.Add(c.GetDisplayText());
+                    }
+                    break;
+            }
+
+            // Add each list item to the text display
+            foreach (string s in carDisplay)
+            {
+                rTxtBoxDisplayListing.Text += s;
+            }
+        }
+
+        private void MileageFilterSwitch()
+        {
+            // List of strings to display
+            List<string> carDisplay = new List<string>();
+
+            switch (cboFilter.SelectedIndex)
+            {
+                case 0: // 0 - 49,999
+                    foreach (Car c in cars)
+                    {
+                        if (c.GetType() == typeof(Toyota))
+                        {
+                            Toyota t = (Toyota)c;
+                            if (t.Mileage < 50000)
+                                carDisplay.Add(c.GetDisplayText());
+                        }
+                    }
+                    break;
+                case 1: // 50,000 - 99,999
+                    foreach (Car c in cars)
+                    {
+                        if (c.GetType() == typeof(Toyota))
+                        {
+                            Toyota t = (Toyota)c;
+                            if (t.Mileage < 100000 && t.Mileage >= 50000)
+                                carDisplay.Add(c.GetDisplayText());
+                        }
+                    }
+                    break;
+                case 2: // 100,000+
+                    foreach (Car c in cars)
+                    {
+                        if (c.GetType() == typeof(Toyota))
+                        {
+                            Toyota t = (Toyota)c;
+                            if (t.Mileage >= 100000)
+                                carDisplay.Add(c.GetDisplayText());
+                        }
+                    }
+                    break;
+            }
+
+            // Add each list item to the text display
+            foreach (string s in carDisplay)
+            {
+                rTxtBoxDisplayListing.Text += s;
+            }
+        }
+
+        private void ViewAll()
+        {
+            // Reset filters
+            cboFilter.Text = "";
+            cboFilterType.Text = "Filter...";
+            cboFilter.Enabled = false;
+            btnFilter.Enabled = false;
+
+            // Clear textbox
+            rTxtBoxDisplayListing.Text = "";
+
+            // Create text from each car in the saved list
+            foreach (Car c in cars)
+                rTxtBoxDisplayListing.Text += c.GetDisplayText();
         }
 
         #endregion
-
     }
 }
