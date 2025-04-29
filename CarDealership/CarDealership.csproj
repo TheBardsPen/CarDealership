@@ -64,6 +64,12 @@
       <DependentUpon>frmCarDealership.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes%28MiddleLayer%29\Nissan.cs" />
+    <Compile Include="frmDeleteCar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeleteCar.Designer.cs">
+      <DependentUpon>frmDeleteCar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes%28MiddleLayer%29\Toyota.cs" />
@@ -73,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCarDealership.resx">
       <DependentUpon>frmCarDealership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeleteCar.resx">
+      <DependentUpon>frmDeleteCar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
