@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarDealership
 {
     public class Ford : Car
     {
-        public string Trim { get ; set; }
+        public string Trim { get; set; }
 
         public Ford(string make, string model, string color, int year, int price, string trim, DateTime dateAdded)
             : base(make, model, color, year, price, dateAdded)

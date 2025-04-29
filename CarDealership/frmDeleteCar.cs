@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarDealership
@@ -15,7 +7,7 @@ namespace CarDealership
     {
         public CarList cars = new CarList();
 
-        public void carSelect(CarList cars)
+        public void CarSelect(CarList cars)
         {
             foreach (Car c in cars)
             {
@@ -35,24 +27,26 @@ namespace CarDealership
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            // Show a confirmation dialog
-            DialogResult button = MessageBox.Show(
-                                    $"Are you sure you want to delete this {cars[lB1.SelectedIndex].Make}? This action cannot be undone.",
-                                    "Confirm Delete",
-                                    MessageBoxButtons.YesNo,
-                                    MessageBoxIcon.Question);
-
-            if (button == DialogResult.Yes)
+            if (lB1.SelectedItem != null)
             {
-                Tag = lB1.SelectedIndex;
-                DialogResult = DialogResult.OK;
+                // Show a confirmation dialog
+                DialogResult button = MessageBox.Show(
+                                        $"Are you sure you want to delete this {cars[lB1.SelectedIndex].Make}? This action cannot be undone.",
+                                        "Confirm Delete",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question);
+
+                if (button == DialogResult.Yes)
+                {
+                    Tag = lB1.SelectedIndex;
+                    DialogResult = DialogResult.OK;
+                }
             }
-            }
+        }
 
         private void frmDeleteCar_Load(object sender, EventArgs e)
         {
-            carSelect(cars);
+            CarSelect(cars);
         }
     }
 }

@@ -50,7 +50,6 @@
             // 
             // cboFilterType
             // 
-            this.cboFilterType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilterType.FormattingEnabled = true;
             this.cboFilterType.Items.AddRange(new object[] {
             "Make",
@@ -65,6 +64,7 @@
             this.cboFilterType.Name = "cboFilterType";
             this.cboFilterType.Size = new System.Drawing.Size(121, 21);
             this.cboFilterType.TabIndex = 1;
+            this.cboFilterType.Text = "Filter By...";
             this.cboFilterType.SelectedIndexChanged += new System.EventHandler(this.cboFilterType_SelectedIndexChanged);
             // 
             // cboFilter
@@ -91,6 +91,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Enabled = false;
             this.btnDelete.Location = new System.Drawing.Point(418, 91);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);

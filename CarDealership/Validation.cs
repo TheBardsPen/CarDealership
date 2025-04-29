@@ -45,22 +45,14 @@ namespace YearlyAcademicPlan
         /// <returns>True if textbox can be converted to an integer, false and an error message if not.</returns>
         public static bool IsTextboxInt(string name, TextBox box)
         {
-            if (int.TryParse(box.Text, out _))
-            {
-                return true; // Parsing successful, so valid
-            }
-            else
+            if (!int.TryParse(box.Text, out _))
             {
                 MessageBox.Show(name + requiredInt, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 box.Focus();
-                return false; // Parsing failed, so invalid
+                return false;
             }
-            //    MessageBox.Show(name + requiredInt, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    box.Focus();
-            //    return false;
-            //}
 
-            //return true;
+            return true;
         }
 
         /// <summary>
@@ -71,22 +63,14 @@ namespace YearlyAcademicPlan
         /// <returns>True if textbox can be converted to an decimal, false and an error message if not.</returns>
         public static bool IsTextboxDecimal(string name, TextBox box)
         {
-            if (int.TryParse(box.Text, out _))
-            {
-                return true; // Parsing successful, so valid
-            }
-            else
+            if (!int.TryParse(box.Text, out _))
             {
                 MessageBox.Show(name + requiredInt, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 box.Focus();
-                return false; // Parsing failed, so invalid
+                return false;
             }
-            //    MessageBox.Show(name + requiredDecimal, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    box.Focus();
-            //    return false;
-            //}
 
-            //return true;
+            return true;
         }
 
         #endregion

@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CarDealership
@@ -25,8 +19,12 @@ namespace CarDealership
             // Load carlist from database on form load
             cars.Load();
 
+            // Set delete button functionality
+            if (cars.Count > 0)
+                btnDelete.Enabled = true;
+
             ViewAll();
-                }
+        }
 
         #region Event Handlers
 
@@ -34,7 +32,7 @@ namespace CarDealership
         {
             frmAddCar addCar = new frmAddCar();// Create an instance of the frmAddCar form
 
-            if ( addCar.ShowDialog() == DialogResult.OK) // Show the form as a dialog
+            if (addCar.ShowDialog() == DialogResult.OK) // Show the form as a dialog
             {
                 // Get the new car from the addCar form
                 Car newCar = addCar.NewCar;
@@ -44,6 +42,9 @@ namespace CarDealership
 
                 // Save the list to the database
                 cars.Save();
+
+                // Enable delete button
+                btnDelete.Enabled = true;
 
                 // Refresh the text box
                 ViewAll();
@@ -175,6 +176,10 @@ namespace CarDealership
             {
                 cars.RemoveAt((int)deleteCar.Tag);
             }
+
+            if (cars.Count == 0)
+                btnDelete.Enabled = false;
+
             ViewAll();
             cars.Save();
 
@@ -405,7 +410,7 @@ namespace CarDealership
         private void ViewAll()
         {
             // Reset filters
-            cboFilter.Text = "";
+            cboFilter.Text = "Filter By...";
             cboFilterType.Text = "Filter...";
             cboFilter.Enabled = false;
             btnFilter.Enabled = false;

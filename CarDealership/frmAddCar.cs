@@ -1,28 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using YearlyAcademicPlan;
 
 namespace CarDealership
 {
-    public partial class frmAddCar: Form
+    public partial class frmAddCar : Form
     {
         public Car NewCar { get; set; } // Property to hold the new car object
 
         public frmAddCar()
         {
             InitializeComponent();
- 
-        }
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
+
         }
 
         private void frmAddCar_Load(object sender, EventArgs e)
@@ -34,8 +23,15 @@ namespace CarDealership
             cboMake.Items.Add("Toyota");
 
             lblModelSpecific.Visible = false;
-            txtModelSpecific.Visible = false; 
+            txtModelSpecific.Visible = false;
 
+        }
+
+        #region Event Handlers
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void cboMake_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,7 +103,7 @@ namespace CarDealership
                     car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded);
                     break;
                 case "Toyota":
-                    int mileage = int.Parse(modelSpecific); // Assuming mileage is an integer
+                    int mileage = int.Parse(modelSpecific); // Assuming mileage is an integer after validation
                     car = new Toyota(make, model, color, year, price, mileage, dateAdded);
                     break;
                 default:
@@ -115,12 +111,12 @@ namespace CarDealership
                     break;
             }
 
-
             this.NewCar = car;
 
             this.DialogResult = DialogResult.OK;
-
         }
+
+        #endregion
 
         private bool IsComplete()
         {
@@ -133,7 +129,7 @@ namespace CarDealership
                 if (cboMake.Text == "Toyota" && Validation.IsTextboxInt($"'{lblModelSpecific}'", txtModelSpecific))
                     return true;
                 else if (Validation.IsTextboxString($"'{lblModelSpecific}'", txtModelSpecific))
-                    return true;                    
+                    return true;
             }
 
             return false;
