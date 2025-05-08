@@ -1,28 +1,36 @@
 ﻿using System.Collections.Generic;
+using CarDealership.Interfaces;
 
 namespace CarDealership
 {
-    public class CarList : List<Car>
+    public class CarList //: List<Car>
     {
+
+        List<ICar> cars;
+
+        public CarList()
+        {
+            cars = new List<ICar>();
+        }
         // Overwriting the add method of List<T> to 
         // put new cars at the front of the list
         // to ease sorting for 'view all' method
-        public new void Add(Car c)
+        public void Add(ICar car)
         {
-            base.Insert(0, c);
+            cars.Add(car); // Changed
         }
 
         // Load method to grab from text file and fill in order
         public void Load()
         {
-            List<Car> cars = CarsDB.LoadCars();
-            foreach (Car c in cars)
-                base.Add(c);
+            List<ICar> loadedCars = CarsDB.LoadCars();
+            foreach (ICar c in loadedCars)
+                cars.Add(c);
         }
 
         public void Save()
         {
-            CarsDB.SaveCars(this);
+            CarsDB.SaveCars(cars);
         }
     }
 }

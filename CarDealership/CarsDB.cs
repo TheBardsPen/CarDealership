@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using CarDealership.Interfaces;
 
 namespace CarDealership
 {
@@ -10,14 +11,14 @@ namespace CarDealership
         private const string dir = @"C:\C#\Files\AngelMay_ShaneHubbard_CalvinBorgaard\";
         private const string file = "Cars.txt";
 
-        public static List<Car> LoadCars()
+        public static List<ICar> LoadCars()
         {
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
 
             // Get save file and initialize list
             StreamReader text = new StreamReader(new FileStream(dir + file, FileMode.OpenOrCreate, FileAccess.Read));
-            List<Car> cars = new List<Car>();
+            List<ICar> cars = new List<ICar>();
 
             while (text.Peek() != -1)
             {
@@ -26,7 +27,7 @@ namespace CarDealership
                 string[] columns = row.Split('|');
 
                 // Switch to pull what Make (subclass) to create
-                Car c;
+                Car c;  // Changed to ICar potetially
                 switch (columns[0])
                 {
                     case "Dodge":
@@ -72,20 +73,20 @@ namespace CarDealership
                     default:
                         continue;
                 }
-                cars.Add(c);
+                cars.Add(c); // issue
             }
             text.Close();
 
             return cars;
         }
 
-        public static void SaveCars(List<Car> cars)
+        public static void SaveCars(List<ICar> cars)
         {
             StreamWriter text = new StreamWriter(new FileStream(dir + file, FileMode.Create, FileAccess.Write));
 
             // Write each property of each car to stream
             // Should be in same order as constructor for ease of loading
-            foreach (Car c in cars)
+            foreach (ICar c in cars)
             {
                 text.Write($"{c.Make}|");
                 text.Write($"{c.Model}|");
