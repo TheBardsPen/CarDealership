@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarDealership.Interfaces
 {
-    public interface ICar
+    public interface ICar : IDisplayable
     {
           // Set public fields as read/write
         string Make { get; set; }

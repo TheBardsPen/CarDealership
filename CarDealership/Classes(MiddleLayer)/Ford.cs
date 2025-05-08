@@ -1,8 +1,9 @@
-﻿using System;
+﻿using CarDealership.Interfaces;
+using System;
 
 namespace CarDealership
 {
-    public class Ford : Car
+    public class Ford : Car, ICar
     {
         public string Trim { get; set; }
 
@@ -12,7 +13,7 @@ namespace CarDealership
             Trim = trim;
         }
 
-        public override string GetDisplayText()
+        public override string GetDisplayText(string sep)
         {
             return base.GetDisplayText() + $"\nTrim: {Trim}\n";
         }

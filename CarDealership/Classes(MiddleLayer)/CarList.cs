@@ -10,7 +10,7 @@ namespace CarDealership
 
         public CarList()
         {
-            cars = new List<ICar>();
+            cars = new List<ICar>(); 
         }
         // Overwriting the add method of List<T> to 
         // put new cars at the front of the list

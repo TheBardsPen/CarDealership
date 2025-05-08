@@ -27,7 +27,7 @@ namespace CarDealership
                 string[] columns = row.Split('|');
 
                 // Switch to pull what Make (subclass) to create
-                Car c;  // Changed to ICar potetially
+                Car c;  // Changed to ICar potentially
                 switch (columns[0])
                 {
                     case "Dodge":

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using CarDealership.Interfaces;
+using System;
 
 namespace CarDealership
 {
-    public class Nissan : Car
+    public class Nissan : Car, ICar
     {
         public string Transmission { get; set; }
 
@@ -12,7 +13,7 @@ namespace CarDealership
             Transmission = transmisson;
         }
 
-        public override string GetDisplayText()
+        public override string GetDisplayText(string sep)
         {
             return base.GetDisplayText() + $"\nTransmission: {Transmission}\n";
         }

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using CarDealership.Interfaces;
+using System;
 
 namespace CarDealership
 {
-    class Dodge : Car
+    class Dodge : Car, ICar
     {
         public string Engine { get; set; }
 
@@ -12,7 +13,7 @@ namespace CarDealership
             this.Engine = engine;
         }
 
-        public override string GetDisplayText()
+        public override string GetDisplayText(string sep)
         {
             return base.GetDisplayText() + $"\nEngine: {Engine}\n";
         }

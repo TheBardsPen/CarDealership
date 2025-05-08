@@ -1,8 +1,9 @@
-﻿using System;
+﻿using CarDealership.Interfaces;
+using System;
 
 namespace CarDealership
 {
-    public class Toyota : Car
+    public class Toyota : Car, ICar
     {
         public int Mileage { get; set; }
 
@@ -12,7 +13,7 @@ namespace CarDealership
             Mileage = mileage;
         }
 
-        public override string GetDisplayText()
+        public override string GetDisplayText(string sep)
         {
             return base.GetDisplayText() + $"\nMiles: {Mileage}\n";
         }
