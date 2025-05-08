@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CarDealership.Interfaces
 {
-    public interface ICar
+    public interface IDisplayable
     {
-
+        string GetDisplayText(string sep);
     }
 }

@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace CarDealership
 {
-    public abstract class Car : ICar, IComparable<ICar>
+    public abstract class Car : IDisplayable
     {
         // Set public fields as read/write
         public string Make { get; set; }
@@ -25,23 +25,15 @@ namespace CarDealership
             DateAdded = dateAdded;
         }
 
-        // Overrideable method to display string
-        public abstract string GetDisplayText(string sep);
-        
-        public int CompareTo(ICar other)
+        public virtual string GetDisplayText(string sep)
         {
-            if (other is Car car) 
-                return this.Price.CompareTo(car.Price);
+            string display = $"\t{DateAdded.ToString()}\n" +
+                $"{Make} -  {Model}\n" +
+                $"{Color}\n" +
+                $"{Year}\n" +
+                $"{Price.ToString("c")}";
 
-            return 0;
+            return display;
         }
-
-        //string display = $"\t{DateAdded.ToString()}\n" +
-        //    $"{Make} -  {Model}\n" +
-        //    $"{Color}\n" +
-        //    $"{Year}\n" +
-        //    $"{Price.ToString("c")}";
-
-        //return display;
-}
+    }
 }
