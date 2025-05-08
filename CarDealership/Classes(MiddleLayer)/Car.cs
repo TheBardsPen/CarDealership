@@ -1,8 +1,10 @@
-﻿using System;
+﻿using CarDealership.Interfaces;
+using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CarDealership
 {
-    public abstract class Car
+    public abstract class Car : ICar, IComparable<ICar>
     {
         // Set public fields as read/write
         public string Make { get; set; }
@@ -24,15 +26,22 @@ namespace CarDealership
         }
 
         // Overrideable method to display string
-        public virtual string GetDisplayText()
+        public abstract string GetDisplayText(string sep);
+        
+        public int CompareTo(ICar other)
         {
-            string display = $"\t{DateAdded.ToString()}\n" +
-                $"{Make} -  {Model}\n" +
-                $"{Color}\n" +
-                $"{Year}\n" +
-                $"{Price.ToString("c")}";
+            if (other is Car car) 
+                return this.Price.CompareTo(car.Price);
 
-            return display;
+            return 0;
         }
-    }
+
+        //string display = $"\t{DateAdded.ToString()}\n" +
+        //    $"{Make} -  {Model}\n" +
+        //    $"{Color}\n" +
+        //    $"{Year}\n" +
+        //    $"{Price.ToString("c")}";
+
+        //return display;
+}
 }
