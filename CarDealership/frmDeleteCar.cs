@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
+using CarDealership.Interfaces;
 
 namespace CarDealership
 {
     public partial class frmDeleteCar : Form
     {
-        public CarList cars = new CarList();
+        public CarList<ICar> cars = new CarList<ICar>();
 
-        public void CarSelect(CarList cars)
+        public void CarSelect(CarList<ICar> cars)
         {
-            foreach (Car c in cars)
+            foreach (ICar c in cars)
             {
                 lB1.Items.Add(c.DateAdded.ToShortDateString() + " " + c.Year + " " + c.Make + " " + c.Model);
             }
@@ -30,6 +31,7 @@ namespace CarDealership
             if (lB1.SelectedItem != null)
             {
                 // Show a confirmation dialog
+                ICar selectedCar = cars[lB1.SelectedIndex]; 
                 DialogResult button = MessageBox.Show(
                                         $"Are you sure you want to delete this {cars[lB1.SelectedIndex].Make}? This action cannot be undone.",
                                         "Confirm Delete",

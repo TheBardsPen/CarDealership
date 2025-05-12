@@ -15,16 +15,27 @@ namespace CarDealership
 
         public override string GetDisplayText(string sep)
         {
-            string dislpay =
-                '\t' + DateAdded.ToString() +
-                Make + sep +
-                Model + sep +
-                Color + sep +
-                Year.ToString() + sep +
-                Price.ToString() + sep +
-                "Transmission: " + Transmission;
+            //string dislpay =
+            //    '\t' + DateAdded.ToString() +
+            //    Make + sep +
+            //    Model + sep +
+            //    Color + sep +
+            //    Year.ToString() + sep +
+            //    Price.ToString() + sep +
+            //    "Transmission: " + Transmission;
 
-            return dislpay;
+            //return dislpay;
+
+            string display =
+                $"Date Added: {DateAdded}{sep}" +
+                $"Make: {Make}{sep}" +
+                $"Model: {Model}{sep}" +
+                $"Color: {Color}{sep}" +
+                $"Year: {Year}{sep}" +
+                $"Price: {Price.ToString("c")}{sep}" +
+                $"Transmission: {Transmission}";
+
+            return display + sep + "\n";
         }
 
         public override object Clone()

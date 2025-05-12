@@ -8,6 +8,7 @@ namespace CarDealership
     {
 
         List<T> cars;
+        public int Count => cars.Count;
 
         public CarList()
         {
@@ -25,6 +26,10 @@ namespace CarDealership
         public void Remove(T car)
         {
             cars.Remove(car);
+        }
+        public void RemoveAt(int index)
+        {
+            cars.RemoveAt(index);
         }
 
         public IEnumerator<T> GetEnumerator()
@@ -55,14 +60,14 @@ namespace CarDealership
         // Load method to grab from text file and fill in order
         public void Load()
         {
-            List<T> loadedCars = CarsDB.LoadCars();
+            List<T> loadedCars = CarsDB<T>.LoadCars();
             foreach (T c in loadedCars)
                 cars.Add(c);
         }
 
         public void Save()
         {
-            CarsDB.SaveCars(cars);
+            CarsDB<T>.SaveCars(cars);
         }
     }
 }

@@ -8,6 +8,6 @@ namespace CarDealership.Interfaces
 {
     public interface IDisplayable
     {
-        string GetDisplayText(string sep);
+        string GetDisplayText(string sep = "\n");
     }
 }

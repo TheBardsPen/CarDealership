@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace CarDealership
 {
-    public abstract class Car : ICar
+    public abstract class Car : ICar, IDisplayable
     {
         // Set public fields as read/write
         public string Make { get; set; }
@@ -30,7 +30,7 @@ namespace CarDealership
         public int CompareTo(ICar other) =>
             Price.CompareTo(other.Price);
 
-        public abstract string GetDisplayText(string sep);
+        public abstract string GetDisplayText(string sep = "\n");
 
         //public virtual string GetDisplayText(string sep)
         //{

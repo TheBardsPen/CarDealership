@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarDealership.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -7,12 +8,13 @@ namespace CarDealership
     public partial class frmCarDealership : Form
     {
         // Variables
-        public CarList cars = new CarList();
+        public CarList<ICar> cars = new CarList<ICar>();
 
         public frmCarDealership()
         {
             InitializeComponent();
         }
+
 
         private void frmCarDealership_Load(object sender, EventArgs e)
         {
@@ -35,7 +37,7 @@ namespace CarDealership
             if (addCar.ShowDialog() == DialogResult.OK) // Show the form as a dialog
             {
                 // Get the new car from the addCar form
-                Car newCar = addCar.NewCar;
+                ICar newCar = addCar.NewCar;
 
                 // Add the new car to the list
                 cars.Add(newCar);
@@ -76,7 +78,7 @@ namespace CarDealership
             {
                 // Pull unique colors from carlist
                 case "Color":
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (!filters.Contains(c.Color))
                             filters.Add(c.Color);
@@ -193,6 +195,7 @@ namespace CarDealership
         #endregion
 
         #region Methods
+      
 
         private void Filter()
         {
@@ -276,11 +279,13 @@ namespace CarDealership
             }
 
             // Add each list item to the text display
-            foreach (string s in carDisplay)
-            {
-                rTxtBoxDisplayListing.Text += s;
-            }
+            //foreach (string s in carDisplay)
+            //{
+            //    rTxtBoxDisplayListing.Text += s;
+            //}
+            rTxtBoxDisplayListing.Text = string.Join("\n",carDisplay);
         }
+
 
         private void PriceFilterSwitch()
         {
