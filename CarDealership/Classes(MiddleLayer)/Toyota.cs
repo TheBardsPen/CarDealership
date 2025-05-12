@@ -15,7 +15,21 @@ namespace CarDealership
 
         public override string GetDisplayText(string sep)
         {
-            return base.GetDisplayText() + $"\nMiles: {Mileage}\n";
+            string dislpay =
+                '\t' + DateAdded.ToString() +
+                Make + sep +
+                Model + sep +
+                Color + sep +
+                Year.ToString() + sep +
+                Price.ToString() + sep +
+                "Mileage: " + Mileage.ToString();
+
+            return dislpay;
+        }
+
+        public override object Clone()
+        {
+            return new Toyota(Make, Model, Color, Year, Price, Mileage, DateAdded);
         }
     }
 }

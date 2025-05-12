@@ -15,7 +15,21 @@ namespace CarDealership
 
         public override string GetDisplayText(string sep)
         {
-            return base.GetDisplayText() + $"\nTrim: {Trim}\n";
+            string dislpay =
+                '\t' + DateAdded.ToString() +
+                Make + sep +
+                Model + sep +
+                Color + sep +
+                Year.ToString() + sep +
+                Price.ToString() + sep +
+                "Trim: " + Trim;
+
+            return dislpay;
+        }
+
+        public override object Clone()
+        {
+            return new Ford(Make, Model, Color, Year, Price, Trim, DateAdded);
         }
     }
 }

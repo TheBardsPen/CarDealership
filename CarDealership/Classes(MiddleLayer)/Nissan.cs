@@ -15,7 +15,21 @@ namespace CarDealership
 
         public override string GetDisplayText(string sep)
         {
-            return base.GetDisplayText() + $"\nTransmission: {Transmission}\n";
+            string dislpay =
+                '\t' + DateAdded.ToString() +
+                Make + sep +
+                Model + sep +
+                Color + sep +
+                Year.ToString() + sep +
+                Price.ToString() + sep +
+                "Transmission: " + Transmission;
+
+            return dislpay;
+        }
+
+        public override object Clone()
+        {
+            return new Nissan(Make, Model, Color, Year, Price, Transmission, DateAdded);
         }
     }
 }

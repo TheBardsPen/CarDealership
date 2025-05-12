@@ -65,7 +65,7 @@ namespace YearlyAcademicPlan
         {
             if (!int.TryParse(box.Text, out _))
             {
-                MessageBox.Show(name + requiredInt, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(name + requiredDecimal, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 box.Focus();
                 return false;
             }

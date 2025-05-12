@@ -15,7 +15,21 @@ namespace CarDealership
 
         public override string GetDisplayText(string sep)
         {
-            return base.GetDisplayText() + $"\nEngine: {Engine}\n";
+            string dislpay =
+                '\t' + DateAdded.ToString() +
+                Make + sep +
+                Model + sep +
+                Color + sep +
+                Year.ToString() + sep +
+                Price.ToString() + sep +
+                "Engine: " + Engine;
+
+            return dislpay;
+        }
+
+        public override object Clone()
+        {
+            return new Dodge(Make, Model, Color, Year, Price, Engine, DateAdded);
         }
     }
 }

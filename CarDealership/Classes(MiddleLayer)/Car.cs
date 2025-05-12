@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace CarDealership
 {
-    public abstract class Car : IDisplayable
+    public abstract class Car : ICar
     {
         // Set public fields as read/write
         public string Make { get; set; }
@@ -25,15 +25,22 @@ namespace CarDealership
             DateAdded = dateAdded;
         }
 
-        public virtual string GetDisplayText(string sep)
-        {
-            string display = $"\t{DateAdded.ToString()}\n" +
-                $"{Make} -  {Model}\n" +
-                $"{Color}\n" +
-                $"{Year}\n" +
-                $"{Price.ToString("c")}";
+        public abstract object Clone();
 
-            return display;
-        }
+        public int CompareTo(ICar other) =>
+            Price.CompareTo(other.Price);
+
+        public abstract string GetDisplayText(string sep);
+
+        //public virtual string GetDisplayText(string sep)
+        //{
+        //    string display = $"\t{DateAdded.ToString()}\n" +
+        //        $"{Make} -  {Model}\n" +
+        //        $"{Color}\n" +
+        //        $"{Year}\n" +
+        //        $"{Price.ToString("c")}";
+
+        //    return display;
+        //}
     }
 }
