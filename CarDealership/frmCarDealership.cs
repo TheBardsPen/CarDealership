@@ -15,7 +15,6 @@ namespace CarDealership
             InitializeComponent();
         }
 
-
         private void frmCarDealership_Load(object sender, EventArgs e)
         {
             // Load carlist from database on form load
@@ -165,6 +164,7 @@ namespace CarDealership
 
             Filter();
         }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -186,7 +186,6 @@ namespace CarDealership
 
             ViewAll();
             cars.Save();
-
         }
 
         private void btnViewAll_Click(object sender, EventArgs e)
@@ -194,10 +193,9 @@ namespace CarDealership
             ViewAll();
         }
 
-        #endregion
+        #endregion Event Handlers
 
         #region Methods
-      
 
         private void Filter()
         {
@@ -285,10 +283,10 @@ namespace CarDealership
             //{
             //    rTxtBoxDisplayListing.Text += s;
             //}
-            rTxtBoxDisplayListing.Text = string.Join("\n\n",carDisplay);
+            rTxtBoxDisplayListing.Text = string.Join("\n\n", carDisplay);
         }
 
-
+        /// Filter by price
         private List<string> PriceFilterSwitch()
         {
             // List of strings to display
@@ -303,6 +301,7 @@ namespace CarDealership
                             carDisplay.Add(c.GetDisplayText());
                     }
                     break;
+
                 case 1: // 5,000 - 9,999
                     foreach (ICar c in cars)
                     {
@@ -310,6 +309,7 @@ namespace CarDealership
                             carDisplay.Add(c.GetDisplayText());
                     }
                     break;
+
                 case 2: // 10,000+
                     foreach (ICar c in cars)
                     {
@@ -321,6 +321,7 @@ namespace CarDealership
             return carDisplay;
         }
 
+        /// Filter by age
         private List<string> AgeFilterSwitch()
         {
             // List of strings to display
@@ -337,6 +338,7 @@ namespace CarDealership
                             carDisplay.Add(c.GetDisplayText());
                     }
                     break;
+
                 case 1: // 6 - 10
                     foreach (ICar c in cars)
                     {
@@ -344,6 +346,7 @@ namespace CarDealership
                             carDisplay.Add(c.GetDisplayText());
                     }
                     break;
+
                 case 2: // 11+
                     foreach (ICar c in cars)
                     {
@@ -355,6 +358,7 @@ namespace CarDealership
             return carDisplay;
         }
 
+        /// Filter by mileage
         private List<string> MileageFilterSwitch()
         {
             // List of strings to display
@@ -373,6 +377,7 @@ namespace CarDealership
                         }
                     }
                     break;
+
                 case 1: // 50,000 - 99,999
                     foreach (ICar c in cars)
                     {
@@ -384,6 +389,7 @@ namespace CarDealership
                         }
                     }
                     break;
+
                 case 2: // 100,000+
                     foreach (ICar c in cars)
                     {
@@ -418,6 +424,6 @@ namespace CarDealership
                 rTxtBoxDisplayListing.Text += c.GetDisplayText() + "\n\n";
         }
 
-        #endregion
+        #endregion Methods
     }
 }
