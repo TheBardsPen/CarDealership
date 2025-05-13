@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 using CarDealership.Interfaces;
 
 namespace CarDealership
 {
-    public class CarsDB<T> where T : ICar
+    public class CarsDB<T> where T : ICar, IStorable
     {
         // Set directory and filename
         private const string dir = @"C:\C#\Files\AngelMay_ShaneHubbard_CalvinBorgaard\";
@@ -26,6 +27,9 @@ namespace CarDealership
                 string row = text.ReadLine();
                 string[] columns = row.Split('|');
 
+                if (columns.Length < 7)
+                    continue;
+
                 // Switch to pull what Make (subclass) to create
                 ICar c;
                 switch (columns[0])
@@ -38,7 +42,7 @@ namespace CarDealership
                             Convert.ToInt32(columns[3]),
                             Convert.ToInt32(columns[4]),
                             columns[5],
-                            Convert.ToDateTime(columns[6]));
+                            DateTime.Parse(columns[6]));
                         break;
                     case "Ford":
                         c = new Ford(
@@ -48,7 +52,7 @@ namespace CarDealership
                             Convert.ToInt32(columns[3]),
                             Convert.ToInt32(columns[4]),
                             columns[5],
-                            Convert.ToDateTime(columns[6]));
+                            DateTime.Parse(columns[6]));
                         break;
                     case "Toyota":
                         c = new Toyota(
@@ -58,7 +62,7 @@ namespace CarDealership
                             Convert.ToInt32(columns[3]),
                             Convert.ToInt32(columns[4]),
                             Convert.ToInt32(columns[5]),
-                            Convert.ToDateTime(columns[6]));
+                            DateTime.Parse(columns[6]));
                         break;
                     case "Nissan":
                         c = new Nissan(
@@ -68,7 +72,7 @@ namespace CarDealership
                             Convert.ToInt32(columns[3]),
                             Convert.ToInt32(columns[4]),
                             columns[5],
-                            Convert.ToDateTime(columns[6]));
+                            DateTime.Parse(columns[6]));
                         break;
                     default:
                         continue;
@@ -89,9 +93,9 @@ namespace CarDealership
 
             foreach(T car in cars)
             {
-                text.WriteLine(car.GetDisplayText("|"));
+                text.WriteLine(car.ToDataString("|"));
             }
-
+            text.Close();
             //foreach (ICar c in cars)
             //{
             //    text.Write($"{c.Make}|");
@@ -127,7 +131,6 @@ namespace CarDealership
             //    text.WriteLine(c.DateAdded);
             //}
 
-            text.Close();
         }
     }
 }

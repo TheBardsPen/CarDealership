@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Interfaces\ICar.cs" />
     <Compile Include="Interfaces\IDisplayable.cs" />
+    <Compile Include="Interfaces\IStorable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes%28MiddleLayer%29\Toyota.cs" />

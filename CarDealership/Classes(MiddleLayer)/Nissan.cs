@@ -3,7 +3,7 @@ using System;
 
 namespace CarDealership
 {
-    public class Nissan : Car, ICar
+    public class Nissan : Car, ICar, IStorable
     {
         public string Transmission { get; set; }
 
@@ -36,6 +36,12 @@ namespace CarDealership
                 $"Transmission: {Transmission}";
 
             return display + sep + "\n";
+        }
+
+        // This method is used to convert the object to a string format for storage
+        public override string ToDataString(string sep)
+        {
+            return $"{Make}{sep}{Model}{sep}{Color}{sep}{Year.ToString()}{sep}{Price.ToString()}{sep}{Transmission}{sep}{DateAdded}";
         }
 
         public override object Clone()
