@@ -23,6 +23,11 @@ namespace CarDealership
             cars.Insert(0, car); // Changed
         }
 
+        public List<T> ToList()
+        {
+            return new List<T>(cars);
+        }
+
         public void Remove(T car)
         {
             cars.Remove(car);

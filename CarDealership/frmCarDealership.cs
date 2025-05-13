@@ -57,6 +57,8 @@ namespace CarDealership
         {
             List<string> filters = new List<string>();
             cboFilter.Items.Clear();
+            cboFilter.SelectedIndex = -1;
+            cboFilter.Text = "";
 
             // Set enable of filter drowpdown once a filter type is selected
             if (cboFilterType.SelectedIndex != -1)
@@ -101,7 +103,7 @@ namespace CarDealership
 
                 // Check for dodge, and set filter to unique engines from carlist
                 case "Engine":
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.GetType() == typeof(Dodge))
                         {
@@ -121,7 +123,7 @@ namespace CarDealership
 
                 // Check for Nissan, and set filter to unique transmissions from carlist
                 case "Transmission":
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.GetType() == typeof(Nissan))
                         {
@@ -134,7 +136,7 @@ namespace CarDealership
 
                 // Check for ford, and set filter to unique trims from carlist
                 case "Trim":
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.GetType() == typeof(Ford))
                         {
@@ -207,7 +209,7 @@ namespace CarDealership
             {
                 // Return cars based on make selected
                 case "Make":
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.Make == cboFilter.Text)
                             carDisplay.Add(c.GetDisplayText());
@@ -216,7 +218,7 @@ namespace CarDealership
 
                 // Return cars based on color selected
                 case "Color":
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.Color == cboFilter.Text)
                             carDisplay.Add(c.GetDisplayText());
@@ -225,17 +227,17 @@ namespace CarDealership
 
                 // Return cars in price range selected
                 case "Price":
-                    PriceFilterSwitch();
+                    carDisplay = PriceFilterSwitch();
                     break;
 
                 // Return cars in age range selected
                 case "Age":
-                    AgeFilterSwitch();
+                    carDisplay = AgeFilterSwitch();
                     break;
 
                 // Return cars based on engine selected
                 case "Engine":
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.GetType() == typeof(Dodge))
                         {
@@ -253,7 +255,7 @@ namespace CarDealership
 
                 // Return cars based on transmission selected
                 case "Transmission":
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.GetType() == typeof(Nissan))
                         {
@@ -266,7 +268,7 @@ namespace CarDealership
 
                 // Return cars based on trim selected
                 case "Trim":
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.GetType() == typeof(Ford))
                         {
@@ -283,11 +285,11 @@ namespace CarDealership
             //{
             //    rTxtBoxDisplayListing.Text += s;
             //}
-            rTxtBoxDisplayListing.Text = string.Join("\n",carDisplay);
+            rTxtBoxDisplayListing.Text = string.Join("\n\n",carDisplay);
         }
 
 
-        private void PriceFilterSwitch()
+        private List<string> PriceFilterSwitch()
         {
             // List of strings to display
             List<string> carDisplay = new List<string>();
@@ -295,36 +297,31 @@ namespace CarDealership
             switch (cboFilter.SelectedIndex)
             {
                 case 0: // 0 - 4,999
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.Price < 5000)
                             carDisplay.Add(c.GetDisplayText());
                     }
                     break;
                 case 1: // 5,000 - 9,999
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
-                        if (c.Price < 10000 && c.Price >= 5000)
+                        if (c.Price >= 5000 && c.Price < 10000)
                             carDisplay.Add(c.GetDisplayText());
                     }
                     break;
                 case 2: // 10,000+
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.Price >= 10000)
                             carDisplay.Add(c.GetDisplayText());
                     }
                     break;
             }
-
-            // Add each list item to the text display
-            foreach (string s in carDisplay)
-            {
-                rTxtBoxDisplayListing.Text += s;
-            }
+            return carDisplay;
         }
 
-        private void AgeFilterSwitch()
+        private List<string> AgeFilterSwitch()
         {
             // List of strings to display
             List<string> carDisplay = new List<string>();
@@ -334,36 +331,31 @@ namespace CarDealership
             switch (cboFilter.SelectedIndex)
             {
                 case 0: // 0 - 5
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (todaysDate.Year - c.Year < 6)
                             carDisplay.Add(c.GetDisplayText());
                     }
                     break;
                 case 1: // 6 - 10
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (todaysDate.Year - c.Year < 11 && todaysDate.Year - c.Year >= 6)
                             carDisplay.Add(c.GetDisplayText());
                     }
                     break;
                 case 2: // 11+
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (todaysDate.Year - c.Year >= 11)
                             carDisplay.Add(c.GetDisplayText());
                     }
                     break;
             }
-
-            // Add each list item to the text display
-            foreach (string s in carDisplay)
-            {
-                rTxtBoxDisplayListing.Text += s;
-            }
+            return carDisplay;
         }
 
-        private void MileageFilterSwitch()
+        private List<string> MileageFilterSwitch()
         {
             // List of strings to display
             List<string> carDisplay = new List<string>();
@@ -371,7 +363,7 @@ namespace CarDealership
             switch (cboFilter.SelectedIndex)
             {
                 case 0: // 0 - 49,999
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.GetType() == typeof(Toyota))
                         {
@@ -382,7 +374,7 @@ namespace CarDealership
                     }
                     break;
                 case 1: // 50,000 - 99,999
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.GetType() == typeof(Toyota))
                         {
@@ -393,7 +385,7 @@ namespace CarDealership
                     }
                     break;
                 case 2: // 100,000+
-                    foreach (Car c in cars)
+                    foreach (ICar c in cars)
                     {
                         if (c.GetType() == typeof(Toyota))
                         {
@@ -404,12 +396,7 @@ namespace CarDealership
                     }
                     break;
             }
-
-            // Add each list item to the text display
-            foreach (string s in carDisplay)
-            {
-                rTxtBoxDisplayListing.Text += s;
-            }
+            return carDisplay;
         }
 
         private void ViewAll()
@@ -423,9 +410,12 @@ namespace CarDealership
             // Clear textbox
             rTxtBoxDisplayListing.Text = "";
 
+            var sorted = cars.ToList();
+            sorted.Sort(); // uses the IComparable interface to sort the list
+
             // Create text from each car in the saved list
-            foreach (Car c in cars)
-                rTxtBoxDisplayListing.Text += c.GetDisplayText();
+            foreach (var c in sorted)
+                rTxtBoxDisplayListing.Text += c.GetDisplayText() + "\n\n";
         }
 
         #endregion
