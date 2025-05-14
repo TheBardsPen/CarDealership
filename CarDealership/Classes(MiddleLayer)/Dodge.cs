@@ -4,7 +4,7 @@ using System.Runtime.Remoting.Lifetime;
 
 namespace CarDealership
 {
-    class Dodge : Car, ICar, IStorable
+    class Dodge : Car
     {
         public string Engine { get; set; }
 
@@ -16,17 +16,6 @@ namespace CarDealership
 
         public override string GetDisplayText(string sep)
         {
-            //string dislpay =
-            //    '\t' + DateAdded.ToString() +
-            //    Make + sep +
-            //    Model + sep +
-            //    Color + sep +
-            //    Year.ToString() + sep +
-            //    Price.ToString() + sep +
-            //    "Engine: " + Engine;
-
-            //return dislpay;
-
             string display =
                 $"Date Added: {DateAdded}{sep}" +
                 $"Make: {Make}{sep}" +
@@ -44,6 +33,7 @@ namespace CarDealership
         {
             return $"{Make}{sep}{Model}{sep}{Color}{sep}{Year.ToString()}{sep}{Price.ToString()}{sep}{Engine}{sep}{DateAdded}";
         }
+
         public override object Clone()
         {
             return new Dodge(Make, Model, Color, Year, Price, Engine, DateAdded);

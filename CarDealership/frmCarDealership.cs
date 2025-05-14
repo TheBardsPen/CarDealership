@@ -248,7 +248,7 @@ namespace CarDealership
 
                 // Return cars in mileage range selected
                 case "Mileage":
-                    MileageFilterSwitch();
+                    carDisplay = MileageFilterSwitch();
                     break;
 
                 // Return cars based on transmission selected
@@ -279,10 +279,6 @@ namespace CarDealership
             }
 
             // Add each list item to the text display
-            //foreach (string s in carDisplay)
-            //{
-            //    rTxtBoxDisplayListing.Text += s;
-            //}
             rTxtBoxDisplayListing.Text = string.Join("\n\n", carDisplay);
         }
 

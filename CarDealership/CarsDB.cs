@@ -96,41 +96,6 @@ namespace CarDealership
                 text.WriteLine(car.ToDataString("|"));
             }
             text.Close();
-            //foreach (ICar c in cars)
-            //{
-            //    text.Write($"{c.Make}|");
-            //    text.Write($"{c.Model}|");
-            //    text.Write($"{c.Color}|");
-            //    text.Write($"{c.Year}|");
-            //    text.Write($"{c.Price}|");
-
-            //    // Switch to handle MakeSpecific properties
-            //    string make = c.Make;
-            //    switch (make)
-            //    {
-            //        case "Dodge":
-            //            Dodge d = (Dodge)c;
-            //            text.Write($"{d.Engine}|");
-            //            break;
-            //        case "Ford":
-            //            Ford f = (Ford)c;
-            //            text.Write($"{f.Trim}|");
-            //            break;
-            //        case "Toyota":
-            //            Toyota t = (Toyota)c;
-            //            text.Write($"{t.Mileage}|");
-            //            break;
-            //        case "Nissan":
-            //            Nissan n = (Nissan)c;
-            //            text.Write($"{n.Transmission}|");
-            //            break;
-            //        default:
-            //            break;
-            //    }
-
-            //    text.WriteLine(c.DateAdded);
-            //}
-
         }
     }
 }

@@ -8,6 +8,11 @@ namespace CarDealership.Interfaces
 {
     public interface IStorable
     {
-        string ToDataString(string sep); // no labels like "Make: "
+        /// <summary>
+        /// Use this method to return a string of all vehicle properties for simple data storage.
+        /// </summary>
+        /// <param name="sep">Use a single character. Will need to use the same character for .Split() on data loading.</param>
+        /// <returns></returns>
+        string ToDataString(string sep);
     }
 }

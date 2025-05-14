@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace CarDealership
 {
-    public abstract class Car : ICar, IDisplayable
+    public abstract class Car : ICar
     {
         // Set public fields as read/write
         public string Make { get; set; }
@@ -32,16 +32,5 @@ namespace CarDealership
 
         public abstract string GetDisplayText(string sep = "\n");
         public abstract string ToDataString(string sep);
-
-        //public virtual string GetDisplayText(string sep)
-        //{
-        //    string display = $"\t{DateAdded.ToString()}\n" +
-        //        $"{Make} -  {Model}\n" +
-        //        $"{Color}\n" +
-        //        $"{Year}\n" +
-        //        $"{Price.ToString("c")}";
-
-        //    return display;
-        //}
     }
 }

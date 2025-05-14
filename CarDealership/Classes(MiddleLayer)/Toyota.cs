@@ -3,7 +3,7 @@ using System;
 
 namespace CarDealership
 {
-    public class Toyota : Car, ICar, IStorable
+    public class Toyota : Car
     {
         public int Mileage { get; set; }
 
@@ -15,15 +15,6 @@ namespace CarDealership
 
         public override string GetDisplayText(string sep)
         {
-            //string dislpay =
-            //    '\t' + DateAdded.ToString() +
-            //    Make + sep +
-            //    Model + sep +
-            //    Color + sep +
-            //    Year.ToString() + sep +
-            //    Price.ToString() + sep +
-            //    "Mileage: " + Mileage.ToString();
-
             string display = 
                 $"Date Added: {DateAdded}{sep}" +
                 $"Make: {Make}{sep}" +
@@ -32,7 +23,6 @@ namespace CarDealership
                 $"Year: {Year}{sep}" +
                 $"Price: {Price.ToString("c")}{sep}" +
                 $"Mileage: {Mileage.ToString()}";
-
 
             return display + sep+ "\n";
         }

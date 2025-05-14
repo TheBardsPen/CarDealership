@@ -4,7 +4,7 @@ using System.Runtime.Remoting.Lifetime;
 
 namespace CarDealership
 {
-    public class Ford : Car, ICar, IStorable
+    public class Ford : Car
     {
         public string Trim { get; set; }
 
@@ -16,17 +16,6 @@ namespace CarDealership
 
         public override string GetDisplayText(string sep)
         {
-            //string dislpay =
-            //    '\t' + DateAdded.ToString() +
-            //    Make + sep +
-            //    Model + sep +
-            //    Color + sep +
-            //    Year.ToString() + sep +
-            //    Price.ToString() + sep +
-            //    "Trim: " + Trim;
-
-            //return dislpay;
-
             string display =
                 $"Date Added: {DateAdded}{sep}" +
                 $"Make: {Make}{sep}" +
