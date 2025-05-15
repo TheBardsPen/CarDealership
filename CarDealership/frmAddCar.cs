@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
 using YearlyAcademicPlan;
+using CarDealership.Interfaces;
+
 
 namespace CarDealership
 {
     public partial class frmAddCar : Form
     {
-        public Car NewCar { get; set; } // Property to hold the new car object
+        public ICar NewCar { get; set; } // Property to hold the new car object
 
         public frmAddCar()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarDealership.Interfaces;
+using System;
 
 namespace CarDealership
 {
@@ -12,9 +13,29 @@ namespace CarDealership
             Mileage = mileage;
         }
 
-        public override string GetDisplayText()
+        public override string GetDisplayText(string sep)
         {
-            return base.GetDisplayText() + $"\nMiles: {Mileage}\n";
+            string display = 
+                $"Date Added: {DateAdded}{sep}" +
+                $"Make: {Make}{sep}" +
+                $"Model: {Model}{sep}" +
+                $"Color: {Color}{sep}" +
+                $"Year: {Year}{sep}" +
+                $"Price: {Price.ToString("c")}{sep}" +
+                $"Mileage: {Mileage.ToString()}";
+
+            return display + sep+ "\n";
+        }
+
+        // This method is used to convert the object to a string format for storage
+        public override string ToDataString(string sep)
+        {
+            return $"{Make}{sep}{Model}{sep}{Color}{sep}{Year.ToString()}{sep}{Price.ToString()}{sep}{Mileage.ToString()}{sep}{DateAdded}";
+        }
+
+        public override object Clone()
+        {
+            return new Toyota(Make, Model, Color, Year, Price, Mileage, DateAdded);
         }
     }
 }
