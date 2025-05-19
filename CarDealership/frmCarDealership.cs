@@ -18,7 +18,7 @@ namespace CarDealership
 
         private void frmCarDealership_Load(object sender, EventArgs e)
         {
-            Validator.LineEnd = "\n";
+            Validator.LineEnd = "\n"; // testing
 
             // Load carlist from database on form load
             cars.Load();
