@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealership", "CarDealership\CarDealership.csproj", "{4C545F04-2F52-4F97-8FA9-E90005EADBE5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7D7FB44F-27DC-4C73-BFEE-743BB709A7F0} = {7D7FB44F-27DC-4C73-BFEE-743BB709A7F0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationLibrary", "ValidationLibrary\ValidationLibrary.csproj", "{7D7FB44F-27DC-4C73-BFEE-743BB709A7F0}"
 EndProject

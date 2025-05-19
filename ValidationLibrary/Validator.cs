@@ -10,12 +10,19 @@ namespace ValidationLibrary
     /// <summary>
     /// Class <c>Validation</c> contains methods that check for various types of user input to prevent errors.
     /// </summary>
-    public static class Validation
+    public static class Validator
     {
         private static string requiredInt = " should be a valid integer value.";
         private static string requiredDecimal = " should be a valid decimal value.";
         private static string requiredString = " is a required field.";
         private static string requiredComboField = " is a required field. Please make a selection.";
+
+        /// <summary>
+        /// The character sequence to terminate each line
+        /// in the validation message.
+        /// </summary>
+
+        public static string LineEnd { get; set; } = "\n";
 
         #region Text Box
 
@@ -96,8 +103,5 @@ namespace ValidationLibrary
         }
 
         #endregion
-    }
-    public class Validator
-    {
     }
 }

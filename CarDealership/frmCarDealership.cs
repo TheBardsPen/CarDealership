@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using ValidationLibrary;
 
 namespace CarDealership
 {
@@ -17,6 +18,8 @@ namespace CarDealership
 
         private void frmCarDealership_Load(object sender, EventArgs e)
         {
+            Validator.LineEnd = "\n";
+
             // Load carlist from database on form load
             cars.Load();
 
