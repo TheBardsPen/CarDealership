@@ -21,7 +21,6 @@ namespace ValidationLibrary
         /// The character sequence to terminate each line
         /// in the validation message.
         /// </summary>
-
         public static string LineEnd { get; set; } = "\n";
 
         #region Text Box
