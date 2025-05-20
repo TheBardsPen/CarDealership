@@ -88,7 +88,7 @@ namespace ValidationLibraryTest
         }
 
         [TestMethod]
-        public void IsComboSelected_Fals()
+        public void IsComboSelected_False()
         {
             ComboBox cboBox = new ComboBox();
             cboBox.Items.Add("Hello World!");
