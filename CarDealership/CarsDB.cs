@@ -18,75 +18,111 @@ namespace CarDealership
         /// <returns></returns>
         public static List<T> LoadCars()
         {
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
-
-            // Get save file and initialize list
-            StreamReader text = new StreamReader(new FileStream(dir + file, FileMode.OpenOrCreate, FileAccess.Read));
-            List<T> cars = new List<T>();
-
-            while (text.Peek() != -1)
+            try
             {
-                // Break down file into rows and columns
-                string row = text.ReadLine();
-                string[] columns = row.Split('|');
-
-                if (columns.Length < 7)
-                    continue;
-
-                // Switch to pull what Make (subclass) to create
-                ICar c;
-                switch (columns[0])
+                if (!Directory.Exists(dir))
                 {
-                    case "Dodge":
-                        c = new Dodge(
-                            columns[0],
-                            columns[1],
-                            columns[2],
-                            Convert.ToInt32(columns[3]),
-                            Convert.ToInt32(columns[4]),
-                            columns[5],
-                            DateTime.Parse(columns[6]));
-                        break;
-                    case "Ford":
-                        c = new Ford(
-                            columns[0],
-                            columns[1],
-                            columns[2],
-                            Convert.ToInt32(columns[3]),
-                            Convert.ToInt32(columns[4]),
-                            columns[5],
-                            DateTime.Parse(columns[6]));
-                        break;
-                    case "Toyota":
-                        c = new Toyota(
-                            columns[0],
-                            columns[1],
-                            columns[2],
-                            Convert.ToInt32(columns[3]),
-                            Convert.ToInt32(columns[4]),
-                            Convert.ToInt32(columns[5]),
-                            DateTime.Parse(columns[6]));
-                        break;
-                    case "Nissan":
-                        c = new Nissan(
-                            columns[0],
-                            columns[1],
-                            columns[2],
-                            Convert.ToInt32(columns[3]),
-                            Convert.ToInt32(columns[4]),
-                            columns[5],
-                            DateTime.Parse(columns[6]));
-                        break;
-                    default:
-                        continue;
+                    Directory.CreateDirectory(dir);
                 }
-                cars.Add((T)c);
-            }
-            text.Close();
+                string filePath = Path.Combine(dir, file); // combine directory and file
+                if (File.Exists(filePath))
+                {
+                    return new List<T>();
+                }
+                // Get save file and initialize list
+                using (StreamReader text = new StreamReader(new FileStream(dir + file, FileMode.OpenOrCreate, FileAccess.Read)))
+                {
+                    List<T> cars = new List<T>();
 
-            return cars;
-        }
+                    while (text.Peek() != -1)
+                    {
+                        // Break down file into rows and columns
+                        string row = text.ReadLine();
+                        string[] columns = row.Split('|');
+
+                        if (columns.Length < 7)
+                            continue;
+
+                        // Switch to pull what Make (subclass) to create
+                        ICar c;
+                        switch (columns[0])
+                        {
+                            case "Dodge":
+                                c = new Dodge(
+                                    columns[0],
+                                    columns[1],
+                                    columns[2],
+                                    Convert.ToInt32(columns[3]),
+                                    Convert.ToInt32(columns[4]),
+                                    columns[5],
+                                    DateTime.Parse(columns[6]));
+                                break;
+                            case "Ford":
+                                c = new Ford(
+                                    columns[0],
+                                    columns[1],
+                                    columns[2],
+                                    Convert.ToInt32(columns[3]),
+                                    Convert.ToInt32(columns[4]),
+                                    columns[5],
+                                    DateTime.Parse(columns[6]));
+                                break;
+                            case "Toyota":
+                                c = new Toyota(
+                                    columns[0],
+                                    columns[1],
+                                    columns[2],
+                                    Convert.ToInt32(columns[3]),
+                                    Convert.ToInt32(columns[4]),
+                                    Convert.ToInt32(columns[5]),
+                                    DateTime.Parse(columns[6]));
+                                break;
+                            case "Nissan":
+                                c = new Nissan(
+                                    columns[0],
+                                    columns[1],
+                                    columns[2],
+                                    Convert.ToInt32(columns[3]),
+                                    Convert.ToInt32(columns[4]),
+                                    columns[5],
+                                    DateTime.Parse(columns[6]));
+                                break;
+                            default:
+                                continue;
+                        }
+                        cars.Add((T)c);
+                    }
+                    return cars;
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                //Handle the specific execptions when file cant be found
+                MessageBox.Show("File not Found. Creating a new file.", "File not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return new List<T>();
+
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                // handles cases wjere the specific directory could not be found
+                MessageBox.Show("Directory not found: " + ex.Message, "Directory Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            catch (IOException ex)
+            {
+                // handles general IOexceptions
+                MessageBox.Show("An error occured while accessing the file: " + ex.Message, "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                //catches any unexpected exceptiuons that dont match the previous ones.
+                MessageBox.Show("An unexpected error occurred: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+    }
+
+
 
         /// <summary>
         /// Writes the CarList to a .txt file.
