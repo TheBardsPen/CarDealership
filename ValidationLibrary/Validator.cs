@@ -69,7 +69,7 @@ namespace ValidationLibrary
         /// <returns>True if textbox can be converted to an decimal, false and an error message if not.</returns>
         public static bool IsTextboxDecimal(string name, TextBox box)
         {
-            if (!int.TryParse(box.Text, out _))
+            if (!decimal.TryParse(box.Text, out _))
             {
                 MessageBox.Show(name + requiredDecimal, "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 box.Focus();

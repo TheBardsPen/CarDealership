@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C7DF8E3B-8ABB-4C2D-9481-6A51C8110941}</ProjectGuid>
+    <ProjectGuid>{6CDB74E8-7ABE-40C5-94AC-F663470C7EF3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ValidationLibraryTest</RootNamespace>
@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ValidatorTest.cs" />
@@ -57,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ValidationLibrary\ValidationLibrary.csproj">
-      <Project>{7d7fb44f-27dc-4c73-bfee-743bb709a7f0}</Project>
+      <Project>{7D7FB44F-27DC-4C73-BFEE-743BB709A7F0}</Project>
       <Name>ValidationLibrary</Name>
     </ProjectReference>
   </ItemGroup>
