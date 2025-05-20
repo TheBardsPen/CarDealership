@@ -76,7 +76,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes%28MiddleLayer%29\Toyota.cs" />
-    <Compile Include="Validation.cs" />
     <EmbeddedResource Include="frmAddCar.resx">
       <DependentUpon>frmAddCar.cs</DependentUpon>
     </EmbeddedResource>

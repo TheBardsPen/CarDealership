@@ -12,6 +12,10 @@ namespace CarDealership
         private const string dir = @"C:\C#\Files\AngelMay_ShaneHubbard_CalvinBorgaard\";
         private const string file = "Cars.txt";
 
+        /// <summary>
+        /// Creates a CarList that contains everything from the 'Cars.txt' file.
+        /// </summary>
+        /// <returns></returns>
         public static List<T> LoadCars()
         {
             if (!Directory.Exists(dir))
@@ -84,6 +88,10 @@ namespace CarDealership
             return cars;
         }
 
+        /// <summary>
+        /// Writes the CarList to a .txt file.
+        /// </summary>
+        /// <param name="cars">The CarList to save</param>
         public static void SaveCars(List<T> cars)
         {
             StreamWriter text = new StreamWriter(new FileStream(dir + file, FileMode.Create, FileAccess.Write));

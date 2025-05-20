@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using YearlyAcademicPlan;
 using CarDealership.Interfaces;
+using ValidationLibrary;
 
 
 namespace CarDealership
@@ -122,15 +122,15 @@ namespace CarDealership
 
         private bool IsComplete()
         {
-            if (Validation.IsComboSelected("'Make:'", cboMake) &&
-                Validation.IsTextboxString("'Model:'", txtModel) &&
-                Validation.IsTextboxString("'Color:'", txtColor) &&
-                Validation.IsTextboxInt("'Year:'", txtYear) &&
-                Validation.IsTextboxInt("'Price:'", txtPrice))
+            if (Validator.IsComboSelected("'Make:'", cboMake) &&
+                Validator.IsTextboxString("'Model:'", txtModel) &&
+                Validator.IsTextboxString("'Color:'", txtColor) &&
+                Validator.IsTextboxInt("'Year:'", txtYear) &&
+                Validator.IsTextboxInt("'Price:'", txtPrice))
             {
-                if (cboMake.Text == "Toyota" && Validation.IsTextboxInt($"'{lblModelSpecific}'", txtModelSpecific))
+                if (cboMake.Text == "Toyota" && Validator.IsTextboxInt($"'{lblModelSpecific}'", txtModelSpecific))
                     return true;
-                else if (Validation.IsTextboxString($"'{lblModelSpecific}'", txtModelSpecific))
+                else if (Validator.IsTextboxString($"'{lblModelSpecific}'", txtModelSpecific))
                     return true;
             }
 

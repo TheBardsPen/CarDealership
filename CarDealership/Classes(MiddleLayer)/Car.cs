@@ -31,6 +31,7 @@ namespace CarDealership
             Price.CompareTo(other.Price);
 
         public abstract string GetDisplayText(string sep = "\n");
+
         public abstract string ToDataString(string sep);
     }
 }
