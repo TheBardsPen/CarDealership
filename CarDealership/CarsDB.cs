@@ -21,6 +21,7 @@ namespace CarDealership
         {
             try
             {
+                // Check if directory exists, if not create it
                 if (!Directory.Exists(dir))
                 {
                     Directory.CreateDirectory(dir);
@@ -28,10 +29,11 @@ namespace CarDealership
 
                 string filePath = Path.Combine(dir, file); // combine directory and file
 
+                // Check if file exists
                 if (File.Exists(filePath))
                 {
                     // Get save file and initialize list
-                    using (StreamReader text = new StreamReader(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read)))
+                    using (StreamReader text = new StreamReader(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read))) // open file for reading
                     {
                         List<T> cars = new List<T>();
 
@@ -116,7 +118,7 @@ namespace CarDealership
             }
             catch (IOException ex)
             {
-                // handles general IOexceptions
+                // handles general IOexceptions that occur when trying to access the file
                 MessageBox.Show("An error occured while accessing the file: " + ex.Message, "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
@@ -134,6 +136,7 @@ namespace CarDealership
         /// <param name="cars">The CarList to save</param>
         public static void SaveCars(List<T> cars)
         {
+            // Extra safety check to ensure directory exists and create it if not
             try
             {
                 if (!Directory.Exists(dir))
@@ -148,16 +151,18 @@ namespace CarDealership
 
                     foreach (T car in cars)
                     {
-                        text.WriteLine(car.ToDataString("|"));
+                        text.WriteLine(car.ToDataString("|")); // Write the data string to the file
                     }
             }
             catch (IOException ex)
             {
+                // Handle IO exceptions
                 MessageBox.Show("Error saving to file" + ex.Message, "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
             catch (Exception ex)
             {
+                // Handle any unexpected exceptions
                 MessageBox.Show("Unexpected error" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
