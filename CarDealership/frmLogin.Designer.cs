@@ -105,6 +105,7 @@
             this.btnGuest.TabIndex = 7;
             this.btnGuest.Text = "Continue as Guest";
             this.btnGuest.UseVisualStyleBackColor = true;
+            this.btnGuest.Click += new System.EventHandler(this.btnGuest_Click);
             // 
             // frmLogin
             // 
