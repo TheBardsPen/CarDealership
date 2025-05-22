@@ -48,9 +48,10 @@
   <ItemGroup>
     <Compile Include="Classes%28MiddleLayer%29\Car.cs" />
     <Compile Include="Classes%28MiddleLayer%29\CarList.cs" />
-    <Compile Include="CarsDB.cs" />
+    <Compile Include="Database%28BackEnd%29\CarsDB.cs" />
     <Compile Include="Classes%28MiddleLayer%29\Dodge.cs" />
     <Compile Include="Classes%28MiddleLayer%29\Ford.cs" />
+    <Compile Include="Database%28BackEnd%29\UsersDB.cs" />
     <Compile Include="frmAddCar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,8 +114,6 @@
       <Name>ValidationLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Database%28Backend%29\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
