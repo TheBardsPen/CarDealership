@@ -71,6 +71,12 @@
     <Compile Include="frmDeleteCar.Designer.cs">
       <DependentUpon>frmDeleteCar.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\ICar.cs" />
     <Compile Include="Interfaces\IDisplayable.cs" />
     <Compile Include="Interfaces\IStorable.cs" />
@@ -85,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDeleteCar.resx">
       <DependentUpon>frmDeleteCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
