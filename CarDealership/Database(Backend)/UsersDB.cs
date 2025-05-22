@@ -46,7 +46,7 @@ namespace CarDealership
                 if (File.Exists(filePath))
                 {
                     // Get save file and initialize list
-                    using (StreamReader reader = new StreamReader(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read))) // open file for reading
+                    using (StreamReader reader = new StreamReader(new FileStream(filePath, FileMode.Open, FileAccess.Read))) // open file for reading
                     {
                         while (reader.Peek() != -1)
                         {
