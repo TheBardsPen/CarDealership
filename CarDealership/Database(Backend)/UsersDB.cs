@@ -155,13 +155,14 @@ namespace CarDealership
         /// <summary>
         /// Registers a new user if the username is not already taken.
         /// </summary>
-        public static void RegisterUser(string username, string password)
+        public static bool RegisterUser(string username, string password)
         {
             LoadUsers(); // Load users from the file
 
             if (users.ContainsKey(username))
             {
                 MessageBox.Show("Username already exists. Please choose a different username.", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
             else
             {
@@ -169,8 +170,7 @@ namespace CarDealership
                 users.Add(username, password);
                 SaveUsers(users); // Save the updated users to the file
                 MessageBox.Show("User registered successfully.", "Registration Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                CurrentUser = username; // Set the current user to the newly registered user
+                return true;
             }
         }
 

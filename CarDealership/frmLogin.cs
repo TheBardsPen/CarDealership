@@ -28,7 +28,7 @@ namespace CarDealership
         private void btnRegister_Click(object sender, EventArgs e)
         {
             frmRegister registerUser = new frmRegister(); // Create a new instance of the registration form
-            registerUser.Show(); // Show the registration form
+            registerUser.ShowDialog(); // Show the registration form
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

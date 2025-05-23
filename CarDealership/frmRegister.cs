@@ -41,13 +41,11 @@ namespace CarDealership
                 return; // Exit the method
             }
 
-            UsersDB.RegisterUser(username, password); // Register the user
+            bool success = UsersDB.RegisterUser(username, password); // Register the user
 
-            // Check if the registration was successfu
-            if (UsersDB.CurrentUser != string.Empty && UsersDB.CurrentUser != "Guest")
+            if (success)
             {
-                UsersDB.Logout(); // Logout the current user
-                this.Close(); // Close the registration form
+                this.Close();
             }
         }
     }
