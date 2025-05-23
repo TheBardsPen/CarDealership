@@ -169,7 +169,14 @@ namespace CarDealership
                 users.Add(username, password);
                 SaveUsers(users); // Save the updated users to the file
                 MessageBox.Show("User registered successfully.", "Registration Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CurrentUser = username; // Set the current user to the newly registered user
             }
+        }
+
+        public static void Logout()
+        {
+            CurrentUser = string.Empty; // Clear the current user
         }
     }
 }

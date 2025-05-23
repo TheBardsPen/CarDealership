@@ -46,6 +46,7 @@ namespace CarDealership
             // Check if the registration was successfu
             if (UsersDB.CurrentUser != string.Empty && UsersDB.CurrentUser != "Guest")
             {
+                UsersDB.Logout(); // Logout the current user
                 this.Close(); // Close the registration form
             }
         }
