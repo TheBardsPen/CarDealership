@@ -24,5 +24,10 @@ namespace CarDealership
             mainForm.Show(); // Show the main form
             this.Hide(); // Hide the login form
         }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            frmRegister registerUser = new frmRegister(); // Create a new instance of the registration form
+        }
     }
 }
