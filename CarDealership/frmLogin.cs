@@ -28,6 +28,31 @@ namespace CarDealership
         private void btnRegister_Click(object sender, EventArgs e)
         {
             frmRegister registerUser = new frmRegister(); // Create a new instance of the registration form
+            registerUser.Show(); // Show the registration form
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txbUsername.Text.Trim(); // Get the username from the text box
+            string password = txbPassword.Text; // Get the password from the text box
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Username and Password is required."); // Show error message
+                return; // Exit the method
+            }
+
+            if (UsersDB.AuthenticateUser(username, password))
+            {
+                MessageBox.Show($"Welcome, {username}!"); // Show welcome message
+                frmCarDealership mainForm = new frmCarDealership();
+                mainForm.Show(); // Show the main form
+                this.Hide(); // Hide the login form
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password."); // Show error message
+            }
         }
     }
 }
