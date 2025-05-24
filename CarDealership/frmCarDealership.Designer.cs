@@ -122,11 +122,11 @@
             // 
             // rTxtBoxDisplayListing
             // 
-            this.rTxtBoxDisplayListing.Location = new System.Drawing.Point(24, 77);
+            this.rTxtBoxDisplayListing.Location = new System.Drawing.Point(24, 88);
             this.rTxtBoxDisplayListing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rTxtBoxDisplayListing.Name = "rTxtBoxDisplayListing";
             this.rTxtBoxDisplayListing.ReadOnly = true;
-            this.rTxtBoxDisplayListing.Size = new System.Drawing.Size(1002, 421);
+            this.rTxtBoxDisplayListing.Size = new System.Drawing.Size(1002, 410);
             this.rTxtBoxDisplayListing.TabIndex = 7;
             this.rTxtBoxDisplayListing.Text = "";
             // 
@@ -146,9 +146,9 @@
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Location = new System.Drawing.Point(37, 34);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(70, 25);
+            this.lblWelcome.Size = new System.Drawing.Size(364, 50);
             this.lblWelcome.TabIndex = 8;
-            this.lblWelcome.Text = "label1";
+            this.lblWelcome.Text = "Hello, {username}";
             // 
             // btnProfile
             // 
