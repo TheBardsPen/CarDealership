@@ -40,10 +40,6 @@ namespace CarDealership
             // Load carlist from database on form load
             cars.Load();
 
-            // Set delete button functionality
-            if (cars.Count > 0)
-                btnDelete.Enabled = true;
-
             ViewAll();
         }
 
