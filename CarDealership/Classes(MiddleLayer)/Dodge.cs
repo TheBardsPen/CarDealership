@@ -4,12 +4,12 @@ using System.Runtime.Remoting.Lifetime;
 
 namespace CarDealership
 {
-    class Dodge : Car
+    internal class Dodge : Car
     {
         public string Engine { get; set; }
 
-        public Dodge(string make, string model, string color, int year, int price, string engine, DateTime dateAdded)
-            : base(make, model, color, year, price, dateAdded)
+        public Dodge(string make, string model, string color, int year, int price, string engine, DateTime dateAdded, string postedBy)
+            : base(make, model, color, year, price, dateAdded, postedBy)
         {
             this.Engine = engine;
         }
@@ -31,12 +31,12 @@ namespace CarDealership
         // This method is used to convert the object to a string format for storage
         public override string ToDataString(string sep)
         {
-            return $"{Make}{sep}{Model}{sep}{Color}{sep}{Year.ToString()}{sep}{Price.ToString()}{sep}{Engine}{sep}{DateAdded}";
+            return $"{Make}{sep}{Model}{sep}{Color}{sep}{Year.ToString()}{sep}{Price.ToString()}{sep}{Engine}{sep}{DateAdded}{sep}{PostedBy}";
         }
 
         public override object Clone()
         {
-            return new Dodge(Make, Model, Color, Year, Price, Engine, DateAdded);
+            return new Dodge(Make, Model, Color, Year, Price, Engine, DateAdded, PostedBy);
         }
     }
 }
