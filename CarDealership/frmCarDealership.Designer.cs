@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnViewAll = new System.Windows.Forms.Button();
             this.cboFilterType = new System.Windows.Forms.ComboBox();
             this.cboFilter = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -36,17 +35,11 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.rTxtBoxDisplayListing = new System.Windows.Forms.RichTextBox();
+            this.btnViewAll = new System.Windows.Forms.Button();
+            this.lblWelcome = new System.Windows.Forms.Label();
+            this.btnProfile = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnViewAll
-            // 
-            this.btnViewAll.Location = new System.Drawing.Point(12, 12);
-            this.btnViewAll.Name = "btnViewAll";
-            this.btnViewAll.Size = new System.Drawing.Size(75, 23);
-            this.btnViewAll.TabIndex = 0;
-            this.btnViewAll.Text = "View All";
-            this.btnViewAll.UseVisualStyleBackColor = true;
-            this.btnViewAll.Click += new System.EventHandler(this.btnViewAll_Click);
             // 
             // cboFilterType
             // 
@@ -60,7 +53,7 @@
             "Engine",
             "Trim",
             "Transmission"});
-            this.cboFilterType.Location = new System.Drawing.Point(122, 12);
+            this.cboFilterType.Location = new System.Drawing.Point(199, 15);
             this.cboFilterType.Name = "cboFilterType";
             this.cboFilterType.Size = new System.Drawing.Size(121, 21);
             this.cboFilterType.TabIndex = 1;
@@ -72,7 +65,7 @@
             this.cboFilter.Enabled = false;
             this.cboFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFilter.FormattingEnabled = true;
-            this.cboFilter.Location = new System.Drawing.Point(249, 12);
+            this.cboFilter.Location = new System.Drawing.Point(344, 14);
             this.cboFilter.Name = "cboFilter";
             this.cboFilter.Size = new System.Drawing.Size(148, 21);
             this.cboFilter.TabIndex = 2;
@@ -81,7 +74,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(418, 62);
+            this.btnAdd.Location = new System.Drawing.Point(518, 51);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 4;
@@ -91,8 +84,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(418, 91);
+            this.btnDelete.Location = new System.Drawing.Point(518, 89);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 5;
@@ -103,7 +95,7 @@
             // btnExit
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(418, 243);
+            this.btnExit.Location = new System.Drawing.Point(518, 236);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 6;
@@ -114,7 +106,7 @@
             // btnFilter
             // 
             this.btnFilter.Enabled = false;
-            this.btnFilter.Location = new System.Drawing.Point(418, 12);
+            this.btnFilter.Location = new System.Drawing.Point(518, 12);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
             this.btnFilter.TabIndex = 3;
@@ -124,20 +116,65 @@
             // 
             // rTxtBoxDisplayListing
             // 
-            this.rTxtBoxDisplayListing.Location = new System.Drawing.Point(12, 40);
-            this.rTxtBoxDisplayListing.Margin = new System.Windows.Forms.Padding(2);
+            this.rTxtBoxDisplayListing.Location = new System.Drawing.Point(12, 46);
+            this.rTxtBoxDisplayListing.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rTxtBoxDisplayListing.Name = "rTxtBoxDisplayListing";
             this.rTxtBoxDisplayListing.ReadOnly = true;
-            this.rTxtBoxDisplayListing.Size = new System.Drawing.Size(385, 221);
+            this.rTxtBoxDisplayListing.Size = new System.Drawing.Size(503, 215);
             this.rTxtBoxDisplayListing.TabIndex = 7;
             this.rTxtBoxDisplayListing.Text = "";
+            // 
+            // btnViewAll
+            // 
+            this.btnViewAll.Location = new System.Drawing.Point(518, 124);
+            this.btnViewAll.Name = "btnViewAll";
+            this.btnViewAll.Size = new System.Drawing.Size(75, 23);
+            this.btnViewAll.TabIndex = 0;
+            this.btnViewAll.Text = "View All";
+            this.btnViewAll.UseVisualStyleBackColor = true;
+            this.btnViewAll.Click += new System.EventHandler(this.btnViewAll_Click);
+            // 
+            // lblWelcome
+            // 
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Location = new System.Drawing.Point(18, 18);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(91, 13);
+            this.lblWelcome.TabIndex = 8;
+            this.lblWelcome.Text = "Hello, {username}";
+            // 
+            // btnProfile
+            // 
+            this.btnProfile.Enabled = false;
+            this.btnProfile.Location = new System.Drawing.Point(124, 15);
+            this.btnProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnProfile.Name = "btnProfile";
+            this.btnProfile.Size = new System.Drawing.Size(65, 20);
+            this.btnProfile.TabIndex = 9;
+            this.btnProfile.Text = "Profile";
+            this.btnProfile.UseVisualStyleBackColor = true;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnLogout.Location = new System.Drawing.Point(518, 207);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 10;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // frmCarDealership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(506, 282);
+            this.ClientSize = new System.Drawing.Size(600, 291);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.btnProfile);
+            this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.rTxtBoxDisplayListing);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnExit);
@@ -151,11 +188,11 @@
             this.Text = "Car Dealership";
             this.Load += new System.EventHandler(this.frmCarDealership_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnViewAll;
         private System.Windows.Forms.ComboBox cboFilterType;
         private System.Windows.Forms.ComboBox cboFilter;
         private System.Windows.Forms.Button btnAdd;
@@ -163,6 +200,10 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.RichTextBox rTxtBoxDisplayListing;
+        private System.Windows.Forms.Button btnViewAll;
+        private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Button btnProfile;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
 

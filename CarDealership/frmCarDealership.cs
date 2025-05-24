@@ -10,6 +10,7 @@ namespace CarDealership
     {
         // Variables
         public CarList<ICar> cars = new CarList<ICar>();
+        public frmLogin loginForm = new frmLogin();
 
         public frmCarDealership()
         {
@@ -18,14 +19,27 @@ namespace CarDealership
 
         private void frmCarDealership_Load(object sender, EventArgs e)
         {
+            // Display the welcome message
+            lblWelcome.Text = $"Hello, {UsersDB.CurrentUser}!";
+
+            // Enable/disable button access if logged in user is not a guest
+            if (UsersDB.CurrentUser != "Guest")
+            {
+                btnProfile.Enabled = true;
+                btnAdd.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+            else
+            {
+                btnProfile.Enabled = false;
+                btnAdd.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+
             Validator.LineEnd = "\n"; // testing
 
             // Load carlist from database on form load
             cars.Load();
-
-            // Set delete button functionality
-            if (cars.Count > 0)
-                btnDelete.Enabled = true;
 
             ViewAll();
         }
@@ -170,7 +184,7 @@ namespace CarDealership
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -424,5 +438,12 @@ namespace CarDealership
         }
 
         #endregion Methods
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            loginForm.ClearPassword();
+            loginForm.Show();
+            this.Close();
+        }
     }
 }
