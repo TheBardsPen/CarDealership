@@ -18,6 +18,15 @@ namespace CarDealership
 
         private void frmCarDealership_Load(object sender, EventArgs e)
         {
+            // Display the welcome message
+            lblWelcome.Text = $"Hello, {UsersDB.CurrentUser}!";
+
+            // Enable the profile button if logged in user is not a guest
+            if (UsersDB.CurrentUser != "Guest")
+                btnProfile.Enabled = true;
+            else
+                btnProfile.Enabled = false;
+
             Validator.LineEnd = "\n"; // testing
 
             // Load carlist from database on form load
