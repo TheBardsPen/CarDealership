@@ -21,11 +21,19 @@ namespace CarDealership
             // Display the welcome message
             lblWelcome.Text = $"Hello, {UsersDB.CurrentUser}!";
 
-            // Enable the profile button if logged in user is not a guest
+            // Enable/disable button access if logged in user is not a guest
             if (UsersDB.CurrentUser != "Guest")
+            {
                 btnProfile.Enabled = true;
+                btnAdd.Enabled = true;
+                btnDelete.Enabled = true;
+            }
             else
+            {
                 btnProfile.Enabled = false;
+                btnAdd.Enabled = false;
+                btnDelete.Enabled = false;
+            }
 
             Validator.LineEnd = "\n"; // testing
 

@@ -23,7 +23,8 @@ namespace CarDealership
                 $"Color: {Color}{sep}" +
                 $"Year: {Year}{sep}" +
                 $"Price: {Price.ToString("c")}{sep}" +
-                $"Engine: {Engine}";
+                $"Engine: {Engine}" +
+                $"Seller: {PostedBy}";
 
             return display + sep + "\n";
         }
