@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using CarDealership.Interfaces;
 using ValidationLibrary;
 
-
 namespace CarDealership
 {
     public partial class frmAddCar : Form
@@ -13,7 +12,6 @@ namespace CarDealership
         public frmAddCar()
         {
             InitializeComponent();
-
         }
 
         private void frmAddCar_Load(object sender, EventArgs e)
@@ -26,7 +24,6 @@ namespace CarDealership
 
             lblModelSpecific.Visible = false;
             txtModelSpecific.Visible = false;
-
         }
 
         #region Event Handlers
@@ -38,7 +35,6 @@ namespace CarDealership
 
         private void cboMake_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (cboMake.SelectedItem != null)
             {
                 // Get the selected make from the combo box
@@ -47,22 +43,24 @@ namespace CarDealership
                 txtModelSpecific.Visible = true;
                 lblModelSpecific.Visible = true;
 
-
-
                 switch (selectedMake)
                 {
                     case "Dodge":
                         lblModelSpecific.Text = "Engine:";
                         break;
+
                     case "Ford":
                         lblModelSpecific.Text = "Trim:";
                         break;
+
                     case "Nissan":
                         lblModelSpecific.Text = "Transmission:";
                         break;
+
                     case "Toyota":
                         lblModelSpecific.Text = "Mileage:";
                         break;
+
                     default:
                         lblModelSpecific.Text = "";
                         break;
@@ -96,18 +94,22 @@ namespace CarDealership
             switch (make)
             {
                 case "Ford":
-                    car = new Ford(make, model, color, year, price, modelSpecific, dateAdded);
+                    car = new Ford(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser);
                     break;
+
                 case "Dodge":
-                    car = new Dodge(make, model, color, year, price, modelSpecific, dateAdded);
+                    car = new Dodge(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser);
                     break;
+
                 case "Nissan":
-                    car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded);
+                    car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser);
                     break;
+
                 case "Toyota":
                     int mileage = int.Parse(modelSpecific); // Assuming mileage is an integer after validation
-                    car = new Toyota(make, model, color, year, price, mileage, dateAdded);
+                    car = new Toyota(make, model, color, year, price, mileage, dateAdded, UsersDB.CurrentUser);
                     break;
+
                 default:
                     MessageBox.Show("Invalid make selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
@@ -118,7 +120,7 @@ namespace CarDealership
             this.DialogResult = DialogResult.OK;
         }
 
-        #endregion
+        #endregion Event Handlers
 
         private bool IsComplete()
         {

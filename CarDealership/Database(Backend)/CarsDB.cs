@@ -43,7 +43,7 @@ namespace CarDealership
                             string row = text.ReadLine();
                             string[] columns = row.Split('|');
 
-                            if (columns.Length < 7)
+                            if (columns.Length < 8)
                                 continue;
 
                             // Switch to pull what Make (subclass) to create
@@ -58,7 +58,8 @@ namespace CarDealership
                                         Convert.ToInt32(columns[3]),
                                         Convert.ToInt32(columns[4]),
                                         columns[5],
-                                        DateTime.Parse(columns[6]));
+                                        DateTime.Parse(columns[6]),
+                                        columns[7]);
                                     break;
 
                                 case "Ford":
@@ -69,7 +70,8 @@ namespace CarDealership
                                         Convert.ToInt32(columns[3]),
                                         Convert.ToInt32(columns[4]),
                                         columns[5],
-                                        DateTime.Parse(columns[6]));
+                                        DateTime.Parse(columns[6]),
+                                        columns[7]);
                                     break;
 
                                 case "Toyota":
@@ -80,7 +82,8 @@ namespace CarDealership
                                         Convert.ToInt32(columns[3]),
                                         Convert.ToInt32(columns[4]),
                                         Convert.ToInt32(columns[5]),
-                                        DateTime.Parse(columns[6]));
+                                        DateTime.Parse(columns[6]),
+                                        columns[7]);
                                     break;
 
                                 case "Nissan":
@@ -91,7 +94,8 @@ namespace CarDealership
                                         Convert.ToInt32(columns[3]),
                                         Convert.ToInt32(columns[4]),
                                         columns[5],
-                                        DateTime.Parse(columns[6]));
+                                        DateTime.Parse(columns[6]),
+                                        columns[7]);
                                     break;
 
                                 default:
