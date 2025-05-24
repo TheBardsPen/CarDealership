@@ -37,6 +37,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnGuest = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnShowPassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -72,24 +73,25 @@
             // 
             // txbUsername
             // 
-            this.txbUsername.Location = new System.Drawing.Point(260, 119);
-            this.txbUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbUsername.Location = new System.Drawing.Point(260, 127);
+            this.txbUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(196, 31);
             this.txbUsername.TabIndex = 3;
             // 
             // txbPassword
             // 
-            this.txbPassword.Location = new System.Drawing.Point(260, 192);
-            this.txbPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbPassword.Location = new System.Drawing.Point(260, 200);
+            this.txbPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(196, 31);
             this.txbPassword.TabIndex = 4;
+            this.txbPassword.UseSystemPasswordChar = true;
             // 
             // btnRegister
             // 
             this.btnRegister.Location = new System.Drawing.Point(140, 277);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(110, 42);
             this.btnRegister.TabIndex = 5;
@@ -100,7 +102,7 @@
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(348, 277);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(106, 42);
             this.btnLogin.TabIndex = 6;
@@ -111,7 +113,7 @@
             // btnGuest
             // 
             this.btnGuest.Location = new System.Drawing.Point(180, 337);
-            this.btnGuest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuest.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuest.Name = "btnGuest";
             this.btnGuest.Size = new System.Drawing.Size(248, 52);
             this.btnGuest.TabIndex = 7;
@@ -123,13 +125,23 @@
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Location = new System.Drawing.Point(194, 398);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(6);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(234, 44);
             this.btnExit.TabIndex = 8;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnShowPassword
+            // 
+            this.btnShowPassword.Location = new System.Drawing.Point(473, 201);
+            this.btnShowPassword.Name = "btnShowPassword";
+            this.btnShowPassword.Size = new System.Drawing.Size(84, 40);
+            this.btnShowPassword.TabIndex = 9;
+            this.btnShowPassword.Text = "Show";
+            this.btnShowPassword.UseVisualStyleBackColor = true;
+            this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
             // 
             // frmLogin
             // 
@@ -138,6 +150,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(644, 452);
+            this.Controls.Add(this.btnShowPassword);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnGuest);
             this.Controls.Add(this.btnLogin);
@@ -147,7 +160,7 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
@@ -167,5 +180,6 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnGuest;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnShowPassword;
     }
 }

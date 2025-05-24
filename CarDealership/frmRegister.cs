@@ -43,9 +43,10 @@ namespace CarDealership
 
             bool success = UsersDB.RegisterUser(username, password); // Register the user
 
+            // Check if the registration was successful
             if (success)
             {
-                this.Close();
+                this.Close(); // Close the registration form
             }
         }
     }

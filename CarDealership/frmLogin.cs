@@ -12,6 +12,8 @@ namespace CarDealership
 {
     public partial class frmLogin : Form
     {
+        private bool passwordVisible = false; // Variable to track if the password should be shown
+
         public frmLogin()
         {
             InitializeComponent();
@@ -22,7 +24,7 @@ namespace CarDealership
             UsersDB.CurrentUser = "Guest"; // Set the current user to Guest
             frmCarDealership mainForm = new frmCarDealership(); // Create a new instance of the main form
             mainForm.ShowDialog(); // Show the main form
-           // this.Hide(); // Hide the login form
+                                   // this.Hide(); // Hide the login form
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -58,6 +60,15 @@ namespace CarDealership
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnShowPassword_Click(object sender, EventArgs e)
+        {
+            passwordVisible = !passwordVisible; // Toggle the visibility of the password
+
+            txbPassword.UseSystemPasswordChar = !passwordVisible; // Set the UseSystemPasswordChar property based on the visibility state
+
+            btnShowPassword.Text = passwordVisible ? "Hide Password" : "Show Password"; // Update the button text based on the visibility state
         }
     }
 }
