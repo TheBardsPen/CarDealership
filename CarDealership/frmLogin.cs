@@ -21,8 +21,8 @@ namespace CarDealership
         {
             UsersDB.CurrentUser = "Guest"; // Set the current user to Guest
             frmCarDealership mainForm = new frmCarDealership(); // Create a new instance of the main form
-            mainForm.Show(); // Show the main form
-            this.Hide(); // Hide the login form
+            mainForm.ShowDialog(); // Show the main form
+           // this.Hide(); // Hide the login form
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -46,13 +46,18 @@ namespace CarDealership
             {
                 MessageBox.Show($"Welcome, {username}!"); // Show welcome message
                 frmCarDealership mainForm = new frmCarDealership();
-                mainForm.Show(); // Show the main form
-                this.Hide(); // Hide the login form
+                mainForm.ShowDialog(); // Show the main form
+                //this.Hide(); // Hide the login form
             }
             else
             {
                 MessageBox.Show("Invalid username or password."); // Show error message
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
