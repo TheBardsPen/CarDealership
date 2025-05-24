@@ -46,7 +46,7 @@ namespace CarDealership
 
             if (UsersDB.AuthenticateUser(username, password))
             {
-                MessageBox.Show($"Welcome, {username}!"); // Show welcome message
+                MessageBox.Show($"Welcome, {UsersDB.CurrentUser}!"); // Show welcome message
                 frmCarDealership mainForm = new frmCarDealership();
                 mainForm.ShowDialog(); // Show the main form
                 //this.Hide(); // Hide the login form

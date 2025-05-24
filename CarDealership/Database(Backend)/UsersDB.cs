@@ -139,16 +139,32 @@ namespace CarDealership
         /// </summary>>
         public static bool AuthenticateUser(string username, string password)
         {
+            string lowerUsername = username.ToLower(); // Create a lower case version of user input            
+
             LoadUsers(); // Load users from the file
 
-            if (users.TryGetValue(username, out string storedPassword))
+            List<string> normalUsers = new List<string>(); // Create a list of original usernames and lower usernames to use indexes
+            List<string> lowerUsers = new List<string>();
+
+            if (users.Count > 0)
             {
-                if (storedPassword.Equals(password))
+                foreach (string str in users.Keys)
                 {
-                    CurrentUser = username;
-                    return true;
+                    normalUsers.Add(str);
+                    lowerUsers.Add(str.ToLower());
+                }
+
+                if (lowerUsers.Contains(lowerUsername) &&
+                    users.TryGetValue(normalUsers[lowerUsers.IndexOf(lowerUsername)], out string storedPassword))
+                {
+                    if (storedPassword.Equals(password))
+                    {
+                        CurrentUser = normalUsers[lowerUsers.IndexOf(lowerUsername)];
+                        return true;
+                    }
                 }
             }
+            
             return false; // Return false if authentication fails
         }
 
@@ -157,9 +173,20 @@ namespace CarDealership
         /// </summary>
         public static bool RegisterUser(string username, string password)
         {
+            string lowerUsername = username.ToLower(); // Create a lower case version of user input
+            List<string> lowerUsers = new List<string>(); // Create list of lowercase usernames to avoid case problems
+
             LoadUsers(); // Load users from the file
 
-            if (users.ContainsKey(username))
+            if (users.Count > 0)
+            {
+                foreach (string str in users.Keys)
+                {
+                    lowerUsers.Add(str.ToLower()); // Add lowercase usernames to a list to compare input usernmame
+                }
+            }
+
+            if (lowerUsers.Contains(lowerUsername))
             {
                 MessageBox.Show("Username already exists. Please choose a different username.", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
