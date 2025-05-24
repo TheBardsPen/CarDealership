@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,8 +24,12 @@ namespace CarDealership
         {
             UsersDB.CurrentUser = "Guest"; // Set the current user to Guest
             frmCarDealership mainForm = new frmCarDealership(); // Create a new instance of the main form
-            mainForm.ShowDialog(); // Show the main form
-                                   // this.Hide(); // Hide the login form
+            mainForm.loginForm = this;
+            mainForm.Show(); // Show the main form
+            this.Hide(); // Hide the login form
+
+            txbPassword.Clear();
+            txbUsername.Clear();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -48,12 +53,14 @@ namespace CarDealership
             {
                 MessageBox.Show($"Welcome, {UsersDB.CurrentUser}!"); // Show welcome message
                 frmCarDealership mainForm = new frmCarDealership();
-                mainForm.ShowDialog(); // Show the main form
-                //this.Hide(); // Hide the login form
+                mainForm.loginForm = this;
+                mainForm.Show(); // Show the main form
+                this.Hide(); // Hide the login form
             }
             else
             {
                 MessageBox.Show("Invalid username or password."); // Show error message
+                txbPassword.SelectAll();
             }
         }
 
@@ -69,6 +76,12 @@ namespace CarDealership
             txbPassword.UseSystemPasswordChar = !passwordVisible; // Set the UseSystemPasswordChar property based on the visibility state
 
             btnShowPassword.Text = passwordVisible ? "Hide Password" : "Show Password"; // Update the button text based on the visibility state
+        }
+
+        public void ClearPassword()
+        {
+            txbPassword.Clear();
+            txbUsername.Focus();
         }
     }
 }

@@ -32,12 +32,21 @@ namespace CarDealership
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Username and Password is required."); // Show error message
+                txbUsername.Focus();
                 return; // Exit the method
             }
 
             if (password != confirmPassword)
             {
                 MessageBox.Show("Passwords do not match."); // Show error message
+                txbConfirmPassword.SelectAll();
+                return; // Exit the method
+            }
+
+            if (username.ToLower() == "guest")
+            {
+                MessageBox.Show($"Cannot use the username {username}."); // Show error message
+                txbUsername.SelectAll();
                 return; // Exit the method
             }
 

@@ -10,6 +10,7 @@ namespace CarDealership
     {
         // Variables
         public CarList<ICar> cars = new CarList<ICar>();
+        public frmLogin loginForm = new frmLogin();
 
         public frmCarDealership()
         {
@@ -183,7 +184,7 @@ namespace CarDealership
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -437,5 +438,12 @@ namespace CarDealership
         }
 
         #endregion Methods
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            loginForm.ClearPassword();
+            loginForm.Show();
+            this.Close();
+        }
     }
 }
