@@ -13,6 +13,9 @@ namespace CarDealership
 
         private const string file = "Cars.txt";
 
+        // Start counter at 0 for CarID
+        public static int NextID { get; set; } = 0;
+
         /// <summary>
         /// Creates a CarList that contains everything from the 'Cars.txt' file.
         /// </summary>
@@ -59,7 +62,9 @@ namespace CarDealership
                                         Convert.ToInt32(columns[4]),
                                         columns[5],
                                         DateTime.Parse(columns[6]),
-                                        columns[7]);
+                                        columns[7],
+                                        Convert.ToBoolean(columns[8]),
+                                        Convert.ToInt32(columns[9]));
                                     break;
 
                                 case "Ford":
@@ -71,7 +76,9 @@ namespace CarDealership
                                         Convert.ToInt32(columns[4]),
                                         columns[5],
                                         DateTime.Parse(columns[6]),
-                                        columns[7]);
+                                        columns[7],
+                                        Convert.ToBoolean(columns[8]),
+                                        Convert.ToInt32(columns[9]));
                                     break;
 
                                 case "Toyota":
@@ -83,7 +90,9 @@ namespace CarDealership
                                         Convert.ToInt32(columns[4]),
                                         Convert.ToInt32(columns[5]),
                                         DateTime.Parse(columns[6]),
-                                        columns[7]);
+                                        columns[7],
+                                        Convert.ToBoolean(columns[8]),
+                                        Convert.ToInt32(columns[9]));
                                     break;
 
                                 case "Nissan":
@@ -95,7 +104,9 @@ namespace CarDealership
                                         Convert.ToInt32(columns[4]),
                                         columns[5],
                                         DateTime.Parse(columns[6]),
-                                        columns[7]);
+                                        columns[7],
+                                        Convert.ToBoolean(columns[8]),
+                                        Convert.ToInt32(columns[9]));
                                     break;
 
                                 default:
@@ -103,6 +114,7 @@ namespace CarDealership
                             }
                             cars.Add((T)c);
                         }
+                        NextID = cars[0].CarID + 1; // Return latest (highest) car to set NextID
                         return cars;
                     }
                 }

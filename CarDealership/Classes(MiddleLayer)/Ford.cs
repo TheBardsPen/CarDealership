@@ -8,8 +8,9 @@ namespace CarDealership
     {
         public string Trim { get; set; }
 
-        public Ford(string make, string model, string color, int year, int price, string trim, DateTime dateAdded, string postedBy)
-            : base(make, model, color, year, price, dateAdded, postedBy)
+        public Ford(string make, string model, string color, int year, int price, string trim, DateTime dateAdded,
+            string postedBy, bool isSold, int carID)
+            : base(make, model, color, year, price, dateAdded, postedBy, isSold, carID)
         {
             Trim = trim;
         }
@@ -32,12 +33,13 @@ namespace CarDealership
         // This method is used to convert the object to a string format for storage
         public override string ToDataString(string sep)
         {
-            return $"{Make}{sep}{Model}{sep}{Color}{sep}{Year.ToString()}{sep}{Price.ToString()}{sep}{Trim}{sep}{DateAdded}{sep}{PostedBy}";
+            return $"{Make}{sep}{Model}{sep}{Color}{sep}{Year.ToString()}{sep}{Price.ToString()}{sep}{Trim}" +
+                $"{sep}{DateAdded}{sep}{PostedBy}{sep}{IsSold}{sep}{CarID}";
         }
 
         public override object Clone()
         {
-            return new Ford(Make, Model, Color, Year, Price, Trim, DateAdded, PostedBy);
+            return new Ford(Make, Model, Color, Year, Price, Trim, DateAdded, PostedBy, IsSold, CarID);
         }
     }
 }

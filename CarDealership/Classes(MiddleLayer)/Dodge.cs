@@ -8,10 +8,11 @@ namespace CarDealership
     {
         public string Engine { get; set; }
 
-        public Dodge(string make, string model, string color, int year, int price, string engine, DateTime dateAdded, string postedBy)
-            : base(make, model, color, year, price, dateAdded, postedBy)
+        public Dodge(string make, string model, string color, int year, int price, string engine, DateTime dateAdded,
+            string postedBy, bool isSold, int carID)
+            : base(make, model, color, year, price, dateAdded, postedBy, isSold, carID)
         {
-            this.Engine = engine;
+            Engine = engine;
         }
 
         public override string GetDisplayText(string sep)
@@ -32,12 +33,13 @@ namespace CarDealership
         // This method is used to convert the object to a string format for storage
         public override string ToDataString(string sep)
         {
-            return $"{Make}{sep}{Model}{sep}{Color}{sep}{Year.ToString()}{sep}{Price.ToString()}{sep}{Engine}{sep}{DateAdded}{sep}{PostedBy}";
+            return $"{Make}{sep}{Model}{sep}{Color}{sep}{Year.ToString()}{sep}{Price.ToString()}{sep}{Engine}{sep}" +
+                $"{DateAdded}{sep}{PostedBy}{sep}{IsSold}{sep}{CarID}";
         }
 
         public override object Clone()
         {
-            return new Dodge(Make, Model, Color, Year, Price, Engine, DateAdded, PostedBy);
+            return new Dodge(Make, Model, Color, Year, Price, Engine, DateAdded, PostedBy, IsSold, CarID);
         }
     }
 }
