@@ -475,7 +475,7 @@ namespace CarDealership
                 lvi.SubItems.Add(c.Model);
                 lvi.SubItems.Add(c.Year.ToString());
                 lvi.SubItems.Add(c.Color);
-                lvi.SubItems.Add(c.Price.ToString());
+                lvi.SubItems.Add(c.Price.ToString("c"));
                 lvi.SubItems.Add(c.DateAdded.ToShortDateString());
                 lvListings.Items.Add(lvi);
             }
