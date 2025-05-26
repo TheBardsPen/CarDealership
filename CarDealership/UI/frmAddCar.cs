@@ -95,28 +95,28 @@ namespace CarDealership
             switch (make)
             {
                 case "Ford":
-                    car = new Ford(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser, false, CarsDB<ICar>.NextID);
-                    CarsDB<ICar>.NextID++;
-                    Console.WriteLine($"NextID = {CarsDB<ICar>.NextID}");
+                    car = new Ford(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser, false, CarsDB<ICar>.nextID);
+                    CarsDB<ICar>.nextID++;
+                    Console.WriteLine($"NextID = {CarsDB<ICar>.nextID}");
                     break;
 
                 case "Dodge":
-                    car = new Dodge(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser, false, CarsDB<ICar>.NextID);
-                    CarsDB<ICar>.NextID++;
-                    Console.WriteLine($"NextID = {CarsDB<ICar>.NextID}");
+                    car = new Dodge(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser, false, CarsDB<ICar>.nextID);
+                    CarsDB<ICar>.nextID++;
+                    Console.WriteLine($"NextID = {CarsDB<ICar>.nextID}");
                     break;
 
                 case "Nissan":
-                    car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser, false, CarsDB<ICar>.NextID);
-                    CarsDB<ICar>.NextID++;
-                    Console.WriteLine($"NextID = {CarsDB<ICar>.NextID}");
+                    car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser, false, CarsDB<ICar>.nextID);
+                    CarsDB<ICar>.nextID++;
+                    Console.WriteLine($"NextID = {CarsDB<ICar>.nextID}");
                     break;
 
                 case "Toyota":
                     int mileage = int.Parse(modelSpecific); // Assuming mileage is an integer after validation
-                    car = new Toyota(make, model, color, year, price, mileage, dateAdded, UsersDB.CurrentUser, false, CarsDB<ICar>.NextID);
-                    CarsDB<ICar>.NextID++;
-                    Console.WriteLine($"NextID = {CarsDB<ICar>.NextID}");
+                    car = new Toyota(make, model, color, year, price, mileage, dateAdded, UsersDB.CurrentUser, false, CarsDB<ICar>.nextID);
+                    CarsDB<ICar>.nextID++;
+                    Console.WriteLine($"NextID = {CarsDB<ICar>.nextID}");
                     break;
 
                 default:
