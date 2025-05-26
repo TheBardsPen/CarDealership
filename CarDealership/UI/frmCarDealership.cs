@@ -20,20 +20,29 @@ namespace CarDealership
         private void frmCarDealership_Load(object sender, EventArgs e)
         {
             // Display the welcome message
-            lblWelcome.Text = $"Hello, {UsersDB.CurrentUser}!";
+            //lblWelcome.Text = $"Hello, {UsersDB.CurrentUser}!";
 
             // Enable/disable button access if logged in user is not a guest
             if (UsersDB.CurrentUser != "Guest")
             {
-                btnProfile.Enabled = true;
-                btnAdd.Enabled = true;
-                btnDelete.Enabled = true;
+                msiAddCar.Enabled = true;
+                msiDeleteCar.Enabled = true;
+                msiBookmarks.Enabled = true;
+                msiLogout.Enabled = true;
+                msiProfile.Enabled = true;
+                msiLogin.Enabled = false;
             }
             else
             {
-                btnProfile.Enabled = false;
-                btnAdd.Enabled = false;
-                btnDelete.Enabled = false;
+                msiAddCar.Enabled = false;
+                msiAddCar.ToolTipText = "Must be logged in to list cars.";
+                msiDeleteCar.Enabled = false;
+                msiDeleteCar.ToolTipText = "Must be logged in to remove cars.";
+                msiBookmarks.Enabled = false;
+                msiBookmarks.ToolTipText = "Must be logged in to bookmark cars.";
+                msiLogout.Enabled = false;
+                msiProfile.Enabled = false;
+                msiLogin.Enabled = true;
             }
 
             Validator.LineEnd = "\n"; // testing
@@ -41,33 +50,12 @@ namespace CarDealership
             // Load carlist from database on form load
             cars.Load();
 
+            PopulateListView();
+
             ViewAll();
         }
 
         #region Event Handlers
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            frmAddCar addCar = new frmAddCar();// Create an instance of the frmAddCar form
-
-            if (addCar.ShowDialog() == DialogResult.OK) // Show the form as a dialog
-            {
-                // Get the new car from the addCar form
-                ICar newCar = addCar.NewCar;
-
-                // Add the new car to the list
-                cars.Add(newCar);
-
-                // Save the list to the database
-                cars.Save();
-
-                // Enable delete button
-                btnDelete.Enabled = true;
-
-                // Refresh the text box
-                ViewAll();
-            }
-        }
 
         private void cboFilterType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -187,7 +175,46 @@ namespace CarDealership
             Application.Exit();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnViewAll_Click(object sender, EventArgs e)
+        {
+            ViewAll();
+        }
+
+        private void msiLogout_Click(object sender, EventArgs e)
+        {
+            loginForm.ClearPassword();
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void msiLogin_Click(object sender, EventArgs e)
+        {
+            loginForm.ClearForm();
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void msiAddCar_Click(object sender, EventArgs e)
+        {
+            frmAddCar addCar = new frmAddCar();// Create an instance of the frmAddCar form
+
+            if (addCar.ShowDialog() == DialogResult.OK) // Show the form as a dialog
+            {
+                // Get the new car from the addCar form
+                ICar newCar = addCar.NewCar;
+
+                // Add the new car to the list
+                cars.Add(newCar);
+
+                // Save the list to the database
+                cars.Save();
+
+                // Refresh the text box
+                ViewAll();
+            }
+        }
+
+        private void msiDeleteCar_Click(object sender, EventArgs e)
         {
             frmDeleteCar deleteCar = new frmDeleteCar();
             deleteCar.cars = this.cars;
@@ -198,16 +225,15 @@ namespace CarDealership
                 cars.RemoveAt((int)deleteCar.Tag);
             }
 
-            if (cars.Count == 0)
-                btnDelete.Enabled = false;
-
             ViewAll();
             cars.Save();
         }
 
-        private void btnViewAll_Click(object sender, EventArgs e)
+        private void msiProfile_Click(object sender, EventArgs e)
         {
-            ViewAll();
+            frmProfile profileForm = new frmProfile();
+
+            profileForm.ShowDialog();
         }
 
         #endregion Event Handlers
@@ -439,11 +465,20 @@ namespace CarDealership
 
         #endregion Methods
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void PopulateListView()
         {
-            loginForm.ClearPassword();
-            loginForm.Show();
-            this.Close();
+            foreach (ICar c in cars)
+            {
+                ListViewItem lvi = new ListViewItem();
+                lvi.Tag = c;
+                lvi.Text = c.Make;
+                lvi.SubItems.Add(c.Model);
+                lvi.SubItems.Add(c.Year.ToString());
+                lvi.SubItems.Add(c.Color);
+                lvi.SubItems.Add(c.Price.ToString());
+                lvi.SubItems.Add(c.DateAdded.ToShortDateString());
+                lvListings.Items.Add(lvi);
+            }
         }
     }
 }

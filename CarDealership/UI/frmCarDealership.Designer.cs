@@ -30,15 +30,29 @@
         {
             this.cboFilterType = new System.Windows.Forms.ComboBox();
             this.cboFilter = new System.Windows.Forms.ComboBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.rTxtBoxDisplayListing = new System.Windows.Forms.RichTextBox();
             this.btnViewAll = new System.Windows.Forms.Button();
-            this.lblWelcome = new System.Windows.Forms.Label();
-            this.btnProfile = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mtsAccount = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiAddCar = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiDeleteCar = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiBookmarks = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.msiLogin = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.msiLogout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mtsHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.mtsNotImplemented = new System.Windows.Forms.ToolStripMenuItem();
+            this.lvListings = new System.Windows.Forms.ListView();
+            this.clmMake = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmModel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmYear = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmColor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cboFilterType
@@ -53,9 +67,9 @@
             "Engine",
             "Trim",
             "Transmission"});
-            this.cboFilterType.Location = new System.Drawing.Point(199, 15);
+            this.cboFilterType.Location = new System.Drawing.Point(497, 27);
             this.cboFilterType.Name = "cboFilterType";
-            this.cboFilterType.Size = new System.Drawing.Size(121, 21);
+            this.cboFilterType.Size = new System.Drawing.Size(126, 21);
             this.cboFilterType.TabIndex = 1;
             this.cboFilterType.Text = "Filter By...";
             this.cboFilterType.SelectedIndexChanged += new System.EventHandler(this.cboFilterType_SelectedIndexChanged);
@@ -65,37 +79,17 @@
             this.cboFilter.Enabled = false;
             this.cboFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFilter.FormattingEnabled = true;
-            this.cboFilter.Location = new System.Drawing.Point(344, 14);
+            this.cboFilter.Location = new System.Drawing.Point(497, 59);
             this.cboFilter.Name = "cboFilter";
-            this.cboFilter.Size = new System.Drawing.Size(148, 21);
+            this.cboFilter.Size = new System.Drawing.Size(126, 21);
             this.cboFilter.TabIndex = 2;
             this.cboFilter.Text = "Filter...";
             this.cboFilter.SelectedIndexChanged += new System.EventHandler(this.cboFilter_SelectedIndexChanged);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(518, 51);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Add Car";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(518, 89);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "Delete Car";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // btnExit
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(518, 236);
+            this.btnExit.Location = new System.Drawing.Point(548, 256);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 6;
@@ -106,7 +100,7 @@
             // btnFilter
             // 
             this.btnFilter.Enabled = false;
-            this.btnFilter.Location = new System.Drawing.Point(518, 12);
+            this.btnFilter.Location = new System.Drawing.Point(548, 91);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
             this.btnFilter.TabIndex = 3;
@@ -116,17 +110,17 @@
             // 
             // rTxtBoxDisplayListing
             // 
-            this.rTxtBoxDisplayListing.Location = new System.Drawing.Point(12, 46);
-            this.rTxtBoxDisplayListing.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rTxtBoxDisplayListing.Location = new System.Drawing.Point(559, 192);
+            this.rTxtBoxDisplayListing.Margin = new System.Windows.Forms.Padding(2);
             this.rTxtBoxDisplayListing.Name = "rTxtBoxDisplayListing";
             this.rTxtBoxDisplayListing.ReadOnly = true;
-            this.rTxtBoxDisplayListing.Size = new System.Drawing.Size(503, 215);
+            this.rTxtBoxDisplayListing.Size = new System.Drawing.Size(44, 31);
             this.rTxtBoxDisplayListing.TabIndex = 7;
             this.rTxtBoxDisplayListing.Text = "";
             // 
             // btnViewAll
             // 
-            this.btnViewAll.Location = new System.Drawing.Point(518, 124);
+            this.btnViewAll.Location = new System.Drawing.Point(548, 125);
             this.btnViewAll.Name = "btnViewAll";
             this.btnViewAll.Size = new System.Drawing.Size(75, 23);
             this.btnViewAll.TabIndex = 0;
@@ -134,59 +128,165 @@
             this.btnViewAll.UseVisualStyleBackColor = true;
             this.btnViewAll.Click += new System.EventHandler(this.btnViewAll_Click);
             // 
-            // lblWelcome
+            // menuStrip1
             // 
-            this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Location = new System.Drawing.Point(18, 18);
-            this.lblWelcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(91, 13);
-            this.lblWelcome.TabIndex = 8;
-            this.lblWelcome.Text = "Hello, {username}";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mtsAccount,
+            this.mtsHelp});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(635, 24);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // btnProfile
+            // mtsAccount
             // 
-            this.btnProfile.Enabled = false;
-            this.btnProfile.Location = new System.Drawing.Point(124, 15);
-            this.btnProfile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnProfile.Name = "btnProfile";
-            this.btnProfile.Size = new System.Drawing.Size(65, 20);
-            this.btnProfile.TabIndex = 9;
-            this.btnProfile.Text = "Profile";
-            this.btnProfile.UseVisualStyleBackColor = true;
+            this.mtsAccount.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msiAddCar,
+            this.msiDeleteCar,
+            this.msiBookmarks,
+            this.toolStripSeparator1,
+            this.msiLogin,
+            this.msiProfile,
+            this.msiLogout});
+            this.mtsAccount.Name = "mtsAccount";
+            this.mtsAccount.Size = new System.Drawing.Size(64, 20);
+            this.mtsAccount.Text = "Account";
             // 
-            // btnLogout
+            // msiAddCar
             // 
-            this.btnLogout.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnLogout.Location = new System.Drawing.Point(518, 207);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 23);
-            this.btnLogout.TabIndex = 10;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.msiAddCar.Name = "msiAddCar";
+            this.msiAddCar.Size = new System.Drawing.Size(180, 22);
+            this.msiAddCar.Text = "Add Car...";
+            this.msiAddCar.Click += new System.EventHandler(this.msiAddCar_Click);
+            // 
+            // msiDeleteCar
+            // 
+            this.msiDeleteCar.Name = "msiDeleteCar";
+            this.msiDeleteCar.Size = new System.Drawing.Size(180, 22);
+            this.msiDeleteCar.Text = "Delete Car...";
+            this.msiDeleteCar.Click += new System.EventHandler(this.msiDeleteCar_Click);
+            // 
+            // msiBookmarks
+            // 
+            this.msiBookmarks.Name = "msiBookmarks";
+            this.msiBookmarks.Size = new System.Drawing.Size(180, 22);
+            this.msiBookmarks.Text = "Bookmarks";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // msiLogin
+            // 
+            this.msiLogin.Name = "msiLogin";
+            this.msiLogin.Size = new System.Drawing.Size(180, 22);
+            this.msiLogin.Text = "Login...";
+            this.msiLogin.Click += new System.EventHandler(this.msiLogin_Click);
+            // 
+            // msiProfile
+            // 
+            this.msiProfile.Name = "msiProfile";
+            this.msiProfile.Size = new System.Drawing.Size(180, 22);
+            this.msiProfile.Text = "Profile...";
+            this.msiProfile.Click += new System.EventHandler(this.msiProfile_Click);
+            // 
+            // msiLogout
+            // 
+            this.msiLogout.Name = "msiLogout";
+            this.msiLogout.Size = new System.Drawing.Size(180, 22);
+            this.msiLogout.Text = "Logout";
+            this.msiLogout.Click += new System.EventHandler(this.msiLogout_Click);
+            // 
+            // mtsHelp
+            // 
+            this.mtsHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mtsNotImplemented});
+            this.mtsHelp.Name = "mtsHelp";
+            this.mtsHelp.Size = new System.Drawing.Size(44, 20);
+            this.mtsHelp.Text = "Help";
+            // 
+            // mtsNotImplemented
+            // 
+            this.mtsNotImplemented.Name = "mtsNotImplemented";
+            this.mtsNotImplemented.Size = new System.Drawing.Size(177, 22);
+            this.mtsNotImplemented.Text = "Not Implemented...";
+            // 
+            // lvListings
+            // 
+            this.lvListings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmMake,
+            this.clmModel,
+            this.clmYear,
+            this.clmColor,
+            this.clmPrice,
+            this.clmDate});
+            this.lvListings.FullRowSelect = true;
+            this.lvListings.HideSelection = false;
+            this.lvListings.Location = new System.Drawing.Point(12, 27);
+            this.lvListings.MultiSelect = false;
+            this.lvListings.Name = "lvListings";
+            this.lvListings.Size = new System.Drawing.Size(479, 252);
+            this.lvListings.TabIndex = 12;
+            this.lvListings.UseCompatibleStateImageBehavior = false;
+            this.lvListings.View = System.Windows.Forms.View.Details;
+            // 
+            // clmMake
+            // 
+            this.clmMake.Tag = "Make";
+            this.clmMake.Text = "Make";
+            this.clmMake.Width = 74;
+            // 
+            // clmModel
+            // 
+            this.clmModel.Tag = "Model";
+            this.clmModel.Text = "Model";
+            this.clmModel.Width = 89;
+            // 
+            // clmYear
+            // 
+            this.clmYear.Tag = "Year";
+            this.clmYear.Text = "Year";
+            // 
+            // clmColor
+            // 
+            this.clmColor.Tag = "Color";
+            this.clmColor.Text = "Color";
+            // 
+            // clmPrice
+            // 
+            this.clmPrice.Tag = "Price";
+            this.clmPrice.Text = "Price";
+            this.clmPrice.Width = 77;
+            // 
+            // clmDate
+            // 
+            this.clmDate.Tag = "Date";
+            this.clmDate.Text = "Date Added";
+            this.clmDate.Width = 115;
             // 
             // frmCarDealership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(600, 291);
-            this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.btnProfile);
-            this.Controls.Add(this.lblWelcome);
+            this.ClientSize = new System.Drawing.Size(635, 291);
+            this.Controls.Add(this.lvListings);
             this.Controls.Add(this.rTxtBoxDisplayListing);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cboFilter);
             this.Controls.Add(this.cboFilterType);
             this.Controls.Add(this.btnViewAll);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmCarDealership";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Car Dealership";
             this.Load += new System.EventHandler(this.frmCarDealership_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,15 +295,28 @@
         #endregion
         private System.Windows.Forms.ComboBox cboFilterType;
         private System.Windows.Forms.ComboBox cboFilter;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.RichTextBox rTxtBoxDisplayListing;
         private System.Windows.Forms.Button btnViewAll;
-        private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.Button btnProfile;
-        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mtsAccount;
+        private System.Windows.Forms.ToolStripMenuItem msiAddCar;
+        private System.Windows.Forms.ToolStripMenuItem msiDeleteCar;
+        private System.Windows.Forms.ToolStripMenuItem msiBookmarks;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem msiLogin;
+        private System.Windows.Forms.ToolStripMenuItem msiLogout;
+        private System.Windows.Forms.ToolStripMenuItem mtsHelp;
+        private System.Windows.Forms.ToolStripMenuItem mtsNotImplemented;
+        private System.Windows.Forms.ToolStripMenuItem msiProfile;
+        private System.Windows.Forms.ListView lvListings;
+        private System.Windows.Forms.ColumnHeader clmMake;
+        private System.Windows.Forms.ColumnHeader clmModel;
+        private System.Windows.Forms.ColumnHeader clmYear;
+        private System.Windows.Forms.ColumnHeader clmColor;
+        private System.Windows.Forms.ColumnHeader clmPrice;
+        private System.Windows.Forms.ColumnHeader clmDate;
     }
 }
 

@@ -16,5 +16,12 @@ namespace CarDealership
         {
             InitializeComponent();
         }
+
+        private void frmProfile_Load(object sender, EventArgs e)
+        {
+            lblUsername.Text = UsersDB.CurrentUser;
+
+            
+        }
     }
 }

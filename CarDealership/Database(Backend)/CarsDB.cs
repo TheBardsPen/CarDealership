@@ -127,8 +127,9 @@ namespace CarDealership
                                     continue;
                             }
                             cars.Add((T)c);
+                            nextID = cars[0].CarID + 1; // Return latest (highest) car to set NextID
                         }
-                        nextID = cars[0].CarID + 1; // Return latest (highest) car to set NextID
+                        
                         return cars;
                     }
                 }

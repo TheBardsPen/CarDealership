@@ -83,5 +83,12 @@ namespace CarDealership
             txbPassword.Clear();
             txbUsername.Focus();
         }
+
+        public void ClearForm()
+        {
+            txbPassword.Clear();
+            txbUsername.Clear();
+            txbUsername.Focus();
+        }
     }
 }
