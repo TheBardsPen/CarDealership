@@ -37,6 +37,9 @@
             this.clmColor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnAddCar = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Label();
             this.gbListings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,12 +103,13 @@
             // 
             this.clmColor.Tag = "Color";
             this.clmColor.Text = "Color";
+            this.clmColor.Width = 64;
             // 
             // clmPrice
             // 
             this.clmPrice.Tag = "Price";
             this.clmPrice.Text = "Price";
-            this.clmPrice.Width = 77;
+            this.clmPrice.Width = 81;
             // 
             // clmDate
             // 
@@ -113,11 +117,47 @@
             this.clmDate.Text = "Date Added";
             this.clmDate.Width = 115;
             // 
+            // btnAddCar
+            // 
+            this.btnAddCar.Location = new System.Drawing.Point(19, 242);
+            this.btnAddCar.Name = "btnAddCar";
+            this.btnAddCar.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCar.TabIndex = 2;
+            this.btnAddCar.Text = "Add Car";
+            this.btnAddCar.UseVisualStyleBackColor = true;
+            this.btnAddCar.Click += new System.EventHandler(this.btnAddCar_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(443, 242);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Red;
+            this.btnDelete.Location = new System.Drawing.Point(437, 22);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(81, 13);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "Delete Account";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // frmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 278);
+            this.CancelButton = this.btnClose;
+            this.ClientSize = new System.Drawing.Size(534, 279);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnAddCar);
             this.Controls.Add(this.gbListings);
             this.Controls.Add(this.lblUsername);
             this.Name = "frmProfile";
@@ -140,5 +180,8 @@
         private System.Windows.Forms.ColumnHeader clmColor;
         private System.Windows.Forms.ColumnHeader clmPrice;
         private System.Windows.Forms.ColumnHeader clmDate;
+        private System.Windows.Forms.Button btnAddCar;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label btnDelete;
     }
 }

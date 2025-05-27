@@ -165,7 +165,7 @@ namespace CarDealership
         private void btnFilter_Click(object sender, EventArgs e)
         {
             // Clear the list to repopulate
-            rTxtBoxDisplayListing.Text = "";
+            //rTxtBoxDisplayListing.Text = "";
 
             Filter();
         }
@@ -322,7 +322,7 @@ namespace CarDealership
             }
 
             // Add each list item to the text display
-            rTxtBoxDisplayListing.Text = string.Join("\n\n", carDisplay);
+            //rTxtBoxDisplayListing.Text = string.Join("\n\n", carDisplay);
         }
 
         /// Filter by price
@@ -452,21 +452,16 @@ namespace CarDealership
             cboFilter.Enabled = false;
             btnFilter.Enabled = false;
 
-            // Clear textbox
-            rTxtBoxDisplayListing.Text = "";
-
-            var sorted = cars.ToList();
-            sorted.Sort(); // uses the IComparable interface to sort the list
-
             // Create text from each car in the saved list
-            foreach (var c in sorted)
-                rTxtBoxDisplayListing.Text += c.GetDisplayText() + "\n\n";
+            PopulateListView();
         }
 
         #endregion Methods
 
         private void PopulateListView()
         {
+            lvListings.Items.Clear();
+
             foreach (ICar c in cars)
             {
                 ListViewItem lvi = new ListViewItem();
@@ -479,6 +474,11 @@ namespace CarDealership
                 lvi.SubItems.Add(c.DateAdded.ToShortDateString());
                 lvListings.Items.Add(lvi);
             }
+        }
+
+        private void frmCarDealership_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            loginForm.Show();
         }
     }
 }

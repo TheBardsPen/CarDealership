@@ -32,7 +32,6 @@
             this.cboFilter = new System.Windows.Forms.ComboBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
-            this.rTxtBoxDisplayListing = new System.Windows.Forms.RichTextBox();
             this.btnViewAll = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mtsAccount = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,16 +107,6 @@
             this.btnFilter.UseVisualStyleBackColor = true;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
-            // rTxtBoxDisplayListing
-            // 
-            this.rTxtBoxDisplayListing.Location = new System.Drawing.Point(559, 192);
-            this.rTxtBoxDisplayListing.Margin = new System.Windows.Forms.Padding(2);
-            this.rTxtBoxDisplayListing.Name = "rTxtBoxDisplayListing";
-            this.rTxtBoxDisplayListing.ReadOnly = true;
-            this.rTxtBoxDisplayListing.Size = new System.Drawing.Size(44, 31);
-            this.rTxtBoxDisplayListing.TabIndex = 7;
-            this.rTxtBoxDisplayListing.Text = "";
-            // 
             // btnViewAll
             // 
             this.btnViewAll.Location = new System.Drawing.Point(548, 125);
@@ -156,46 +145,46 @@
             // msiAddCar
             // 
             this.msiAddCar.Name = "msiAddCar";
-            this.msiAddCar.Size = new System.Drawing.Size(180, 22);
+            this.msiAddCar.Size = new System.Drawing.Size(137, 22);
             this.msiAddCar.Text = "Add Car...";
             this.msiAddCar.Click += new System.EventHandler(this.msiAddCar_Click);
             // 
             // msiDeleteCar
             // 
             this.msiDeleteCar.Name = "msiDeleteCar";
-            this.msiDeleteCar.Size = new System.Drawing.Size(180, 22);
+            this.msiDeleteCar.Size = new System.Drawing.Size(137, 22);
             this.msiDeleteCar.Text = "Delete Car...";
             this.msiDeleteCar.Click += new System.EventHandler(this.msiDeleteCar_Click);
             // 
             // msiBookmarks
             // 
             this.msiBookmarks.Name = "msiBookmarks";
-            this.msiBookmarks.Size = new System.Drawing.Size(180, 22);
+            this.msiBookmarks.Size = new System.Drawing.Size(137, 22);
             this.msiBookmarks.Text = "Bookmarks";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(134, 6);
             // 
             // msiLogin
             // 
             this.msiLogin.Name = "msiLogin";
-            this.msiLogin.Size = new System.Drawing.Size(180, 22);
+            this.msiLogin.Size = new System.Drawing.Size(137, 22);
             this.msiLogin.Text = "Login...";
             this.msiLogin.Click += new System.EventHandler(this.msiLogin_Click);
             // 
             // msiProfile
             // 
             this.msiProfile.Name = "msiProfile";
-            this.msiProfile.Size = new System.Drawing.Size(180, 22);
+            this.msiProfile.Size = new System.Drawing.Size(137, 22);
             this.msiProfile.Text = "Profile...";
             this.msiProfile.Click += new System.EventHandler(this.msiProfile_Click);
             // 
             // msiLogout
             // 
             this.msiLogout.Name = "msiLogout";
-            this.msiLogout.Size = new System.Drawing.Size(180, 22);
+            this.msiLogout.Size = new System.Drawing.Size(137, 22);
             this.msiLogout.Text = "Logout";
             this.msiLogout.Click += new System.EventHandler(this.msiLogout_Click);
             // 
@@ -273,7 +262,6 @@
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(635, 291);
             this.Controls.Add(this.lvListings);
-            this.Controls.Add(this.rTxtBoxDisplayListing);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.cboFilter);
@@ -284,6 +272,7 @@
             this.Name = "frmCarDealership";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Car Dealership";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCarDealership_FormClosed);
             this.Load += new System.EventHandler(this.frmCarDealership_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -297,7 +286,6 @@
         private System.Windows.Forms.ComboBox cboFilter;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnFilter;
-        private System.Windows.Forms.RichTextBox rTxtBoxDisplayListing;
         private System.Windows.Forms.Button btnViewAll;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mtsAccount;
