@@ -4,11 +4,12 @@ using CarDealership.Interfaces;
 
 namespace CarDealership
 {
-    public class CarList<T> where T : ICar
+    public class CarList<T> : List<T> where T : ICar
     {
 
         List<T> cars;
-        public int Count => cars.Count;
+
+        public new int Count => cars.Count;
 
         public CarList()
         {
@@ -18,7 +19,7 @@ namespace CarDealership
         // Overwriting the add method of List<T> to 
         // put new cars at the front of the list
         // to ease sorting for 'view all' method
-        public void Add(T car)
+        public new void Add(T car)
         {
             cars.Insert(0, car); // Changed
         }
@@ -28,16 +29,16 @@ namespace CarDealership
             return new List<T>(cars);
         }
 
-        public void Remove(T car)
+        public new void Remove(T car)
         {
             cars.Remove(car);
         }
-        public void RemoveAt(int index)
+        public new void RemoveAt(int index)
         {
             cars.RemoveAt(index);
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public new IEnumerator<T> GetEnumerator()
         {
             foreach (T car in cars)
             {
@@ -45,7 +46,7 @@ namespace CarDealership
             }
         }
 
-        public T this[int i]
+        public new T this[int i]
         {
             get
             {

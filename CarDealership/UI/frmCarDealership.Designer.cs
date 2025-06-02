@@ -51,7 +51,9 @@
             this.clmColor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // cboFilterType
@@ -99,7 +101,7 @@
             // btnFilter
             // 
             this.btnFilter.Enabled = false;
-            this.btnFilter.Location = new System.Drawing.Point(548, 91);
+            this.btnFilter.Location = new System.Drawing.Point(548, 171);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
             this.btnFilter.TabIndex = 3;
@@ -109,7 +111,7 @@
             // 
             // btnViewAll
             // 
-            this.btnViewAll.Location = new System.Drawing.Point(548, 125);
+            this.btnViewAll.Location = new System.Drawing.Point(548, 205);
             this.btnViewAll.Name = "btnViewAll";
             this.btnViewAll.Size = new System.Drawing.Size(75, 23);
             this.btnViewAll.TabIndex = 0;
@@ -255,12 +257,20 @@
             this.clmDate.Text = "Date Added";
             this.clmDate.Width = 115;
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(498, 90);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(125, 45);
+            this.trackBar1.TabIndex = 13;
+            // 
             // frmCarDealership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(635, 291);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.lvListings);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnExit);
@@ -276,6 +286,7 @@
             this.Load += new System.EventHandler(this.frmCarDealership_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,6 +316,7 @@
         private System.Windows.Forms.ColumnHeader clmColor;
         private System.Windows.Forms.ColumnHeader clmPrice;
         private System.Windows.Forms.ColumnHeader clmDate;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
 
