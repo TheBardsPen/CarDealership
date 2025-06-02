@@ -51,9 +51,13 @@
             this.clmColor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackMin = new System.Windows.Forms.TrackBar();
+            this.lblFilterMin = new System.Windows.Forms.Label();
+            this.lblFilterMax = new System.Windows.Forms.Label();
+            this.trackMax = new System.Windows.Forms.TrackBar();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackMax)).BeginInit();
             this.SuspendLayout();
             // 
             // cboFilterType
@@ -101,7 +105,7 @@
             // btnFilter
             // 
             this.btnFilter.Enabled = false;
-            this.btnFilter.Location = new System.Drawing.Point(548, 171);
+            this.btnFilter.Location = new System.Drawing.Point(548, 195);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
             this.btnFilter.TabIndex = 3;
@@ -111,7 +115,7 @@
             // 
             // btnViewAll
             // 
-            this.btnViewAll.Location = new System.Drawing.Point(548, 205);
+            this.btnViewAll.Location = new System.Drawing.Point(548, 226);
             this.btnViewAll.Name = "btnViewAll";
             this.btnViewAll.Size = new System.Drawing.Size(75, 23);
             this.btnViewAll.TabIndex = 0;
@@ -257,12 +261,42 @@
             this.clmDate.Text = "Date Added";
             this.clmDate.Width = 115;
             // 
-            // trackBar1
+            // trackMin
             // 
-            this.trackBar1.Location = new System.Drawing.Point(498, 90);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(125, 45);
-            this.trackBar1.TabIndex = 13;
+            this.trackMin.Enabled = false;
+            this.trackMin.Location = new System.Drawing.Point(498, 90);
+            this.trackMin.Name = "trackMin";
+            this.trackMin.Size = new System.Drawing.Size(125, 45);
+            this.trackMin.TabIndex = 13;
+            // 
+            // lblFilterMin
+            // 
+            this.lblFilterMin.AutoSize = true;
+            this.lblFilterMin.Location = new System.Drawing.Point(498, 121);
+            this.lblFilterMin.Name = "lblFilterMin";
+            this.lblFilterMin.Size = new System.Drawing.Size(67, 13);
+            this.lblFilterMin.TabIndex = 14;
+            this.lblFilterMin.Text = "{Filter}: {min}";
+            this.lblFilterMin.Visible = false;
+            // 
+            // lblFilterMax
+            // 
+            this.lblFilterMax.AutoSize = true;
+            this.lblFilterMax.Location = new System.Drawing.Point(497, 172);
+            this.lblFilterMax.Name = "lblFilterMax";
+            this.lblFilterMax.Size = new System.Drawing.Size(70, 13);
+            this.lblFilterMax.TabIndex = 16;
+            this.lblFilterMax.Text = "{Filter}: {max}";
+            this.lblFilterMax.Visible = false;
+            // 
+            // trackMax
+            // 
+            this.trackMax.Enabled = false;
+            this.trackMax.Location = new System.Drawing.Point(497, 141);
+            this.trackMax.Name = "trackMax";
+            this.trackMax.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.trackMax.Size = new System.Drawing.Size(125, 45);
+            this.trackMax.TabIndex = 15;
             // 
             // frmCarDealership
             // 
@@ -270,7 +304,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(635, 291);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.lblFilterMax);
+            this.Controls.Add(this.trackMax);
+            this.Controls.Add(this.lblFilterMin);
+            this.Controls.Add(this.trackMin);
             this.Controls.Add(this.lvListings);
             this.Controls.Add(this.btnFilter);
             this.Controls.Add(this.btnExit);
@@ -286,7 +323,8 @@
             this.Load += new System.EventHandler(this.frmCarDealership_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackMax)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,7 +354,10 @@
         private System.Windows.Forms.ColumnHeader clmColor;
         private System.Windows.Forms.ColumnHeader clmPrice;
         private System.Windows.Forms.ColumnHeader clmDate;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackMin;
+        private System.Windows.Forms.Label lblFilterMin;
+        private System.Windows.Forms.Label lblFilterMax;
+        private System.Windows.Forms.TrackBar trackMax;
     }
 }
 

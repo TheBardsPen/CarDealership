@@ -20,243 +20,248 @@ namespace CarDealership
 
         #region Event Handlers
 
-            #region Buttons
+        #region Buttons
 
-                private void btnFilter_Click(object sender, EventArgs e)
-                {
-                    // Clear the list to repopulate
-                    //rTxtBoxDisplayListing.Text = "";
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            // Clear the list to repopulate
+            //rTxtBoxDisplayListing.Text = "";
 
-                    Filter();
-                }
+            Filter();
+        }
 
-                private void btnExit_Click(object sender, EventArgs e)
-                {
-                    Application.Exit();
-                }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
-                private void btnViewAll_Click(object sender, EventArgs e)
-                {
-                    ViewAll();
-                }
+        private void btnViewAll_Click(object sender, EventArgs e)
+        {
+            ViewAll();
+        }
 
-            #endregion
+        #endregion
 
-            #region ComboBox
+        #region ComboBox
 
-                private void cboFilterType_SelectedIndexChanged(object sender, EventArgs e)
-                {
-                    List<string> filters = new List<string>();
-                    cboFilter.Items.Clear();
-                    cboFilter.SelectedIndex = -1;
-                    cboFilter.Text = "";
+        private void cboFilterType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<string> filters = new List<string>();
+            cboFilter.Items.Clear();
+            cboFilter.SelectedIndex = -1;
+            cboFilter.Text = "";
 
-                    // Set enable of filter drowpdown once a filter type is selected
-                    if (cboFilterType.SelectedIndex != -1)
-                        cboFilter.Enabled = true;
-                    else
-                        cboFilter.Enabled = false;
+            // Set enable of filter drowpdown once a filter type is selected
+            if (cboFilterType.SelectedIndex != -1)
+                cboFilter.Enabled = true;
+            else
+                cboFilter.Enabled = false;
 
-                    // If make is selected, populate the filter dropdown
-                    if (cboFilterType.Text == "Make")
+            // If make is selected, populate the filter dropdown
+            if (cboFilterType.Text == "Make")
+            {
+                cboFilter.Items.Add("Toyota");
+                cboFilter.Items.Add("Nissan");
+                cboFilter.Items.Add("Dodge");
+                cboFilter.Items.Add("Ford");
+            }
+
+            // Switch to handle any other possible filter type choice
+            switch (cboFilterType.Text)
+            {
+                // Pull unique colors from carlist
+                case "Color":
+                    foreach (ICar c in cars)
                     {
-                        cboFilter.Items.Add("Toyota");
-                        cboFilter.Items.Add("Nissan");
-                        cboFilter.Items.Add("Dodge");
-                        cboFilter.Items.Add("Ford");
+                        if (!filters.Contains(c.Color))
+                            filters.Add(c.Color);
                     }
+                    break;
 
-                    // Switch to handle any other possible filter type choice
-                    switch (cboFilterType.Text)
+                // Set filter price ranges
+                case "Price":
+                    filters.Add("$0 - $4,999");
+                    filters.Add("$5,000 - $9,999");
+                    filters.Add("$10,000+");
+                    break;
+
+                // Set filter to age ranges
+                case "Age":
+                    filters.Add("0 - 5");
+                    filters.Add("6 - 10");
+                    filters.Add("11+");
+                    break;
+
+                // Check for dodge, and set filter to unique engines from carlist
+                case "Engine":
+                    foreach (ICar c in cars)
                     {
-                        // Pull unique colors from carlist
-                        case "Color":
-                            foreach (ICar c in cars)
-                            {
-                                if (!filters.Contains(c.Color))
-                                    filters.Add(c.Color);
-                            }
-                            break;
-
-                        // Set filter price ranges
-                        case "Price":
-                            filters.Add("$0 - $4,999");
-                            filters.Add("$5,000 - $9,999");
-                            filters.Add("$10,000+");
-                            break;
-
-                        // Set filter to age ranges
-                        case "Age":
-                            filters.Add("0 - 5");
-                            filters.Add("6 - 10");
-                            filters.Add("11+");
-                            break;
-
-                        // Check for dodge, and set filter to unique engines from carlist
-                        case "Engine":
-                            foreach (ICar c in cars)
-                            {
-                                if (c.GetType() == typeof(Dodge))
-                                {
-                                    Dodge d = (Dodge)c;
-                                    if (!filters.Contains(d.Engine))
-                                        filters.Add(d.Engine);
-                                }
-                            }
-                            break;
-
-                        // Set filter to mileage ranges
-                        case "Mileage":
-                            filters.Add("0 - 49,999");
-                            filters.Add("50,000 - 99,999");
-                            filters.Add("100,000+");
-                            break;
-
-                        // Check for Nissan, and set filter to unique transmissions from carlist
-                        case "Transmission":
-                            foreach (ICar c in cars)
-                            {
-                                if (c.GetType() == typeof(Nissan))
-                                {
-                                    Nissan n = (Nissan)c;
-                                    if (!filters.Contains(n.Transmission))
-                                        filters.Add(n.Transmission);
-                                }
-                            }
-                            break;
-
-                        // Check for ford, and set filter to unique trims from carlist
-                        case "Trim":
-                            foreach (ICar c in cars)
-                            {
-                                if (c.GetType() == typeof(Ford))
-                                {
-                                    Ford f = (Ford)c;
-                                    if (!filters.Contains(f.Trim))
-                                        filters.Add(f.Trim);
-                                }
-                            }
-                            break;
+                        if (c.GetType() == typeof(Dodge))
+                        {
+                            Dodge d = (Dodge)c;
+                            if (!filters.Contains(d.Engine))
+                                filters.Add(d.Engine);
+                        }
                     }
+                    break;
 
-                    // Add each string to the filter dropdown
-                    cboFilter.Items.AddRange(filters.ToArray());
-                }
+                // Set filter to mileage ranges
+                case "Mileage":
+                    filters.Add("0 - 49,999");
+                    filters.Add("50,000 - 99,999");
+                    filters.Add("100,000+");
+                    break;
 
-                private void cboFilter_SelectedIndexChanged(object sender, EventArgs e)
-                {
-                    if (cboFilter.Text != "Filter...")
-                        btnFilter.Enabled = true;
-                }
-
-            #endregion
-
-            #region MenuStrip
-
-                private void msiLogout_Click(object sender, EventArgs e)
-                {
-                    loginForm.ClearPassword();
-                    loginForm.Show();
-                    this.Close();
-                }
-
-                private void msiLogin_Click(object sender, EventArgs e)
-                {
-                    loginForm.ClearForm();
-                    loginForm.Show();
-                    this.Close();
-                }
-
-                private void msiAddCar_Click(object sender, EventArgs e)
-                {
-                    frmAddCar addCar = new frmAddCar();// Create an instance of the frmAddCar form
-
-                    if (addCar.ShowDialog() == DialogResult.OK) // Show the form as a dialog
+                // Check for Nissan, and set filter to unique transmissions from carlist
+                case "Transmission":
+                    foreach (ICar c in cars)
                     {
-                        // Get the new car from the addCar form
-                        ICar newCar = addCar.NewCar;
-
-                        // Add the new car to the list
-                        cars.Add(newCar);
-
-                        // Save the list to the database
-                        cars.Save();
-
-                        // Refresh the text box
-                        ViewAll();
+                        if (c.GetType() == typeof(Nissan))
+                        {
+                            Nissan n = (Nissan)c;
+                            if (!filters.Contains(n.Transmission))
+                                filters.Add(n.Transmission);
+                        }
                     }
-                }
+                    break;
 
-                private void msiDeleteCar_Click(object sender, EventArgs e)
-                {
-                    frmDeleteCar deleteCar = new frmDeleteCar();
-                    deleteCar.cars = this.cars;
-                    deleteCar.ShowDialog();
-
-                    if (deleteCar.DialogResult == DialogResult.OK)
+                // Check for ford, and set filter to unique trims from carlist
+                case "Trim":
+                    foreach (ICar c in cars)
                     {
-                        cars.RemoveAt((int)deleteCar.Tag);
+                        if (c.GetType() == typeof(Ford))
+                        {
+                            Ford f = (Ford)c;
+                            if (!filters.Contains(f.Trim))
+                                filters.Add(f.Trim);
+                        }
                     }
+                    break;
+            }
 
-                    ViewAll();
-                    cars.Save();
-                }
+            // Add each string to the filter dropdown
+            cboFilter.Items.AddRange(filters.ToArray());
+        }
 
-                private void msiProfile_Click(object sender, EventArgs e)
-                {
-                    frmProfile profileForm = new frmProfile();
+        private void DEBUG_FilterType_SelectionChange()
+        {
 
-                    profileForm.ShowDialog();
-                }
+        }
 
-            #endregion
+        private void cboFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboFilter.Text != "Filter...")
+                btnFilter.Enabled = true;
+        }
 
-            #region Automatic
+        #endregion
 
-                private void frmCarDealership_FormClosed(object sender, FormClosedEventArgs e)
-                {
-                    loginForm.Show();
-                }
+        #region MenuStrip
 
-                private void frmCarDealership_Load(object sender, EventArgs e)
-                {
-                    // Display the welcome message
-                    //lblWelcome.Text = $"Hello, {UsersDB.CurrentUser}!";
+        private void msiLogout_Click(object sender, EventArgs e)
+        {
+            loginForm.ClearPassword();
+            loginForm.Show();
+            this.Close();
+        }
 
-                    // Enable/disable button access if logged in user is not a guest
-                    if (UsersDB.CurrentUser != "Guest")
-                    {
-                        msiAddCar.Enabled = true;
-                        msiDeleteCar.Enabled = true;
-                        msiBookmarks.Enabled = true;
-                        msiLogout.Enabled = true;
-                        msiProfile.Enabled = true;
-                        msiLogin.Enabled = false;
-                    }
-                    else
-                    {
-                        msiAddCar.Enabled = false;
-                        msiAddCar.ToolTipText = "Must be logged in to list cars.";
-                        msiDeleteCar.Enabled = false;
-                        msiDeleteCar.ToolTipText = "Must be logged in to remove cars.";
-                        msiBookmarks.Enabled = false;
-                        msiBookmarks.ToolTipText = "Must be logged in to bookmark cars.";
-                        msiLogout.Enabled = false;
-                        msiProfile.Enabled = false;
-                        msiLogin.Enabled = true;
-                    }
+        private void msiLogin_Click(object sender, EventArgs e)
+        {
+            loginForm.ClearForm();
+            loginForm.Show();
+            this.Close();
+        }
 
-                    Validator.LineEnd = "\n"; // testing
+        private void msiAddCar_Click(object sender, EventArgs e)
+        {
+            frmAddCar addCar = new frmAddCar();// Create an instance of the frmAddCar form
 
-                    // Load carlist from database on form load
-                    cars.Load();
+            if (addCar.ShowDialog() == DialogResult.OK) // Show the form as a dialog
+            {
+                // Get the new car from the addCar form
+                ICar newCar = addCar.NewCar;
 
-                    //PopulateListView(cars);
+                // Add the new car to the list
+                cars.Add(newCar);
 
-                    ViewAll();
-                }
+                // Save the list to the database
+                cars.Save();
 
-            #endregion
+                // Refresh the text box
+                ViewAll();
+            }
+        }
+
+        private void msiDeleteCar_Click(object sender, EventArgs e)
+        {
+            frmDeleteCar deleteCar = new frmDeleteCar();
+            deleteCar.cars = this.cars;
+            deleteCar.ShowDialog();
+
+            if (deleteCar.DialogResult == DialogResult.OK)
+            {
+                cars.RemoveAt((int)deleteCar.Tag);
+            }
+
+            ViewAll();
+            cars.Save();
+        }
+
+        private void msiProfile_Click(object sender, EventArgs e)
+        {
+            frmProfile profileForm = new frmProfile();
+
+            profileForm.ShowDialog();
+        }
+
+        #endregion
+
+        #region Automatic
+
+        private void frmCarDealership_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            loginForm.Show();
+        }
+
+        private void frmCarDealership_Load(object sender, EventArgs e)
+        {
+            // Display the welcome message
+            //lblWelcome.Text = $"Hello, {UsersDB.CurrentUser}!";
+
+            // Enable/disable button access if logged in user is not a guest
+            if (UsersDB.CurrentUser != "Guest")
+            {
+                msiAddCar.Enabled = true;
+                msiDeleteCar.Enabled = true;
+                msiBookmarks.Enabled = true;
+                msiLogout.Enabled = true;
+                msiProfile.Enabled = true;
+                msiLogin.Enabled = false;
+            }
+            else
+            {
+                msiAddCar.Enabled = false;
+                msiAddCar.ToolTipText = "Must be logged in to list cars.";
+                msiDeleteCar.Enabled = false;
+                msiDeleteCar.ToolTipText = "Must be logged in to remove cars.";
+                msiBookmarks.Enabled = false;
+                msiBookmarks.ToolTipText = "Must be logged in to bookmark cars.";
+                msiLogout.Enabled = false;
+                msiProfile.Enabled = false;
+                msiLogin.Enabled = true;
+            }
+
+            Validator.LineEnd = "\n"; // testing
+
+            // Load carlist from database on form load
+            cars.Load();
+
+            //PopulateListView(cars);
+
+            ViewAll();
+        }
+
+        #endregion
 
         #endregion Event Handlers
 
@@ -507,8 +512,9 @@ namespace CarDealership
 
         private void FilterMake(string make)
         {
-            var filteredList = cars
-                                .ToList() // Call first to use LINQ on List<T>
+            var carsSnapshot = cars.ToList();
+
+            var filteredList = carsSnapshot
                                 .Where(c => c.Make == make)
                                 .OrderBy(c => c.DateAdded);
 
@@ -528,8 +534,9 @@ namespace CarDealership
 
         private void FilterColor(string color)
         {
-            var filteredList = cars
-                                .ToList() // Call first to use LINQ on List<T>
+            var carsSnapshot = cars.ToList();
+
+            var filteredList = carsSnapshot
                                 .Where(c => c.Color == color)
                                 .OrderBy(c => c.DateAdded);
 
