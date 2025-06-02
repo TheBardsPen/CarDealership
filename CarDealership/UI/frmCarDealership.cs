@@ -4,6 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using ValidationLibrary;
+using System.Drawing;
 
 namespace CarDealership
 {
@@ -12,6 +13,8 @@ namespace CarDealership
         // Variables
         public CarList<ICar> cars = new CarList<ICar>();
         public frmLogin loginForm = new frmLogin();
+        private int minTracker = 0;
+        private int maxTracker = 0;
 
         public frmCarDealership()
         {
@@ -46,108 +49,85 @@ namespace CarDealership
 
         private void cboFilterType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<string> filters = new List<string>();
+            btnFilter.Enabled = false;
+
             cboFilter.Items.Clear();
             cboFilter.SelectedIndex = -1;
             cboFilter.Text = "";
+            cboFilter.Enabled = false;
 
-            // Set enable of filter drowpdown once a filter type is selected
-            if (cboFilterType.SelectedIndex != -1)
-                cboFilter.Enabled = true;
-            else
-                cboFilter.Enabled = false;
+            trackMin.Enabled = false;
+            trackMax.Enabled = false;
 
-            // If make is selected, populate the filter dropdown
-            if (cboFilterType.Text == "Make")
-            {
-                cboFilter.Items.Add("Toyota");
-                cboFilter.Items.Add("Nissan");
-                cboFilter.Items.Add("Dodge");
-                cboFilter.Items.Add("Ford");
-            }
+            lblFilterMin.Visible = false;
+            lblFilterMax.Visible = false;
 
-            // Switch to handle any other possible filter type choice
+            var carsSnapshot = cars.ToList();
+
             switch (cboFilterType.Text)
             {
-                // Pull unique colors from carlist
+                case "Make":
+                    var makeArray = carsSnapshot
+                                        .Select(c => c.Make);
+
+                    cboFilter.Items.AddRange(makeArray.Distinct().ToArray());
+
+                    cboFilter.Enabled = true;
+
+                    break;
                 case "Color":
-                    foreach (ICar c in cars)
-                    {
-                        if (!filters.Contains(c.Color))
-                            filters.Add(c.Color);
-                    }
-                    break;
+                    var colorArray = carsSnapshot
+                                        .Select(c => c.Color);
 
-                // Set filter price ranges
+                    cboFilter.Items.AddRange(colorArray.Distinct().ToArray());
+
+                    cboFilter.Enabled = true;
+
+                    break;
                 case "Price":
-                    filters.Add("$0 - $4,999");
-                    filters.Add("$5,000 - $9,999");
-                    filters.Add("$10,000+");
-                    break;
+                    btnFilter.Enabled = true;
 
-                // Set filter to age ranges
+                    trackMin.Enabled = true;
+                    trackMax.Enabled = true;
+
+                    trackMin.Value = 0;
+                    trackMax.Value = 20;
+
+                    minTracker = 0;
+                    maxTracker = 100000;
+
+                    lblFilterMin.Visible = true;
+                    lblFilterMax.Visible = true;
+
+                    lblFilterMin.Text = $"Min Price: {minTracker.ToString("c")}";
+                    lblFilterMax.Text = $"Max Price: {maxTracker.ToString("c")}";
+
+                    break;
                 case "Age":
-                    filters.Add("0 - 5");
-                    filters.Add("6 - 10");
-                    filters.Add("11+");
-                    break;
+                    btnFilter.Enabled = true;
 
-                // Check for dodge, and set filter to unique engines from carlist
-                case "Engine":
-                    foreach (ICar c in cars)
-                    {
-                        if (c.GetType() == typeof(Dodge))
-                        {
-                            Dodge d = (Dodge)c;
-                            if (!filters.Contains(d.Engine))
-                                filters.Add(d.Engine);
-                        }
-                    }
-                    break;
+                    trackMin.Enabled = true;
+                    trackMax.Enabled = true;
 
-                // Set filter to mileage ranges
-                case "Mileage":
-                    filters.Add("0 - 49,999");
-                    filters.Add("50,000 - 99,999");
-                    filters.Add("100,000+");
-                    break;
+                    trackMin.Value = 0;
+                    trackMax.Value = 20;
 
-                // Check for Nissan, and set filter to unique transmissions from carlist
-                case "Transmission":
-                    foreach (ICar c in cars)
-                    {
-                        if (c.GetType() == typeof(Nissan))
-                        {
-                            Nissan n = (Nissan)c;
-                            if (!filters.Contains(n.Transmission))
-                                filters.Add(n.Transmission);
-                        }
-                    }
-                    break;
+                    minTracker = 0;
+                    maxTracker = 40;
 
-                // Check for ford, and set filter to unique trims from carlist
-                case "Trim":
-                    foreach (ICar c in cars)
-                    {
-                        if (c.GetType() == typeof(Ford))
-                        {
-                            Ford f = (Ford)c;
-                            if (!filters.Contains(f.Trim))
-                                filters.Add(f.Trim);
-                        }
-                    }
+                    lblFilterMin.Visible = true;
+                    lblFilterMax.Visible = true;
+
+                    lblFilterMin.Text = $"Min Age: {minTracker}";
+                    lblFilterMax.Text = $"Max Age: {maxTracker}";
+
+                    break;
+                default:
+                    cboFilter.Enabled = false;
                     break;
             }
-
-            // Add each string to the filter dropdown
-            cboFilter.Items.AddRange(filters.ToArray());
         }
-
-        private void DEBUG_FilterType_SelectionChange()
-        {
-
-        }
-
+        
         private void cboFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboFilter.Text != "Filter...")
@@ -289,12 +269,12 @@ namespace CarDealership
 
                 // Return cars in price range selected
                 case "Price":
-                    //FilterPrice
+                    FilterPrice(minTracker, maxTracker);
                     break;
 
                 // Return cars in age range selected
                 case "Age":
-                    //FilterAge
+                    FilterAge(minTracker, maxTracker);
                     break;
 
                 // Return cars based on engine selected
@@ -473,26 +453,19 @@ namespace CarDealership
             cboFilter.Enabled = false;
             btnFilter.Enabled = false;
 
+            trackMin.Enabled = false;
+            trackMax.Enabled = false;
+
+            lblFilterMin.Visible = false;
+            lblFilterMax.Visible = false;
+
             // Create text from each car in the saved list
             lvListings.Items.Clear();
 
-            foreach (ICar c in cars)
-            {
-                ListViewItem lvi = new ListViewItem();
-                lvi.Tag = c;
-                lvi.Text = c.Make;
-                lvi.SubItems.Add(c.Model);
-                lvi.SubItems.Add(c.Year.ToString());
-                lvi.SubItems.Add(c.Color);
-                lvi.SubItems.Add(c.Price.ToString("c"));
-                lvi.SubItems.Add(c.DateAdded.ToShortDateString());
-                lvListings.Items.Add(lvi);
-            }
-        }
+            var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
 
-        /*private void PopulateListView(CarList<ICar> filteredList)
-        {
-            lvListings.Items.Clear();
+            var filteredList = carsSnapshot
+                                .OrderBy(c => c.DateAdded);
 
             foreach (ICar c in filteredList)
             {
@@ -506,13 +479,13 @@ namespace CarDealership
                 lvi.SubItems.Add(c.DateAdded.ToShortDateString());
                 lvListings.Items.Add(lvi);
             }
-        }*/
+        }
 
         #endregion Methods
 
         private void FilterMake(string make)
         {
-            var carsSnapshot = cars.ToList();
+            var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
 
             var filteredList = carsSnapshot
                                 .Where(c => c.Make == make)
@@ -534,7 +507,7 @@ namespace CarDealership
 
         private void FilterColor(string color)
         {
-            var carsSnapshot = cars.ToList();
+            var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
 
             var filteredList = carsSnapshot
                                 .Where(c => c.Color == color)
@@ -556,9 +529,10 @@ namespace CarDealership
 
         private void FilterAge(int minAge, int maxAge)
         {
-            var filteredList = cars
-                                .ToList() // Call first to use LINQ on List<T>
-                                .Where(c => c.Year <= DateTime.Now.Year - minAge && c.Year >= DateTime.Now.Year)
+            var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
+
+            var filteredList = carsSnapshot
+                                .Where(c => c.Year <= DateTime.Now.Year - minAge && c.Year >= DateTime.Now.Year - maxAge)
                                 .OrderBy(c => c.DateAdded);
 
             foreach (var c in filteredList)
@@ -577,8 +551,9 @@ namespace CarDealership
 
         private void FilterPrice(decimal minPrice, decimal maxPrice)
         {
-            var filteredList = cars
-                                .ToList() // Call first to use LINQ on List<T>
+            var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
+
+            var filteredList = carsSnapshot
                                 .Where(c => c.Price > minPrice && c.Price < maxPrice)
                                 .OrderBy(c => c.DateAdded);
 
@@ -594,6 +569,44 @@ namespace CarDealership
                 lvi.SubItems.Add(c.DateAdded.ToShortDateString());
                 lvListings.Items.Add(lvi);
             }
+        }
+
+        private void trackMin_Scroll(object sender, EventArgs e)
+        {
+            if (cboFilterType.Text == "Price")
+            {
+                minTracker = trackMin.Value * 5000;
+
+                lblFilterMin.Text = $"Min Price: {minTracker.ToString("c")}";
+            }
+            else if (cboFilterType.Text == "Age")
+            {
+                minTracker = trackMin.Value * 2;
+
+                lblFilterMin.Text = $"Min Age: {minTracker}";
+            }
+
+            trackMin.Maximum = trackMax.Value - 1;
+            trackMax.Minimum = trackMin.Value + 1;
+        }
+
+        private void trackMax_Scroll(object sender, EventArgs e)
+        {
+            if (cboFilterType.Text == "Price")
+            {
+                maxTracker = trackMax.Value * 5000;
+
+                lblFilterMax.Text = $"Max Price: {maxTracker.ToString("c")}";
+            }
+            else if (cboFilterType.Text == "Age")
+            {
+                maxTracker = trackMax.Value * 2;
+
+                lblFilterMax.Text = $"Max Age: {maxTracker}";
+            }
+
+            trackMax.Minimum = trackMin.Value + 1;
+            trackMin.Maximum = trackMax.Value - 1;
         }
     }
 }

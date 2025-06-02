@@ -265,9 +265,12 @@
             // 
             this.trackMin.Enabled = false;
             this.trackMin.Location = new System.Drawing.Point(498, 90);
+            this.trackMin.Maximum = 20;
             this.trackMin.Name = "trackMin";
             this.trackMin.Size = new System.Drawing.Size(125, 45);
             this.trackMin.TabIndex = 13;
+            this.trackMin.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackMin.Scroll += new System.EventHandler(this.trackMin_Scroll);
             // 
             // lblFilterMin
             // 
@@ -293,10 +296,14 @@
             // 
             this.trackMax.Enabled = false;
             this.trackMax.Location = new System.Drawing.Point(497, 141);
+            this.trackMax.Maximum = 20;
             this.trackMax.Name = "trackMax";
-            this.trackMax.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.trackMax.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackMax.Size = new System.Drawing.Size(125, 45);
             this.trackMax.TabIndex = 15;
+            this.trackMax.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackMax.Value = 20;
+            this.trackMax.Scroll += new System.EventHandler(this.trackMax_Scroll);
             // 
             // frmCarDealership
             // 
