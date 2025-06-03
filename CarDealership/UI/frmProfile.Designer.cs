@@ -29,7 +29,12 @@
         private void InitializeComponent()
         {
             this.lblUsername = new System.Windows.Forms.Label();
-            this.gbListings = new System.Windows.Forms.GroupBox();
+            this.btnAddCar = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Label();
+            this.tabsProfile = new System.Windows.Forms.TabControl();
+            this.tabListings = new System.Windows.Forms.TabPage();
+            this.tabBookmarks = new System.Windows.Forms.TabPage();
             this.lvListings = new System.Windows.Forms.ListView();
             this.clmMake = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmModel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -37,10 +42,16 @@
             this.clmColor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnAddCar = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Label();
-            this.gbListings.SuspendLayout();
+            this.lvBookmarks = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabsProfile.SuspendLayout();
+            this.tabListings.SuspendLayout();
+            this.tabBookmarks.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -53,15 +64,70 @@
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "{username}";
             // 
-            // gbListings
+            // btnAddCar
             // 
-            this.gbListings.Controls.Add(this.lvListings);
-            this.gbListings.Location = new System.Drawing.Point(19, 52);
-            this.gbListings.Name = "gbListings";
-            this.gbListings.Size = new System.Drawing.Size(499, 176);
-            this.gbListings.TabIndex = 1;
-            this.gbListings.TabStop = false;
-            this.gbListings.Text = "Listings";
+            this.btnAddCar.Location = new System.Drawing.Point(12, 244);
+            this.btnAddCar.Name = "btnAddCar";
+            this.btnAddCar.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCar.TabIndex = 2;
+            this.btnAddCar.Text = "Add Car";
+            this.btnAddCar.UseVisualStyleBackColor = true;
+            this.btnAddCar.Click += new System.EventHandler(this.btnAddCar_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Location = new System.Drawing.Point(430, 244);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSize = true;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Red;
+            this.btnDelete.Location = new System.Drawing.Point(424, 22);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(81, 13);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "Delete Account";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // tabsProfile
+            // 
+            this.tabsProfile.Controls.Add(this.tabListings);
+            this.tabsProfile.Controls.Add(this.tabBookmarks);
+            this.tabsProfile.Location = new System.Drawing.Point(12, 52);
+            this.tabsProfile.Name = "tabsProfile";
+            this.tabsProfile.SelectedIndex = 0;
+            this.tabsProfile.Size = new System.Drawing.Size(493, 184);
+            this.tabsProfile.TabIndex = 6;
+            // 
+            // tabListings
+            // 
+            this.tabListings.Controls.Add(this.lvListings);
+            this.tabListings.Location = new System.Drawing.Point(4, 22);
+            this.tabListings.Name = "tabListings";
+            this.tabListings.Padding = new System.Windows.Forms.Padding(3);
+            this.tabListings.Size = new System.Drawing.Size(485, 158);
+            this.tabListings.TabIndex = 0;
+            this.tabListings.Text = "Listings";
+            this.tabListings.UseVisualStyleBackColor = true;
+            // 
+            // tabBookmarks
+            // 
+            this.tabBookmarks.Controls.Add(this.lvBookmarks);
+            this.tabBookmarks.Location = new System.Drawing.Point(4, 22);
+            this.tabBookmarks.Name = "tabBookmarks";
+            this.tabBookmarks.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBookmarks.Size = new System.Drawing.Size(485, 158);
+            this.tabBookmarks.TabIndex = 1;
+            this.tabBookmarks.Text = "Bookmarks";
+            this.tabBookmarks.UseVisualStyleBackColor = true;
             // 
             // lvListings
             // 
@@ -74,10 +140,10 @@
             this.clmDate});
             this.lvListings.FullRowSelect = true;
             this.lvListings.HideSelection = false;
-            this.lvListings.Location = new System.Drawing.Point(6, 19);
+            this.lvListings.Location = new System.Drawing.Point(3, 3);
             this.lvListings.MultiSelect = false;
             this.lvListings.Name = "lvListings";
-            this.lvListings.Size = new System.Drawing.Size(487, 151);
+            this.lvListings.Size = new System.Drawing.Size(479, 152);
             this.lvListings.TabIndex = 13;
             this.lvListings.UseCompatibleStateImageBehavior = false;
             this.lvListings.View = System.Windows.Forms.View.Details;
@@ -103,13 +169,12 @@
             // 
             this.clmColor.Tag = "Color";
             this.clmColor.Text = "Color";
-            this.clmColor.Width = 64;
             // 
             // clmPrice
             // 
             this.clmPrice.Tag = "Price";
             this.clmPrice.Text = "Price";
-            this.clmPrice.Width = 81;
+            this.clmPrice.Width = 77;
             // 
             // clmDate
             // 
@@ -117,53 +182,76 @@
             this.clmDate.Text = "Date Added";
             this.clmDate.Width = 115;
             // 
-            // btnAddCar
+            // lvBookmarks
             // 
-            this.btnAddCar.Location = new System.Drawing.Point(19, 242);
-            this.btnAddCar.Name = "btnAddCar";
-            this.btnAddCar.Size = new System.Drawing.Size(75, 23);
-            this.btnAddCar.TabIndex = 2;
-            this.btnAddCar.Text = "Add Car";
-            this.btnAddCar.UseVisualStyleBackColor = true;
-            this.btnAddCar.Click += new System.EventHandler(this.btnAddCar_Click);
+            this.lvBookmarks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lvBookmarks.FullRowSelect = true;
+            this.lvBookmarks.HideSelection = false;
+            this.lvBookmarks.Location = new System.Drawing.Point(3, 3);
+            this.lvBookmarks.MultiSelect = false;
+            this.lvBookmarks.Name = "lvBookmarks";
+            this.lvBookmarks.Size = new System.Drawing.Size(479, 152);
+            this.lvBookmarks.TabIndex = 14;
+            this.lvBookmarks.UseCompatibleStateImageBehavior = false;
+            this.lvBookmarks.View = System.Windows.Forms.View.Details;
             // 
-            // btnClose
+            // columnHeader1
             // 
-            this.btnClose.Location = new System.Drawing.Point(443, 242);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.columnHeader1.Tag = "Make";
+            this.columnHeader1.Text = "Make";
+            this.columnHeader1.Width = 74;
             // 
-            // btnDelete
+            // columnHeader2
             // 
-            this.btnDelete.AutoSize = true;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.Red;
-            this.btnDelete.Location = new System.Drawing.Point(437, 22);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(81, 13);
-            this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "Delete Account";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.columnHeader2.Tag = "Model";
+            this.columnHeader2.Text = "Model";
+            this.columnHeader2.Width = 89;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Tag = "Year";
+            this.columnHeader3.Text = "Year";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Tag = "Color";
+            this.columnHeader4.Text = "Color";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Tag = "Price";
+            this.columnHeader5.Text = "Price";
+            this.columnHeader5.Width = 77;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Tag = "Date";
+            this.columnHeader6.Text = "Date Added";
+            this.columnHeader6.Width = 115;
             // 
             // frmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(534, 279);
+            this.ClientSize = new System.Drawing.Size(518, 279);
+            this.Controls.Add(this.tabsProfile);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddCar);
-            this.Controls.Add(this.gbListings);
             this.Controls.Add(this.lblUsername);
             this.Name = "frmProfile";
             this.Text = "Profile";
             this.Load += new System.EventHandler(this.frmProfile_Load);
-            this.gbListings.ResumeLayout(false);
+            this.tabsProfile.ResumeLayout(false);
+            this.tabListings.ResumeLayout(false);
+            this.tabBookmarks.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,7 +260,12 @@
         #endregion
 
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.GroupBox gbListings;
+        private System.Windows.Forms.Button btnAddCar;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label btnDelete;
+        private System.Windows.Forms.TabControl tabsProfile;
+        private System.Windows.Forms.TabPage tabListings;
+        private System.Windows.Forms.TabPage tabBookmarks;
         private System.Windows.Forms.ListView lvListings;
         private System.Windows.Forms.ColumnHeader clmMake;
         private System.Windows.Forms.ColumnHeader clmModel;
@@ -180,8 +273,12 @@
         private System.Windows.Forms.ColumnHeader clmColor;
         private System.Windows.Forms.ColumnHeader clmPrice;
         private System.Windows.Forms.ColumnHeader clmDate;
-        private System.Windows.Forms.Button btnAddCar;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label btnDelete;
+        private System.Windows.Forms.ListView lvBookmarks;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }

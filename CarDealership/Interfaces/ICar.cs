@@ -16,6 +16,7 @@ namespace CarDealership.Interfaces
         int Year { get; set; }
         int Price { get; set; }
         DateTime DateAdded { get; set; }
+        string PostedBy { get; set; }
         bool IsSold { get; set; }
         int CarID { get; set; }
     }

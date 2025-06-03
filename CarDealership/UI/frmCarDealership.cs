@@ -11,7 +11,7 @@ namespace CarDealership
     public partial class frmCarDealership : Form
     {
         // Variables
-        public CarList<ICar> cars = new CarList<ICar>();
+        public static CarList<ICar> cars = new CarList<ICar>();
         public frmLogin loginForm = new frmLogin();
         private int minTracker = 0;
         private int maxTracker = 0;
@@ -27,9 +27,6 @@ namespace CarDealership
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            // Clear the list to repopulate
-            //rTxtBoxDisplayListing.Text = "";
-
             Filter();
         }
 
@@ -124,6 +121,12 @@ namespace CarDealership
                     break;
                 default:
                     cboFilter.Enabled = false;
+
+                    trackMin.Enabled = false;
+                    trackMax.Enabled = false;
+
+                    lblFilterMin.Visible = false;
+                    lblFilterMax.Visible = false;
                     break;
             }
         }
@@ -175,7 +178,7 @@ namespace CarDealership
         private void msiDeleteCar_Click(object sender, EventArgs e)
         {
             frmDeleteCar deleteCar = new frmDeleteCar();
-            deleteCar.cars = this.cars;
+            deleteCar.cars = cars;
             deleteCar.ShowDialog();
 
             if (deleteCar.DialogResult == DialogResult.OK)
@@ -234,6 +237,7 @@ namespace CarDealership
             Validator.LineEnd = "\n"; // testing
 
             // Load carlist from database on form load
+            cars = new CarList<ICar>();
             cars.Load();
 
             //PopulateListView(cars);
@@ -276,212 +280,11 @@ namespace CarDealership
                 case "Age":
                     FilterAge(minTracker, maxTracker);
                     break;
-
-                // Return cars based on engine selected
-                case "Engine":
-                    foreach (ICar c in cars)
-                    {
-                        if (c.GetType() == typeof(Dodge))
-                        {
-                            Dodge d = (Dodge)c;
-                            if (d.Engine == cboFilter.Text)
-                                carDisplay.Add(c.GetDisplayText());
-                        }
-                    }
-                    break;
-
-                // Return cars in mileage range selected
-                case "Mileage":
-                    carDisplay = MileageFilterSwitch();
-                    break;
-
-                // Return cars based on transmission selected
-                case "Transmission":
-                    foreach (ICar c in cars)
-                    {
-                        if (c.GetType() == typeof(Nissan))
-                        {
-                            Nissan n = (Nissan)c;
-                            if (n.Transmission == cboFilter.Text)
-                                carDisplay.Add(c.GetDisplayText());
-                        }
-                    }
-                    break;
-
-                // Return cars based on trim selected
-                case "Trim":
-                    foreach (ICar c in cars)
-                    {
-                        if (c.GetType() == typeof(Ford))
-                        {
-                            Ford f = (Ford)c;
-                            if (f.Trim == cboFilter.Text)
-                                carDisplay.Add(c.GetDisplayText());
-                        }
-                    }
+                default:
+                    MessageBox.Show("No filter selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
-
-            // Add each list item to the text display
-            //rTxtBoxDisplayListing.Text = string.Join("\n\n", carDisplay);
         }
-
-        /// Filter by price
-        private List<string> PriceFilterSwitch()
-        {
-            // List of strings to display
-            List<string> carDisplay = new List<string>();
-
-            switch (cboFilter.SelectedIndex)
-            {
-                case 0: // 0 - 4,999
-                    foreach (ICar c in cars)
-                    {
-                        if (c.Price < 5000)
-                            carDisplay.Add(c.GetDisplayText());
-                    }
-                    break;
-
-                case 1: // 5,000 - 9,999
-                    foreach (ICar c in cars)
-                    {
-                        if (c.Price >= 5000 && c.Price < 10000)
-                            carDisplay.Add(c.GetDisplayText());
-                    }
-                    break;
-
-                case 2: // 10,000+
-                    foreach (ICar c in cars)
-                    {
-                        if (c.Price >= 10000)
-                            carDisplay.Add(c.GetDisplayText());
-                    }
-                    break;
-            }
-            return carDisplay;
-        }
-
-        /// Filter by age
-        private List<string> AgeFilterSwitch()
-        {
-            // List of strings to display
-            List<string> carDisplay = new List<string>();
-
-            DateTime todaysDate = DateTime.Now;
-
-            switch (cboFilter.SelectedIndex)
-            {
-                case 0: // 0 - 5
-                    foreach (ICar c in cars)
-                    {
-                        if (todaysDate.Year - c.Year < 6)
-                            carDisplay.Add(c.GetDisplayText());
-                    }
-                    break;
-
-                case 1: // 6 - 10
-                    foreach (ICar c in cars)
-                    {
-                        if (todaysDate.Year - c.Year < 11 && todaysDate.Year - c.Year >= 6)
-                            carDisplay.Add(c.GetDisplayText());
-                    }
-                    break;
-
-                case 2: // 11+
-                    foreach (ICar c in cars)
-                    {
-                        if (todaysDate.Year - c.Year >= 11)
-                            carDisplay.Add(c.GetDisplayText());
-                    }
-                    break;
-            }
-            return carDisplay;
-        }
-
-        /// Filter by mileage
-        private List<string> MileageFilterSwitch()
-        {
-            // List of strings to display
-            List<string> carDisplay = new List<string>();
-
-            switch (cboFilter.SelectedIndex)
-            {
-                case 0: // 0 - 49,999
-                    foreach (ICar c in cars)
-                    {
-                        if (c.GetType() == typeof(Toyota))
-                        {
-                            Toyota t = (Toyota)c;
-                            if (t.Mileage < 50000)
-                                carDisplay.Add(c.GetDisplayText());
-                        }
-                    }
-                    break;
-
-                case 1: // 50,000 - 99,999
-                    foreach (ICar c in cars)
-                    {
-                        if (c.GetType() == typeof(Toyota))
-                        {
-                            Toyota t = (Toyota)c;
-                            if (t.Mileage < 100000 && t.Mileage >= 50000)
-                                carDisplay.Add(c.GetDisplayText());
-                        }
-                    }
-                    break;
-
-                case 2: // 100,000+
-                    foreach (ICar c in cars)
-                    {
-                        if (c.GetType() == typeof(Toyota))
-                        {
-                            Toyota t = (Toyota)c;
-                            if (t.Mileage >= 100000)
-                                carDisplay.Add(c.GetDisplayText());
-                        }
-                    }
-                    break;
-            }
-            return carDisplay;
-        }
-
-        private void ViewAll()
-        {
-            // Reset filters
-            cboFilter.Text = "Filter By...";
-            cboFilterType.Text = "Filter...";
-            cboFilter.Enabled = false;
-            btnFilter.Enabled = false;
-
-            trackMin.Enabled = false;
-            trackMax.Enabled = false;
-
-            lblFilterMin.Visible = false;
-            lblFilterMax.Visible = false;
-
-            // Create text from each car in the saved list
-            lvListings.Items.Clear();
-
-            var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
-
-            var filteredList = carsSnapshot
-                                .OrderBy(c => c.DateAdded);
-
-            foreach (ICar c in filteredList)
-            {
-                ListViewItem lvi = new ListViewItem();
-                lvi.Tag = c;
-                lvi.Text = c.Make;
-                lvi.SubItems.Add(c.Model);
-                lvi.SubItems.Add(c.Year.ToString());
-                lvi.SubItems.Add(c.Color);
-                lvi.SubItems.Add(c.Price.ToString("c"));
-                lvi.SubItems.Add(c.DateAdded.ToShortDateString());
-                lvListings.Items.Add(lvi);
-            }
-        }
-
-        #endregion Methods
 
         private void FilterMake(string make)
         {
@@ -489,7 +292,7 @@ namespace CarDealership
 
             var filteredList = carsSnapshot
                                 .Where(c => c.Make == make)
-                                .OrderBy(c => c.DateAdded);
+                                .OrderByDescending(c => c.DateAdded);
 
             foreach (ICar c in filteredList)
             {
@@ -511,7 +314,7 @@ namespace CarDealership
 
             var filteredList = carsSnapshot
                                 .Where(c => c.Color == color)
-                                .OrderBy(c => c.DateAdded);
+                                .OrderByDescending(c => c.DateAdded);
 
             foreach (var c in filteredList)
             {
@@ -533,7 +336,7 @@ namespace CarDealership
 
             var filteredList = carsSnapshot
                                 .Where(c => c.Year <= DateTime.Now.Year - minAge && c.Year >= DateTime.Now.Year - maxAge)
-                                .OrderBy(c => c.DateAdded);
+                                .OrderByDescending(c => c.DateAdded);
 
             foreach (var c in filteredList)
             {
@@ -555,7 +358,7 @@ namespace CarDealership
 
             var filteredList = carsSnapshot
                                 .Where(c => c.Price > minPrice && c.Price < maxPrice)
-                                .OrderBy(c => c.DateAdded);
+                                .OrderByDescending(c => c.DateAdded);
 
             foreach (var c in filteredList)
             {
@@ -608,5 +411,44 @@ namespace CarDealership
             trackMax.Minimum = trackMin.Value + 1;
             trackMin.Maximum = trackMax.Value - 1;
         }
+
+        private void ViewAll()
+        {
+            // Reset filters
+            cboFilter.Text = "Filter By...";
+            cboFilterType.Text = "";
+            cboFilter.Enabled = false;
+            btnFilter.Enabled = false;
+
+            trackMin.Enabled = false;
+            trackMax.Enabled = false;
+
+            lblFilterMin.Visible = false;
+            lblFilterMax.Visible = false;
+
+            // Create text from each car in the saved list
+            lvListings.Items.Clear();
+
+            var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
+
+            var filteredList = carsSnapshot
+                                .OrderByDescending(c => c.DateAdded);
+
+            foreach (ICar c in filteredList)
+            {
+                ListViewItem lvi = new ListViewItem();
+                lvi.Tag = c;
+                lvi.Text = c.Make;
+                lvi.SubItems.Add(c.Model);
+                lvi.SubItems.Add(c.Year.ToString());
+                lvi.SubItems.Add(c.Color);
+                lvi.SubItems.Add(c.Price.ToString("c"));
+                lvi.SubItems.Add(c.DateAdded.ToShortDateString());
+                lvListings.Items.Add(lvi);
+            }
+        }
+
+        #endregion Methods
+
     }
 }

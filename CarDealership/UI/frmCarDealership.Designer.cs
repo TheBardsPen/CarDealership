@@ -67,11 +67,7 @@
             "Make",
             "Color",
             "Age",
-            "Price",
-            "Mileage",
-            "Engine",
-            "Trim",
-            "Transmission"});
+            "Price"});
             this.cboFilterType.Location = new System.Drawing.Point(497, 27);
             this.cboFilterType.Name = "cboFilterType";
             this.cboFilterType.Size = new System.Drawing.Size(126, 21);
@@ -88,7 +84,6 @@
             this.cboFilter.Name = "cboFilter";
             this.cboFilter.Size = new System.Drawing.Size(126, 21);
             this.cboFilter.TabIndex = 2;
-            this.cboFilter.Text = "Filter...";
             this.cboFilter.SelectedIndexChanged += new System.EventHandler(this.cboFilter_SelectedIndexChanged);
             // 
             // btnExit
