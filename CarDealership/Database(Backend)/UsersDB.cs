@@ -92,8 +92,9 @@ namespace CarDealership
                             }
                             else if (parts[0] == "-fillbookmark-")
                             {
-                                foreach (string str in parts)
-                                    bookmarkIDs[tempUser].Add(Convert.ToInt32(str));
+                                bookmarkIDs.Add(tempUser, new List<int>());
+                                for (int i = 1; i < parts.Length - 1; i++)
+                                    bookmarkIDs[tempUser].Add(Convert.ToInt32(parts[i]));
                             }
                             else
                             {
@@ -152,7 +153,13 @@ namespace CarDealership
                     {
                         writer.WriteLine($"{user.Key}|{user.Value}"); // Write each user to the file
 
-                        if (bookmarkIDs[user.Key].Count > 0)
+                        if (user.Key == CurrentUser && UserBookmarkIDs.Count > 0)
+                        {
+                            writer.Write("-fillbookmark-|");
+                            foreach (int i in UserBookmarkIDs)
+                                writer.Write($"{i}|");
+                        }
+                        else if (bookmarkIDs[user.Key].Count > 0)
                         {
                             writer.Write("-fillbookmark-|");
                             foreach (int i in bookmarkIDs[user.Key])
@@ -217,7 +224,7 @@ namespace CarDealership
                         CurrentUser = normalUsers[lowerUsers.IndexOf(lowerUsername)];
 
                         // Return listingIDs and bookmarkIDs for user
-                        GetListingIDs();
+                        UserBookmarkIDs = bookmarkIDs[CurrentUser];
 
                         return true;
                     }

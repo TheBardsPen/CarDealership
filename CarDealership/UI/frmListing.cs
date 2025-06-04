@@ -72,6 +72,16 @@ namespace CarDealership.UI
                 btnDelete.Visible = true;
                 btnSold.Visible = true;
             }
+
+            if (UsersDB.CurrentUser != "Guest")
+            {
+                cbBookmark.Visible = true;
+            }
+
+            if (UsersDB.UserBookmarkIDs.Contains(listing.CarID))
+            {
+                cbBookmark.Checked = true;
+            }
         }
 
         private void MarkSold()
@@ -107,6 +117,24 @@ namespace CarDealership.UI
                 MarkSold();
             else
                 MarkUnsold();
+        }
+
+        private void cbBookmark_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbBookmark.Checked == true)
+            {
+                UsersDB.UserBookmarkIDs.Add(listing.CarID);
+                UsersDB.SaveUsers(UsersDB.users);
+                Console.WriteLine("ADDED BOOKMARK");
+                Console.WriteLine($"Current bookmark count: '{UsersDB.UserBookmarkIDs.Count}'");
+            }
+            else
+            {
+                UsersDB.UserBookmarkIDs.Remove(listing.CarID);
+                UsersDB.SaveUsers(UsersDB.users);
+                Console.WriteLine("REMOVED BOOKMARK");
+                Console.WriteLine($"Current bookmark count: '{UsersDB.UserBookmarkIDs.Count}'");
+            }
         }
     }
 }

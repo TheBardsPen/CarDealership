@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes%28MiddleLayer%29\Car.cs" />
-    <Compile Include="Classes%28MiddleLayer%29\CarList.cs" />
+    <Compile Include="Business%28MiddleLayer%29\Car.cs" />
+    <Compile Include="Business%28MiddleLayer%29\CarList.cs" />
     <Compile Include="Database%28BackEnd%29\CarsDB.cs" />
-    <Compile Include="Classes%28MiddleLayer%29\Dodge.cs" />
-    <Compile Include="Classes%28MiddleLayer%29\Ford.cs" />
+    <Compile Include="Business%28MiddleLayer%29\Dodge.cs" />
+    <Compile Include="Business%28MiddleLayer%29\Ford.cs" />
     <Compile Include="Database%28BackEnd%29\UsersDB.cs" />
     <Compile Include="UI\frmListing.cs">
       <SubType>Form</SubType>
@@ -76,7 +76,7 @@
     <Compile Include="UI\frmCarDealership.Designer.cs">
       <DependentUpon>frmCarDealership.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes%28MiddleLayer%29\Nissan.cs" />
+    <Compile Include="Business%28MiddleLayer%29\Nissan.cs" />
     <Compile Include="UI\frmDeleteCar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,7 +100,7 @@
     <Compile Include="Interfaces\IStorable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes%28MiddleLayer%29\Toyota.cs" />
+    <Compile Include="Business%28MiddleLayer%29\Toyota.cs" />
     <EmbeddedResource Include="UI\frmAddCar.resx">
       <DependentUpon>frmAddCar.cs</DependentUpon>
     </EmbeddedResource>

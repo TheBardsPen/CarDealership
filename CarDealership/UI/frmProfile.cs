@@ -136,7 +136,7 @@ namespace CarDealership
         {
             if (lvListings.SelectedItems != null)
             {
-                frmListing frm = new frmListing((Car)lvListings.SelectedItems[0].Tag);
+                frmListing frm = new frmListing((Car)lvBookmarks.SelectedItems[0].Tag);
 
                 frm.ShowDialog();
             }
