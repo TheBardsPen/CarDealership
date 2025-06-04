@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CarDealership.Business_MiddleLayer_;
 
 namespace CarDealership.UI
 {
@@ -67,18 +68,18 @@ namespace CarDealership.UI
                 MarkSold();
             }
 
-            if (listing.PostedBy == UsersDB.CurrentUser)
+            if (listing.PostedBy == User.Username)
             {
                 btnDelete.Visible = true;
                 btnSold.Visible = true;
             }
 
-            if (UsersDB.CurrentUser != "Guest")
+            if (User.Username != "Guest")
             {
                 cbBookmark.Visible = true;
             }
 
-            if (UsersDB.UserBookmarkIDs.Contains(listing.CarID))
+            if (User.BookmarkIDs.Contains(listing.CarID))
             {
                 cbBookmark.Checked = true;
             }
@@ -123,17 +124,17 @@ namespace CarDealership.UI
         {
             if (cbBookmark.Checked == true)
             {
-                UsersDB.UserBookmarkIDs.Add(listing.CarID);
-                UsersDB.SaveUsers(UsersDB.users);
+                User.BookmarkIDs.Add(listing.CarID);
+                User.Save();
                 Console.WriteLine("ADDED BOOKMARK");
-                Console.WriteLine($"Current bookmark count: '{UsersDB.UserBookmarkIDs.Count}'");
+                Console.WriteLine($"Current bookmark count: '{User.BookmarkIDs.Count}'");
             }
             else
             {
-                UsersDB.UserBookmarkIDs.Remove(listing.CarID);
-                UsersDB.SaveUsers(UsersDB.users);
+                User.BookmarkIDs.Remove(listing.CarID);
+                User.Save();
                 Console.WriteLine("REMOVED BOOKMARK");
-                Console.WriteLine($"Current bookmark count: '{UsersDB.UserBookmarkIDs.Count}'");
+                Console.WriteLine($"Current bookmark count: '{User.BookmarkIDs.Count}'");
             }
         }
     }

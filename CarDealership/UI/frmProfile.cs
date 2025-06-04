@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CarDealership.Business_MiddleLayer_;
 using CarDealership.Interfaces;
 using CarDealership.UI;
 
@@ -21,7 +22,7 @@ namespace CarDealership
 
         private void frmProfile_Load(object sender, EventArgs e)
         {
-            lblUsername.Text = UsersDB.CurrentUser;
+            lblUsername.Text = User.Username;
 
             RefreshListings();
 
@@ -58,7 +59,7 @@ namespace CarDealership
             var carsSnapshot = frmCarDealership.cars.ToList(); // Call first to use LINQ on List<T>
 
             var listings = carsSnapshot
-                                .Where(c => c.PostedBy == UsersDB.CurrentUser)
+                                .Where(c => c.PostedBy == User.Username)
                                 .OrderByDescending(c => c.DateAdded);
 
             foreach (ICar c in listings)
@@ -82,7 +83,7 @@ namespace CarDealership
             var carsSnapshot = frmCarDealership.cars.ToList(); // Call first to use LINQ on List<T>
 
             var bookmarks = carsSnapshot
-                                .Where(c => UsersDB.UserBookmarkIDs.Contains(c.CarID))
+                                .Where(c => User.BookmarkIDs.Contains(c.CarID))
                                 .OrderByDescending(c => c.DateAdded);
 
             foreach (ICar c in bookmarks)
@@ -104,7 +105,7 @@ namespace CarDealership
             var carsSnapshot = frmCarDealership.cars.ToList(); // Call first to use LINQ on List<T>
 
             var listings = carsSnapshot
-                                .Where(c => c.PostedBy == UsersDB.CurrentUser && c.IsSold == false);
+                                .Where(c => c.PostedBy == User.Username && c.IsSold == false);
 
             foreach (var listing in listings)
             {
@@ -113,8 +114,7 @@ namespace CarDealership
 
             frmCarDealership.cars.Save();
 
-            UsersDB.users.Remove(UsersDB.CurrentUser);
-            UsersDB.SaveUsers(UsersDB.users);
+            User.Remove(User.Username);
 
             // Using "Abort" to prevent accidental ok, yes, no, etc.
             this.DialogResult = DialogResult.Abort;

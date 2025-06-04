@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ValidationLibrary;
 using System.Drawing;
 using CarDealership.UI;
+using CarDealership.Business_MiddleLayer_;
 
 namespace CarDealership
 {
@@ -234,7 +235,7 @@ namespace CarDealership
             //lblWelcome.Text = $"Hello, {UsersDB.CurrentUser}!";
 
             // Enable/disable button access if logged in user is not a guest
-            if (UsersDB.CurrentUser != "Guest")
+            if (User.IsLoggedIn)
             {
                 msiAddCar.Enabled = true;
                 msiDeleteCar.Enabled = true;

@@ -9,18 +9,21 @@ namespace CarDealership.Business_MiddleLayer_
     public static class User
     {
         // Variables
-        static string UserName { get; set; }
-        static List<int> BookmarkIDs { get; set; }
-        static bool IsLoggedIn { get; set; } = false;
+        public static string Username { get; set; }
+        public static List<int> BookmarkIDs { get; set; }
+        public static bool IsLoggedIn { get; set; } = false;
 
-        public static void Authenticate(string username, string password)
+        public static bool Authenticate(string username, string password)
         {
             if (UsersDB.AuthenticateUser(username, password))
             {
-                UserName = username;
-                BookmarkIDs = UsersDB.bookmarkIDs[username];
+                Username = UsersDB.CurrentUser;
+                BookmarkIDs = UsersDB.bookmarkIDs[Username];
                 IsLoggedIn = true;
+                return true;
             }
+
+            return false;
         }
 
         public static bool Register(string username, string password)
@@ -30,19 +33,26 @@ namespace CarDealership.Business_MiddleLayer_
 
         public static void Logout()
         {
-            UserName = string.Empty;
+            Username = string.Empty;
             BookmarkIDs.Clear();
             IsLoggedIn = false;
+            UsersDB.Logout();
+        }
+
+        public static void Remove(string username)
+        {
+            UsersDB.users.Remove(username);
+            UsersDB.SaveUsersList(UsersDB.users);
         }
 
         public static void Save()
         {
-
+            UsersDB.SaveSingleUser(Username, BookmarkIDs);
         }
 
         public static void Load()
         {
-
+            UsersDB.LoadUsersList();
         }
     }
 }

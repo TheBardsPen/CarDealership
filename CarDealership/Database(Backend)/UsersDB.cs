@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using CarDealership.Business_MiddleLayer_;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace CarDealership
@@ -21,10 +22,7 @@ namespace CarDealership
         public static Dictionary<string, List<int>> bookmarkIDs = new Dictionary<string, List<int>>();
 
         /// Set the current user to an empty string
-        public static string CurrentUser { get; set; } = string.Empty;
-
-        public static bool IsLoggedIn => !string.IsNullOrEmpty(CurrentUser); // Check if the user is logged in
-
+        public static string CurrentUser = string.Empty;
         public static List<int> UserBookmarkIDs = new List<int>(); // List of CarIDs the user has bookmarked
 
         // Set VersionID and last compatible version to eliminate restructure issues on loading
@@ -36,7 +34,7 @@ namespace CarDealership
         /// Loads users from the Users.txt file.
         /// </summary>
 
-        public static Dictionary<string, string> LoadUsers()
+        public static Dictionary<string, string> LoadUsersList()
         {
             try
             {
@@ -134,7 +132,7 @@ namespace CarDealership
         /// <summary>
         /// Saves users to the Users.txt file.
         /// </summary>
-        public static void SaveUsers(Dictionary<string, string> users)
+        public static void SaveUsersList(Dictionary<string, string> users)
         {
             try
             {
@@ -149,20 +147,20 @@ namespace CarDealership
                     // Write version for compatible loading
                     writer.WriteLine($"Version:{VersionID}");
 
-                    foreach (var user in users)
+                    foreach (var u in users)
                     {
-                        writer.WriteLine($"{user.Key}|{user.Value}"); // Write each user to the file
+                        writer.WriteLine($"{u.Key}|{u.Value}"); // Write each user to the file
 
-                        if (user.Key == CurrentUser && UserBookmarkIDs.Count > 0)
+                        if (u.Key == User.Username && UserBookmarkIDs.Count > 0)
                         {
                             writer.Write("-fillbookmark-|");
                             foreach (int i in UserBookmarkIDs)
                                 writer.Write($"{i}|");
                         }
-                        else if (bookmarkIDs[user.Key].Count > 0)
+                        else if (bookmarkIDs[u.Key].Count > 0)
                         {
                             writer.Write("-fillbookmark-|");
-                            foreach (int i in bookmarkIDs[user.Key])
+                            foreach (int i in bookmarkIDs[u.Key])
                                 writer.Write($"{i}|");
                         }
                         else
@@ -195,6 +193,13 @@ namespace CarDealership
             }
         }
 
+        public static void SaveSingleUser(string username, List<int> _bookmarkIDs)
+        {
+            bookmarkIDs[username] = _bookmarkIDs;
+
+            SaveUsersList(users);
+        }
+
         /// <summary>
         /// Authenticates the user by checking if the username and password match.
         /// </summary>>
@@ -202,8 +207,8 @@ namespace CarDealership
         {
             string lowerUsername = username.ToLower(); // Create a lower case version of user input            
 
-            LoadUsers(); // Load users from the file
-            SaveUsers(users);
+            LoadUsersList(); // Load users from the file
+            SaveUsersList(users);
 
             List<string> normalUsers = new List<string>(); // Create a list of original usernames and lower usernames to use indexes
             List<string> lowerUsers = new List<string>();
@@ -242,7 +247,7 @@ namespace CarDealership
             string lowerUsername = username.ToLower(); // Create a lower case version of user input
             List<string> lowerUsers = new List<string>(); // Create list of lowercase usernames to avoid case problems
 
-            LoadUsers(); // Load users from the file
+            LoadUsersList(); // Load users from the file
 
             if (users.Count > 0)
             {
@@ -262,7 +267,7 @@ namespace CarDealership
                 // Add the new user to the dictionary
                 users.Add(username, password);
                 bookmarkIDs.Add(username, new List<int>());
-                SaveUsers(users); // Save the updated users to the file
+                SaveUsersList(users); // Save the updated users to the file
                 MessageBox.Show("User registered successfully.", "Registration Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }

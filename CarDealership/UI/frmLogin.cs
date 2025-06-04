@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CarDealership.Business_MiddleLayer_;
 
 namespace CarDealership
 {
@@ -22,7 +23,6 @@ namespace CarDealership
 
         private void btnGuest_Click(object sender, EventArgs e)
         {
-            UsersDB.CurrentUser = "Guest"; // Set the current user to Guest
             frmCarDealership mainForm = new frmCarDealership(); // Create a new instance of the main form
             mainForm.loginForm = this;
             mainForm.Show(); // Show the main form
@@ -49,9 +49,9 @@ namespace CarDealership
                 return; // Exit the method
             }
 
-            if (UsersDB.AuthenticateUser(username, password))
+            if (User.Authenticate(username, password))
             {
-                MessageBox.Show($"Welcome, {UsersDB.CurrentUser}!"); // Show welcome message
+                MessageBox.Show($"Welcome, {User.Username}!"); // Show welcome message
                 frmCarDealership mainForm = new frmCarDealership();
                 mainForm.loginForm = this;
                 mainForm.Show(); // Show the main form
