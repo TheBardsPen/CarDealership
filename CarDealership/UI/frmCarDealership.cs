@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ValidationLibrary;
 using System.Drawing;
+using CarDealership.UI;
 
 namespace CarDealership
 {
@@ -139,6 +140,20 @@ namespace CarDealership
 
         #endregion
 
+        #region ListView
+
+        private void lvListings_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvListings.SelectedItems != null)
+            {
+                frmListing frm = new frmListing((Car)lvListings.SelectedItems[0].Tag);
+
+                frm.ShowDialog();
+            }
+        }
+
+        #endregion
+
         #region MenuStrip
 
         private void msiLogout_Click(object sender, EventArgs e)
@@ -195,6 +210,13 @@ namespace CarDealership
             frmProfile profileForm = new frmProfile();
 
             profileForm.ShowDialog();
+
+            if (profileForm.DialogResult == DialogResult.Abort)
+            {
+                loginForm.ClearPassword();
+                loginForm.Show();
+                this.Close();
+            }
         }
 
         #endregion
@@ -449,6 +471,5 @@ namespace CarDealership
         }
 
         #endregion Methods
-
     }
 }

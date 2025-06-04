@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarDealership.Interfaces;
+using CarDealership.UI;
 
 namespace CarDealership
 {
@@ -22,6 +23,36 @@ namespace CarDealership
         {
             lblUsername.Text = UsersDB.CurrentUser;
 
+            RefreshListings();
+
+            RefreshBookmarks();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult firstConfrim = MessageBox.Show(
+                                                    "Are you sure you wish to delete your user account?", "Delete Account",
+                                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (firstConfrim == DialogResult.Yes)
+            {
+                DialogResult secondConfirm = MessageBox.Show(
+                                                    "This action is irreversible. You will lose all active listings and bookmarks.", "Delete Account",
+                                                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (secondConfirm == DialogResult.OK)
+                    DeleteAccount();
+            }
+                
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void RefreshListings()
+        {
             lvListings.Items.Clear();
 
             var carsSnapshot = frmCarDealership.cars.ToList(); // Call first to use LINQ on List<T>
@@ -42,8 +73,13 @@ namespace CarDealership
                 lvi.SubItems.Add(c.DateAdded.ToShortDateString());
                 lvListings.Items.Add(lvi);
             }
+        }
 
+        private void RefreshBookmarks()
+        {
             lvBookmarks.Items.Clear();
+
+            var carsSnapshot = frmCarDealership.cars.ToList(); // Call first to use LINQ on List<T>
 
             var bookmarks = carsSnapshot
                                 .Where(c => UsersDB.UserBookmarkIDs.Contains(c.CarID))
@@ -59,23 +95,51 @@ namespace CarDealership
                 lvi.SubItems.Add(c.Color);
                 lvi.SubItems.Add(c.Price.ToString("c"));
                 lvi.SubItems.Add(c.DateAdded.ToShortDateString());
-                lvListings.Items.Add(lvi);
+                lvBookmarks.Items.Add(lvi);
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void DeleteAccount()
         {
+            var carsSnapshot = frmCarDealership.cars.ToList(); // Call first to use LINQ on List<T>
 
-        }
+            var listings = carsSnapshot
+                                .Where(c => c.PostedBy == UsersDB.CurrentUser && c.IsSold == false);
 
-        private void btnAddCar_Click(object sender, EventArgs e)
-        {
+            foreach (var listing in listings)
+            {
+                frmCarDealership.cars.Remove(listing);
+            }
 
-        }
+            frmCarDealership.cars.Save();
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
+            UsersDB.users.Remove(UsersDB.CurrentUser);
+            UsersDB.SaveUsers(UsersDB.users);
+
+            // Using "Abort" to prevent accidental ok, yes, no, etc.
+            this.DialogResult = DialogResult.Abort;
+
             this.Close();
+        }
+
+        private void lvListings_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvListings.SelectedItems != null)
+            {
+                frmListing frm  = new frmListing((Car)lvListings.SelectedItems[0].Tag);
+
+                frm.ShowDialog();
+            }
+        }
+
+        private void lvBookmarks_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvListings.SelectedItems != null)
+            {
+                frmListing frm = new frmListing((Car)lvListings.SelectedItems[0].Tag);
+
+                frm.ShowDialog();
+            }
         }
     }
 }

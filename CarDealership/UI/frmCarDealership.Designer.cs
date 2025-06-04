@@ -221,6 +221,7 @@
             this.lvListings.TabIndex = 12;
             this.lvListings.UseCompatibleStateImageBehavior = false;
             this.lvListings.View = System.Windows.Forms.View.Details;
+            this.lvListings.DoubleClick += new System.EventHandler(this.lvListings_DoubleClick);
             // 
             // clmMake
             // 

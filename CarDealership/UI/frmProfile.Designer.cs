@@ -29,12 +29,10 @@
         private void InitializeComponent()
         {
             this.lblUsername = new System.Windows.Forms.Label();
-            this.btnAddCar = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Label();
             this.tabsProfile = new System.Windows.Forms.TabControl();
             this.tabListings = new System.Windows.Forms.TabPage();
-            this.tabBookmarks = new System.Windows.Forms.TabPage();
             this.lvListings = new System.Windows.Forms.ListView();
             this.clmMake = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmModel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,6 +40,7 @@
             this.clmColor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabBookmarks = new System.Windows.Forms.TabPage();
             this.lvBookmarks = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -64,16 +63,6 @@
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "{username}";
             // 
-            // btnAddCar
-            // 
-            this.btnAddCar.Location = new System.Drawing.Point(12, 244);
-            this.btnAddCar.Name = "btnAddCar";
-            this.btnAddCar.Size = new System.Drawing.Size(75, 23);
-            this.btnAddCar.TabIndex = 2;
-            this.btnAddCar.Text = "Add Car";
-            this.btnAddCar.UseVisualStyleBackColor = true;
-            this.btnAddCar.Click += new System.EventHandler(this.btnAddCar_Click);
-            // 
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -90,7 +79,7 @@
             this.btnDelete.AutoSize = true;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Red;
-            this.btnDelete.Location = new System.Drawing.Point(424, 22);
+            this.btnDelete.Location = new System.Drawing.Point(16, 249);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(81, 13);
             this.btnDelete.TabIndex = 5;
@@ -118,17 +107,6 @@
             this.tabListings.Text = "Listings";
             this.tabListings.UseVisualStyleBackColor = true;
             // 
-            // tabBookmarks
-            // 
-            this.tabBookmarks.Controls.Add(this.lvBookmarks);
-            this.tabBookmarks.Location = new System.Drawing.Point(4, 22);
-            this.tabBookmarks.Name = "tabBookmarks";
-            this.tabBookmarks.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBookmarks.Size = new System.Drawing.Size(485, 158);
-            this.tabBookmarks.TabIndex = 1;
-            this.tabBookmarks.Text = "Bookmarks";
-            this.tabBookmarks.UseVisualStyleBackColor = true;
-            // 
             // lvListings
             // 
             this.lvListings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -147,6 +125,7 @@
             this.lvListings.TabIndex = 13;
             this.lvListings.UseCompatibleStateImageBehavior = false;
             this.lvListings.View = System.Windows.Forms.View.Details;
+            this.lvListings.DoubleClick += new System.EventHandler(this.lvListings_DoubleClick);
             // 
             // clmMake
             // 
@@ -182,6 +161,17 @@
             this.clmDate.Text = "Date Added";
             this.clmDate.Width = 115;
             // 
+            // tabBookmarks
+            // 
+            this.tabBookmarks.Controls.Add(this.lvBookmarks);
+            this.tabBookmarks.Location = new System.Drawing.Point(4, 22);
+            this.tabBookmarks.Name = "tabBookmarks";
+            this.tabBookmarks.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBookmarks.Size = new System.Drawing.Size(485, 158);
+            this.tabBookmarks.TabIndex = 1;
+            this.tabBookmarks.Text = "Bookmarks";
+            this.tabBookmarks.UseVisualStyleBackColor = true;
+            // 
             // lvBookmarks
             // 
             this.lvBookmarks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -200,6 +190,7 @@
             this.lvBookmarks.TabIndex = 14;
             this.lvBookmarks.UseCompatibleStateImageBehavior = false;
             this.lvBookmarks.View = System.Windows.Forms.View.Details;
+            this.lvBookmarks.DoubleClick += new System.EventHandler(this.lvBookmarks_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -244,7 +235,6 @@
             this.Controls.Add(this.tabsProfile);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnAddCar);
             this.Controls.Add(this.lblUsername);
             this.Name = "frmProfile";
             this.Text = "Profile";
@@ -260,7 +250,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.Button btnAddCar;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label btnDelete;
         private System.Windows.Forms.TabControl tabsProfile;
