@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Business%28MiddleLayer%29\Car.cs" />
     <Compile Include="Business%28MiddleLayer%29\CarList.cs" />
+    <Compile Include="Business%28MiddleLayer%29\User.cs" />
     <Compile Include="Database%28BackEnd%29\CarsDB.cs" />
     <Compile Include="Business%28MiddleLayer%29\Dodge.cs" />
     <Compile Include="Business%28MiddleLayer%29\Ford.cs" />

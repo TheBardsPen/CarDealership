@@ -268,13 +268,6 @@ namespace CarDealership
             }
         }
 
-        private static List<int> GetListingIDs()
-        {
-            List<int> ids = bookmarkIDs[CurrentUser];
-
-            return ids;
-        }
-
         public static void Logout()
         {
             CurrentUser = string.Empty; // Clear the current user
