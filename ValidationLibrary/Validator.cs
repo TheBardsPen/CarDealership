@@ -81,6 +81,28 @@ namespace ValidationLibrary
 
         #endregion
 
+        #region Rich Text Box
+
+        /// <summary>
+        /// Used to verify a textbox is not empty.
+        /// </summary>
+        /// <param name="name">The name of the text field</param>
+        /// <param name="box">The textbox that is selected</param>
+        /// <returns>True if textbox is not empty, false and an error message if it is empty.</returns>
+        public static bool IsRichTextboxString(string name, RichTextBox box)
+        {
+            if (box.Text == "")
+            {
+                MessageBox.Show(name + requiredString, "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                box.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        #endregion
+
         #region Combo Box
 
         /// <summary>

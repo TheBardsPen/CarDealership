@@ -9,7 +9,7 @@ namespace CarDealership.Interfaces
 {
     public interface ICar : IStorable, IDisplayable, ICloneable, IComparable<ICar>
     {
-          // Set public fields as read/write
+        // Set public fields as read/write
         string Make { get; set; }
         string Model { get; set; }
         string Color { get; set; }
@@ -19,5 +19,6 @@ namespace CarDealership.Interfaces
         string PostedBy { get; set; }
         bool IsSold { get; set; }
         int CarID { get; set; }
+        List<string[]> Comments { get; set;}
     }
 }

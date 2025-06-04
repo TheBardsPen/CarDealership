@@ -1,5 +1,7 @@
-﻿using CarDealership.Interfaces;
+﻿using CarDealership.Business_MiddleLayer_;
+using CarDealership.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
 namespace CarDealership
@@ -16,9 +18,10 @@ namespace CarDealership
         public string PostedBy { get; set; } // Added PostedBy to track who posted the car
         public bool IsSold { get; set; }
         public int CarID { get; set; }
+        public List<string[]> Comments { get; set; }
 
         // Build constructor
-        public Car(string make, string model, string color, int year, int price, DateTime dateAdded, string postedBy, bool isSold, int carID)
+        public Car(string make, string model, string color, int year, int price, DateTime dateAdded, string postedBy, bool isSold, int carID, List<string[]> comments)
         {
             Make = make;
             Model = model;
@@ -29,6 +32,7 @@ namespace CarDealership
             PostedBy = postedBy;
             IsSold = isSold;
             CarID = carID;
+            Comments = comments;
         }
 
         public abstract object Clone();
@@ -41,5 +45,28 @@ namespace CarDealership
         public abstract string ToDataString(string sep);
 
         public abstract string ModelSpecificString();
+
+        public void AddComment(string comment)
+        {
+            Comments.Insert(0, new string[] {"Anonymous", $"{DateTime.Now}", comment});
+        }
+
+        public void AddComment(string comment, string user)
+        {
+            Comments.Insert(0, new string[] { user, $"{DateTime.Now}", comment });
+        }
+
+        public void AddComment(string comment, string user, DateTime timePosted)
+        {
+            Comments.Insert(0, new string[] { user, timePosted.ToString(), comment });
+        }
+
+        public string GetCommentLine(string[] comment)
+        {
+            string c = $"<{comment[0]}> - {comment[1]}\n" +
+                        $"{comment[2]}";
+
+            return c;
+        }
     }
 }

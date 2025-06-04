@@ -17,8 +17,8 @@ namespace CarDealership
 
         // Set VersionID and last compatible version to eliminate restructure issues on loading
         // This could be eliminated with a server based database instead of local
-        private const int VersionID = 6;
-        private const int LastCompatibleVersionID = 6;
+        private const int VersionID = 7;
+        private const int LastCompatibleVersionID = 7;
 
         /// <summary>
         /// Creates a CarList that contains everything from the 'Cars.txt' file.
@@ -78,7 +78,8 @@ namespace CarDealership
                                         DateTime.Parse(columns[6]),
                                         columns[7],
                                         Convert.ToBoolean(columns[8]),
-                                        Convert.ToInt32(columns[9]));
+                                        Convert.ToInt32(columns[9]),
+                                        new List<string[]>());
                                     break;
 
                                 case "Ford":
@@ -92,7 +93,8 @@ namespace CarDealership
                                         DateTime.Parse(columns[6]),
                                         columns[7],
                                         Convert.ToBoolean(columns[8]),
-                                        Convert.ToInt32(columns[9]));
+                                        Convert.ToInt32(columns[9]),
+                                        new List<string[]>());
                                     break;
 
                                 case "Toyota":
@@ -106,7 +108,8 @@ namespace CarDealership
                                         DateTime.Parse(columns[6]),
                                         columns[7],
                                         Convert.ToBoolean(columns[8]),
-                                        Convert.ToInt32(columns[9]));
+                                        Convert.ToInt32(columns[9]),
+                                        new List<string[]>());
                                     break;
 
                                 case "Nissan":
@@ -120,12 +123,23 @@ namespace CarDealership
                                         DateTime.Parse(columns[6]),
                                         columns[7],
                                         Convert.ToBoolean(columns[8]),
-                                        Convert.ToInt32(columns[9]));
+                                        Convert.ToInt32(columns[9]),
+                                        new List<string[]>());
                                     break;
 
                                 default:
                                     continue;
                             }
+                            // Set comment list
+                            List<string[]> comments = new List<string[]>();
+
+                            for (int i = 10; i < columns.Length - 1; i++)
+                            {
+                                string[] comment = columns[i].Split('_');
+                                comments.Add(comment);
+                            }
+                            c.Comments = comments;
+
                             cars.Add((T)c);
                             nextID = cars[0].CarID + 1; // Return latest (highest) car to set NextID
                         }
@@ -159,6 +173,20 @@ namespace CarDealership
                 MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
+        }
+
+        private List<string[]> CreateCommentList(string[] strings)
+        {
+            List<string[]> commentList = new List<string[]>();
+
+            foreach (string str in strings)
+            {
+                string[] comment = str.Split('_');
+
+                commentList.Add(new string[] { comment[0], comment[1], comment[2] });
+            }
+
+            return commentList;
         }
 
         /// <summary>

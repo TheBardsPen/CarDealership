@@ -179,15 +179,16 @@
             this.btnPost.TabIndex = 3;
             this.btnPost.Text = ">";
             this.btnPost.UseVisualStyleBackColor = true;
+            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
             // 
             // txtPost
             // 
-            this.txtPost.Enabled = false;
             this.txtPost.Location = new System.Drawing.Point(211, 17);
             this.txtPost.Name = "txtPost";
             this.txtPost.Size = new System.Drawing.Size(270, 47);
             this.txtPost.TabIndex = 4;
             this.txtPost.Text = "";
+            this.txtPost.TextChanged += new System.EventHandler(this.txtPost_TextChanged);
             // 
             // btnDelete
             // 

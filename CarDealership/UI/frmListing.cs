@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarDealership.Business_MiddleLayer_;
+using ValidationLibrary;
 
 namespace CarDealership.UI
 {
@@ -68,20 +69,21 @@ namespace CarDealership.UI
                 MarkSold();
             }
 
+            UpdateComments();
+
             if (listing.PostedBy == User.Username)
             {
                 btnDelete.Visible = true;
                 btnSold.Visible = true;
             }
 
-            if (User.Username != "Guest")
+            if (User.IsLoggedIn)
             {
                 cbBookmark.Visible = true;
-            }
-
-            if (User.BookmarkIDs.Contains(listing.CarID))
-            {
-                cbBookmark.Checked = true;
+                if (User.BookmarkIDs.Contains(listing.CarID))
+                {
+                    cbBookmark.Checked = true;
+                }
             }
         }
 
@@ -109,7 +111,12 @@ namespace CarDealership.UI
 
         private void UpdateComments()
         {
+            txtComments.Clear();
 
+            foreach (string[] a in listing.Comments)
+            {
+                txtComments.Text += listing.GetCommentLine(a) + "\n\n";
+            }
         }
 
         private void btnSold_Click(object sender, EventArgs e)
@@ -136,6 +143,28 @@ namespace CarDealership.UI
                 Console.WriteLine("REMOVED BOOKMARK");
                 Console.WriteLine($"Current bookmark count: '{User.BookmarkIDs.Count}'");
             }
+        }
+
+        private void txtPost_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPost.Text != "")
+                btnPost.Enabled = true;
+            else
+                btnPost.Enabled = false;
+        }
+
+        private void btnPost_Click(object sender, EventArgs e)
+        {
+            if (Validator.IsRichTextboxString("Comment", txtPost))
+            {
+                if (User.IsLoggedIn)
+                    listing.AddComment(txtPost.Text, User.Username, DateTime.Now);
+                else
+                    listing.AddComment(txtPost.Text);
+            }
+
+            frmCarDealership.cars.Save();
+            UpdateComments();
         }
     }
 }
