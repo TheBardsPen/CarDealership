@@ -40,5 +40,12 @@ namespace CarDealership
         {
             return new Nissan(Make, Model, Color, Year, Price, Transmission, DateAdded, PostedBy, IsSold, CarID);
         }
+
+        public override string ModelSpecificString()
+        {
+            string value = Transmission;
+
+            return value;
+        }
     }
 }

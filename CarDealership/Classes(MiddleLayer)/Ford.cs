@@ -41,5 +41,12 @@ namespace CarDealership
         {
             return new Ford(Make, Model, Color, Year, Price, Trim, DateAdded, PostedBy, IsSold, CarID);
         }
+
+        public override string ModelSpecificString()
+        {
+            string value = Trim;
+
+            return value;
+        }
     }
 }

@@ -41,5 +41,12 @@ namespace CarDealership
         {
             return new Dodge(Make, Model, Color, Year, Price, Engine, DateAdded, PostedBy, IsSold, CarID);
         }
+
+        public override string ModelSpecificString()
+        {
+            string value = Engine;
+
+            return value;
+        }
     }
 }

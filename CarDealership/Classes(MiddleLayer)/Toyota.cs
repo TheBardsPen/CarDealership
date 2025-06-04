@@ -40,5 +40,12 @@ namespace CarDealership
         {
             return new Toyota(Make, Model, Color, Year, Price, Mileage, DateAdded, PostedBy, IsSold, CarID);
         }
+
+        public override string ModelSpecificString()
+        {
+            string value = Mileage.ToString("n0");
+
+            return value;
+        }
     }
 }

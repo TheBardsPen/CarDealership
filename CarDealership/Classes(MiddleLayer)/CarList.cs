@@ -38,6 +38,16 @@ namespace CarDealership
             cars.RemoveAt(index);
         }
 
+        public void MarkSold(T car)
+        {
+            car.IsSold = true;
+        }
+
+        public void MarkUnsold(T car)
+        {
+            car.IsSold = false;
+        }
+
         public IEnumerator<T> GetEnumerator()
         {
             foreach (T car in cars)

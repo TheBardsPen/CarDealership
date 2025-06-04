@@ -39,5 +39,7 @@ namespace CarDealership
         public abstract string GetDisplayText(string sep = "\n");
 
         public abstract string ToDataString(string sep);
+
+        public abstract string ModelSpecificString();
     }
 }
