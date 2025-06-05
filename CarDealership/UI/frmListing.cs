@@ -131,6 +131,7 @@ namespace CarDealership.UI
         {
             if (cbBookmark.Checked == true)
             {
+                if (!User.BookmarkIDs.Contains(listing.CarID))
                 User.BookmarkIDs.Add(listing.CarID);
                 User.Save();
                 Console.WriteLine("ADDED BOOKMARK");

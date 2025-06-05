@@ -161,6 +161,7 @@ namespace CarDealership
         {
             loginForm.ClearPassword();
             loginForm.Show();
+            User.Logout();
             this.Close();
         }
 
