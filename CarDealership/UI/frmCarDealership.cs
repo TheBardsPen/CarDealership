@@ -314,7 +314,7 @@ namespace CarDealership
             var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
 
             var filteredList = carsSnapshot
-                                .Where(c => c.Make == make)
+                                .Where(c => c.Make == make && c.IsSold == false)
                                 .OrderByDescending(c => c.DateAdded);
 
             foreach (ICar c in filteredList)
@@ -336,7 +336,7 @@ namespace CarDealership
             var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
 
             var filteredList = carsSnapshot
-                                .Where(c => c.Color == color)
+                                .Where(c => c.Color == color && c.IsSold == false)
                                 .OrderByDescending(c => c.DateAdded);
 
             foreach (var c in filteredList)
@@ -358,7 +358,9 @@ namespace CarDealership
             var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
 
             var filteredList = carsSnapshot
-                                .Where(c => c.Year <= DateTime.Now.Year - minAge && c.Year >= DateTime.Now.Year - maxAge)
+                                .Where(c => c.Year <= DateTime.Now.Year - minAge &&
+                                        c.Year >= DateTime.Now.Year - maxAge &&
+                                        c.IsSold == false)
                                 .OrderByDescending(c => c.DateAdded);
 
             foreach (var c in filteredList)
@@ -380,7 +382,7 @@ namespace CarDealership
             var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
 
             var filteredList = carsSnapshot
-                                .Where(c => c.Price > minPrice && c.Price < maxPrice)
+                                .Where(c => c.Price > minPrice && c.Price < maxPrice && c.IsSold == false)
                                 .OrderByDescending(c => c.DateAdded);
 
             foreach (var c in filteredList)
@@ -455,6 +457,7 @@ namespace CarDealership
             var carsSnapshot = cars.ToList(); // Call first to use LINQ on List<T>
 
             var filteredList = carsSnapshot
+                                .Where(c => c.IsSold == false)
                                 .OrderByDescending(c => c.DateAdded);
 
             foreach (ICar c in filteredList)
