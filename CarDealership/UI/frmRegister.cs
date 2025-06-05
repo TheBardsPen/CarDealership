@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CarDealership.Business_MiddleLayer_;
 
 namespace CarDealership
 {
@@ -50,7 +51,7 @@ namespace CarDealership
                 return; // Exit the method
             }
 
-            bool success = UsersDB.RegisterUser(username, password); // Register the user
+            bool success = User.Register(username, password); // Register the user
 
             // Check if the registration was successful
             if (success)

@@ -10,8 +10,15 @@ namespace CarDealership
     {
         // Set directory and filename
         private const string dir = @"C:\C#\Files\AngelMay_ShaneHubbard_CalvinBorgaard\";
-
         private const string file = "Cars.txt";
+
+        // Start counter at 0 for CarID
+        public static int nextID { get; set; } = 0;
+
+        // Set VersionID and last compatible version to eliminate restructure issues on loading
+        // This could be eliminated with a server based database instead of local
+        private const int VersionID = 7;
+        private const int LastCompatibleVersionID = 7;
 
         /// <summary>
         /// Creates a CarList that contains everything from the 'Cars.txt' file.
@@ -37,13 +44,23 @@ namespace CarDealership
                     {
                         List<T> cars = new List<T>();
 
+                        // Check the version for version control
+                        string versionRow = text.ReadLine();
+                        string[] versionColumns = versionRow.Split(':');
+
+                        if (versionColumns[0] != "Version" ||
+                            Convert.ToInt32(versionColumns[1]) < LastCompatibleVersionID)
+                        {
+                            return OutDatedList();
+                        }
+
                         while (text.Peek() != -1)
                         {
                             // Break down file into rows and columns
                             string row = text.ReadLine();
                             string[] columns = row.Split('|');
 
-                            if (columns.Length < 8)
+                            if (columns.Length < 10)
                                 continue;
 
                             // Switch to pull what Make (subclass) to create
@@ -59,7 +76,10 @@ namespace CarDealership
                                         Convert.ToInt32(columns[4]),
                                         columns[5],
                                         DateTime.Parse(columns[6]),
-                                        columns[7]);
+                                        columns[7],
+                                        Convert.ToBoolean(columns[8]),
+                                        Convert.ToInt32(columns[9]),
+                                        new List<string[]>());
                                     break;
 
                                 case "Ford":
@@ -71,7 +91,10 @@ namespace CarDealership
                                         Convert.ToInt32(columns[4]),
                                         columns[5],
                                         DateTime.Parse(columns[6]),
-                                        columns[7]);
+                                        columns[7],
+                                        Convert.ToBoolean(columns[8]),
+                                        Convert.ToInt32(columns[9]),
+                                        new List<string[]>());
                                     break;
 
                                 case "Toyota":
@@ -83,7 +106,10 @@ namespace CarDealership
                                         Convert.ToInt32(columns[4]),
                                         Convert.ToInt32(columns[5]),
                                         DateTime.Parse(columns[6]),
-                                        columns[7]);
+                                        columns[7],
+                                        Convert.ToBoolean(columns[8]),
+                                        Convert.ToInt32(columns[9]),
+                                        new List<string[]>());
                                     break;
 
                                 case "Nissan":
@@ -95,14 +121,29 @@ namespace CarDealership
                                         Convert.ToInt32(columns[4]),
                                         columns[5],
                                         DateTime.Parse(columns[6]),
-                                        columns[7]);
+                                        columns[7],
+                                        Convert.ToBoolean(columns[8]),
+                                        Convert.ToInt32(columns[9]),
+                                        new List<string[]>());
                                     break;
 
                                 default:
                                     continue;
                             }
+                            // Set comment list
+                            List<string[]> comments = new List<string[]>();
+
+                            for (int i = 10; i < columns.Length - 1; i++)
+                            {
+                                string[] comment = columns[i].Split('_');
+                                comments.Add(comment);
+                            }
+                            c.Comments = comments;
+
                             cars.Add((T)c);
+                            nextID = cars[0].CarID + 1; // Return latest (highest) car to set NextID
                         }
+                        
                         return cars;
                     }
                 }
@@ -134,6 +175,20 @@ namespace CarDealership
             }
         }
 
+        private List<string[]> CreateCommentList(string[] strings)
+        {
+            List<string[]> commentList = new List<string[]>();
+
+            foreach (string str in strings)
+            {
+                string[] comment = str.Split('_');
+
+                commentList.Add(new string[] { comment[0], comment[1], comment[2] });
+            }
+
+            return commentList;
+        }
+
         /// <summary>
         /// Writes the CarList to a .txt file.
         /// </summary>
@@ -149,6 +204,9 @@ namespace CarDealership
                 }
                 string filePath = Path.Combine(dir, file); // combine directory and file
                 using (StreamWriter text = new StreamWriter(new FileStream(filePath, FileMode.Create, FileAccess.Write)))
+                {
+                    // Write version for compatible loading
+                    text.WriteLine($"Version:{VersionID}");
 
                     // Write each property of each car to stream
                     // Should be in same order as constructor for ease of loading
@@ -157,6 +215,7 @@ namespace CarDealership
                     {
                         text.WriteLine(car.ToDataString("|")); // Write the data string to the file
                     }
+                } 
             }
             catch (IOException ex)
             {
@@ -170,6 +229,21 @@ namespace CarDealership
                 MessageBox.Show("Unexpected error" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
+        }
+
+        /// <summary>
+        /// This method returns a new list if the application version is incompatible with the version of the save file.
+        /// </summary>
+        private static List<T> OutDatedList()
+        {
+            MessageBox.Show("Your local data is not compatible with this version of the application. " +
+                "We appologize for the inconvenience.\n\n" +
+                "Creating new file...",
+                "Version Out of Date",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+
+            return new List<T>();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace CarDealership
     {
 
         List<T> cars;
+
         public int Count => cars.Count;
 
         public CarList()
@@ -35,6 +36,16 @@ namespace CarDealership
         public void RemoveAt(int index)
         {
             cars.RemoveAt(index);
+        }
+
+        public void MarkSold(T car)
+        {
+            car.IsSold = true;
+        }
+
+        public void MarkUnsold(T car)
+        {
+            car.IsSold = false;
         }
 
         public IEnumerator<T> GetEnumerator()

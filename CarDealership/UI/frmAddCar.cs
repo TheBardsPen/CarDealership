@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
+using CarDealership.Business_MiddleLayer_;
 using CarDealership.Interfaces;
 using ValidationLibrary;
 
@@ -94,20 +97,24 @@ namespace CarDealership
             switch (make)
             {
                 case "Ford":
-                    car = new Ford(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser);
+                    car = new Ford(make, model, color, year, price, modelSpecific, dateAdded, User.Username, false, CarsDB<ICar>.nextID, new List<string[]>());
+                    CarsDB<ICar>.nextID++;
                     break;
 
                 case "Dodge":
-                    car = new Dodge(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser);
+                    car = new Dodge(make, model, color, year, price, modelSpecific, dateAdded, User.Username, false, CarsDB<ICar>.nextID, new List<string[]>());
+                    CarsDB<ICar>.nextID++;
                     break;
 
                 case "Nissan":
-                    car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded, UsersDB.CurrentUser);
+                    car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded, User.Username, false, CarsDB<ICar>.nextID, new List<string[]>());
+                    CarsDB<ICar>.nextID++;
                     break;
 
                 case "Toyota":
                     int mileage = int.Parse(modelSpecific); // Assuming mileage is an integer after validation
-                    car = new Toyota(make, model, color, year, price, mileage, dateAdded, UsersDB.CurrentUser);
+                    car = new Toyota(make, model, color, year, price, mileage, dateAdded, User.Username, false, CarsDB<ICar>.nextID, new List<string[]>());
+                    CarsDB<ICar>.nextID++;
                     break;
 
                 default:
