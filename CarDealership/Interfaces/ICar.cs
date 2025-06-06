@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarDealership.Interfaces
 {
@@ -19,6 +15,6 @@ namespace CarDealership.Interfaces
         string PostedBy { get; set; }
         bool IsSold { get; set; }
         int CarID { get; set; }
-        List<string[]> Comments { get; set;}
+        List<string[]> Comments { get; set; }
     }
 }

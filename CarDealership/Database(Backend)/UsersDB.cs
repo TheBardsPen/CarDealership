@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using CarDealership.Business_MiddleLayer_;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CarDealership
 {
@@ -74,7 +73,7 @@ namespace CarDealership
                             string line = reader.ReadLine();
                             string[] parts = line.Split('|');
 
-                            
+
 
                             // Check if the line has exactly two parts (username and password)
                             if (parts.Length == 2 &&
@@ -243,7 +242,7 @@ namespace CarDealership
                     }
                 }
             }
-            
+
             return false; // Return false if authentication fails
         }
 
@@ -301,7 +300,7 @@ namespace CarDealership
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
 
-            return new Dictionary<string,string>();
+            return new Dictionary<string, string>();
         }
     }
 }
