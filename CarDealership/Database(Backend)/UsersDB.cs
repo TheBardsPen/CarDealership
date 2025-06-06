@@ -31,9 +31,8 @@ namespace CarDealership
         private const int LastCompatibleVersionID = 6;
 
         /// <summary>
-        /// Loads users from the Users.txt file.
+        /// Creates a <c>Dictionary</c> that contains user logins.
         /// </summary>
-
         public static Dictionary<string, string> LoadUsersList()
         {
             try
@@ -130,8 +129,9 @@ namespace CarDealership
         }
 
         /// <summary>
-        /// Saves users to the Users.txt file.
+        /// Save the user logins to a .txt file.
         /// </summary>
+        /// <param name="users">The <c>Dictionary</c> of user logins</param>
         public static void SaveUsersList(Dictionary<string, string> users)
         {
             try
@@ -193,6 +193,11 @@ namespace CarDealership
             }
         }
 
+        /// <summary>
+        /// Use this to save the current user and their bookmarks to the UserDB
+        /// </summary>
+        /// <param name="username">The current user</param>
+        /// <param name="_bookmarkIDs">The current user's bookmarkIDs</param>
         public static void SaveSingleUser(string username, List<int> _bookmarkIDs)
         {
             bookmarkIDs[username] = _bookmarkIDs;
@@ -202,7 +207,10 @@ namespace CarDealership
 
         /// <summary>
         /// Authenticates the user by checking if the username and password match.
-        /// </summary>>
+        /// </summary>
+        /// <param name="username">Username to check</param>
+        /// <param name="password">Password to match against username</param>
+        /// <returns>True if password matches the login name's stored password. False if not</returns>
         public static bool AuthenticateUser(string username, string password)
         {
             string lowerUsername = username.ToLower(); // Create a lower case version of user input            
@@ -242,6 +250,9 @@ namespace CarDealership
         /// <summary>
         /// Registers a new user if the username is not already taken.
         /// </summary>
+        /// <param name="username">Username to register</param>
+        /// <param name="password">Password to save</param>
+        /// <returns>True if successful. False and an error message if not</returns>
         public static bool RegisterUser(string username, string password)
         {
             string lowerUsername = username.ToLower(); // Create a lower case version of user input
@@ -273,15 +284,14 @@ namespace CarDealership
             }
         }
 
+        /// <summary>
+        /// Removes the stored username from UserDB
+        /// </summary>
         public static void Logout()
         {
             CurrentUser = string.Empty; // Clear the current user
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         private static Dictionary<string, string> OutDatedDictionary()
         {
             MessageBox.Show("Your local data is not compatible with this version of the application. " +
