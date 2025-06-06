@@ -1,8 +1,6 @@
-﻿using CarDealership.Business_MiddleLayer_;
-using CarDealership.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using CarDealership.Interfaces;
 
 namespace CarDealership
 {
@@ -15,7 +13,7 @@ namespace CarDealership
         public int Year { get; set; }
         public int Price { get; set; }
         public DateTime DateAdded { get; set; }
-        public string PostedBy { get; set; } // Added PostedBy to track who posted the car
+        public string PostedBy { get; set; }
         public bool IsSold { get; set; }
         public int CarID { get; set; }
         public List<string[]> Comments { get; set; }
@@ -37,30 +35,49 @@ namespace CarDealership
 
         public abstract object Clone();
 
-        public int CompareTo(ICar other) =>
-            Price.CompareTo(other.Price);
-
         public abstract string GetDisplayText(string sep = "\n");
 
         public abstract string ToDataString(string sep);
 
+        /// <summary>
+        /// A <c>string</c> representation of the model specific properties.
+        /// </summary>
         public abstract string ModelSpecificString();
 
+        /// <summary>
+        /// Creates a single <c>string[]</c> for comment storage.
+        /// </summary>
+        /// <param name="comment">The text of the comment</param>
         public void AddComment(string comment)
         {
-            Comments.Insert(0, new string[] {"Anonymous", $"{DateTime.Now}", comment});
+            Comments.Insert(0, new string[] { "Anonymous", $"{DateTime.Now}", comment });
         }
 
+        /// <summary>
+        /// Creates a single <c>string[]</c> for comment storage.
+        /// </summary>
+        /// <param name="comment">The text of the comment</param>
+        /// <param name="user">The user that posted the comment</param>
         public void AddComment(string comment, string user)
         {
             Comments.Insert(0, new string[] { user, $"{DateTime.Now}", comment });
         }
 
+        /// <summary>
+        /// Creates a single <c>string[]</c> for comment storage.
+        /// </summary>
+        /// <param name="comment">The text of the comment</param>
+        /// <param name="user">The user that posted the comment</param>
+        /// <param name="timePosted">The <c>DateTime</c> the comment was posted</param>
         public void AddComment(string comment, string user, DateTime timePosted)
         {
             Comments.Insert(0, new string[] { user, timePosted.ToString(), comment });
         }
 
+        /// <summary>
+        /// Writes a saved <c>string[]</c> to a single <c>string</c> for comment display.
+        /// </summary>
+        /// <param name="comment">The stored <c>string[]</c> to display</param>
         public string GetCommentLine(string[] comment)
         {
             string c = $"<{comment[0]}> - {comment[1]}\n" +

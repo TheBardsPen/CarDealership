@@ -14,7 +14,7 @@ namespace CarDealership
 
         public CarList()
         {
-            cars = new List<T>(); 
+            cars = new List<T>();
         }
 
         // Overwriting the add method of List<T> to 
