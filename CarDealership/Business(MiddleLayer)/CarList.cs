@@ -10,10 +10,11 @@ namespace CarDealership
         List<T> cars;
 
         public int Count => cars.Count;
+        public int NextID = 0;
 
         public CarList()
         {
-            cars = new List<T>(); 
+            cars = new List<T>();
         }
 
         // Overwriting the add method of List<T> to 
@@ -22,6 +23,14 @@ namespace CarDealership
         public void Add(T car)
         {
             cars.Insert(0, car); // Changed
+        }
+
+        public int GetNextID()
+        {
+            CarsDB<ICar>.NextID++;
+            this.NextID = CarsDB<ICar>.NextID;
+
+            return NextID;
         }
 
         public List<T> ToList()

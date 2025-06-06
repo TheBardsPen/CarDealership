@@ -12,16 +12,16 @@ namespace CarDealership
         private const string dir = @"C:\C#\Files\AngelMay_ShaneHubbard_CalvinBorgaard\";
         private const string file = "Cars.txt";
 
-        // Start counter at 0 for CarID
-        public static int nextID { get; set; } = 0;
-
         // Set VersionID and last compatible version to eliminate restructure issues on loading
         // This could be eliminated with a server based database instead of local
         private const int VersionID = 7;
         private const int LastCompatibleVersionID = 7;
 
+        // Start counter at 0 for CarID
+        public static int NextID { get; set; } = 0;
+
         /// <summary>
-        /// Creates a CarList that contains everything from the 'Cars.txt' file.
+        /// Creates a <c>CarList</c> that contains everything from the 'Cars.txt' file.
         /// </summary>
         /// <returns></returns>
         public static List<T> LoadCars()
@@ -34,13 +34,13 @@ namespace CarDealership
                     Directory.CreateDirectory(dir);
                 }
 
-                string filePath = Path.Combine(dir, file); // combine directory and file
+                string filePath = Path.Combine(dir, file);
 
                 // Check if file exists
                 if (File.Exists(filePath))
                 {
                     // Get save file and initialize list
-                    using (StreamReader text = new StreamReader(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read))) // open file for reading
+                    using (StreamReader text = new StreamReader(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Read)))
                     {
                         List<T> cars = new List<T>();
 
@@ -128,8 +128,10 @@ namespace CarDealership
                                     break;
 
                                 default:
+                                    // Not a valid "Car". Move to next iteration
                                     continue;
                             }
+
                             // Set comment list
                             List<string[]> comments = new List<string[]>();
 
@@ -141,56 +143,48 @@ namespace CarDealership
                             c.Comments = comments;
 
                             cars.Add((T)c);
-                            nextID = cars[0].CarID + 1; // Return latest (highest) car to set NextID
+                            NextID = cars[0].CarID + 1; // Return latest (highest) car to set NextID
                         }
-                        
+
                         return cars;
                     }
                 }
-                return new List<T>(); // Return an empty List if File does not exist.
+
+                // Return an empty List if File does not exist.
+                return new List<T>();
             }
             catch (FileNotFoundException)
             {
                 //Handle the specific execptions when file cant be found
-                MessageBox.Show("File not Found. Creating a new file.", "File not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("File not Found. Creating a new file.", "File not Found",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return new List<T>();
             }
             catch (DirectoryNotFoundException ex)
             {
                 // handles cases wjere the specific directory could not be found
-                MessageBox.Show("Directory not found: " + ex.Message, "Directory Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Directory not found: " + ex.Message, "Directory Not Found",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
             catch (IOException ex)
             {
                 // handles general IOexceptions that occur when trying to access the file
-                MessageBox.Show("An error occured while accessing the file: " + ex.Message, "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occured while accessing the file: " + ex.Message, "IO Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
             catch (Exception ex)
             {
                 //catches any unexpected exceptiuons that dont match the previous ones.
-                MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
 
-        private List<string[]> CreateCommentList(string[] strings)
-        {
-            List<string[]> commentList = new List<string[]>();
-
-            foreach (string str in strings)
-            {
-                string[] comment = str.Split('_');
-
-                commentList.Add(new string[] { comment[0], comment[1], comment[2] });
-            }
-
-            return commentList;
-        }
-
         /// <summary>
-        /// Writes the CarList to a .txt file.
+        /// Writes the <c>CarList</c> to a .txt file.
         /// </summary>
         /// <param name="cars">The CarList to save</param>
         public static void SaveCars(List<T> cars)
@@ -198,35 +192,37 @@ namespace CarDealership
             // Extra safety check to ensure directory exists and create it if not
             try
             {
+                // Check if directory exists, if not create it
                 if (!Directory.Exists(dir))
                 {
                     Directory.CreateDirectory(dir);
                 }
-                string filePath = Path.Combine(dir, file); // combine directory and file
+
+                string filePath = Path.Combine(dir, file);
                 using (StreamWriter text = new StreamWriter(new FileStream(filePath, FileMode.Create, FileAccess.Write)))
                 {
                     // Write version for compatible loading
                     text.WriteLine($"Version:{VersionID}");
 
-                    // Write each property of each car to stream
-                    // Should be in same order as constructor for ease of loading
-
+                    // Write the data string to the file
                     foreach (T car in cars)
                     {
-                        text.WriteLine(car.ToDataString("|")); // Write the data string to the file
+                        text.WriteLine(car.ToDataString("|"));
                     }
-                } 
+                }
             }
             catch (IOException ex)
             {
                 // Handle IO exceptions
-                MessageBox.Show("Error saving to file" + ex.Message, "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error saving to file" + ex.Message, "IO Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
             catch (Exception ex)
             {
                 // Handle any unexpected exceptions
-                MessageBox.Show("Unexpected error" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Unexpected error" + ex.Message, "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }

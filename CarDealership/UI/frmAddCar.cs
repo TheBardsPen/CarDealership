@@ -97,24 +97,20 @@ namespace CarDealership
             switch (make)
             {
                 case "Ford":
-                    car = new Ford(make, model, color, year, price, modelSpecific, dateAdded, User.Username, false, CarsDB<ICar>.nextID, new List<string[]>());
-                    CarsDB<ICar>.nextID++;
+                    car = new Ford(make, model, color, year, price, modelSpecific, dateAdded, User.Username, false, frmCarDealership.cars.GetNextID(), new List<string[]>());
                     break;
 
                 case "Dodge":
-                    car = new Dodge(make, model, color, year, price, modelSpecific, dateAdded, User.Username, false, CarsDB<ICar>.nextID, new List<string[]>());
-                    CarsDB<ICar>.nextID++;
+                    car = new Dodge(make, model, color, year, price, modelSpecific, dateAdded, User.Username, false, frmCarDealership.cars.GetNextID(), new List<string[]>());
                     break;
 
                 case "Nissan":
-                    car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded, User.Username, false, CarsDB<ICar>.nextID, new List<string[]>());
-                    CarsDB<ICar>.nextID++;
+                    car = new Nissan(make, model, color, year, price, modelSpecific, dateAdded, User.Username, false, frmCarDealership.cars.GetNextID(), new List<string[]>());
                     break;
 
                 case "Toyota":
                     int mileage = int.Parse(modelSpecific); // Assuming mileage is an integer after validation
-                    car = new Toyota(make, model, color, year, price, mileage, dateAdded, User.Username, false, CarsDB<ICar>.nextID, new List<string[]>());
-                    CarsDB<ICar>.nextID++;
+                    car = new Toyota(make, model, color, year, price, mileage, dateAdded, User.Username, false, frmCarDealership.cars.GetNextID(), new List<string[]>());
                     break;
 
                 default:

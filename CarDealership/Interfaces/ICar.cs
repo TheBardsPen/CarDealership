@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CarDealership.Interfaces
 {
-    public interface ICar : IStorable, IDisplayable, ICloneable, IComparable<ICar>
+    public interface ICar : IStorable, IDisplayable, ICloneable
     {
         // Set public fields as read/write
         string Make { get; set; }
@@ -19,6 +15,6 @@ namespace CarDealership.Interfaces
         string PostedBy { get; set; }
         bool IsSold { get; set; }
         int CarID { get; set; }
-        List<string[]> Comments { get; set;}
+        List<string[]> Comments { get; set; }
     }
 }
