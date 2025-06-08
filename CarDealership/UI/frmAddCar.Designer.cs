@@ -30,6 +30,7 @@ namespace CarDealership
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddCar));
             this.lblMake = new System.Windows.Forms.Label();
             this.cboMake = new System.Windows.Forms.ComboBox();
             this.lblModel = new System.Windows.Forms.Label();
@@ -187,6 +188,7 @@ namespace CarDealership
             this.Controls.Add(this.lblModel);
             this.Controls.Add(this.cboMake);
             this.Controls.Add(this.lblMake);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddCar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Car";

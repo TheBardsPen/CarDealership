@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCarDealership));
             this.cboFilterType = new System.Windows.Forms.ComboBox();
             this.cboFilter = new System.Windows.Forms.ComboBox();
             this.btnExit = new System.Windows.Forms.Button();
@@ -318,10 +319,11 @@
             this.Controls.Add(this.cboFilterType);
             this.Controls.Add(this.btnViewAll);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmCarDealership";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Car Dealership";
+            this.Text = "Car Express";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCarDealership_FormClosed);
             this.Load += new System.EventHandler(this.frmCarDealership_Load);
             this.menuStrip1.ResumeLayout(false);

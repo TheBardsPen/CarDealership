@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -37,7 +38,8 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnGuest = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnShowPassword = new System.Windows.Forms.Button();
+            this.picLock = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picLock)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -74,7 +76,7 @@
             // txbUsername
             // 
             this.txbUsername.Location = new System.Drawing.Point(130, 66);
-            this.txbUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(100, 20);
             this.txbUsername.TabIndex = 3;
@@ -82,7 +84,7 @@
             // txbPassword
             // 
             this.txbPassword.Location = new System.Drawing.Point(130, 104);
-            this.txbPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(100, 20);
             this.txbPassword.TabIndex = 4;
@@ -91,7 +93,7 @@
             // btnRegister
             // 
             this.btnRegister.Location = new System.Drawing.Point(70, 144);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(55, 22);
             this.btnRegister.TabIndex = 5;
@@ -102,7 +104,7 @@
             // btnLogin
             // 
             this.btnLogin.Location = new System.Drawing.Point(174, 144);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(53, 22);
             this.btnLogin.TabIndex = 6;
@@ -112,10 +114,10 @@
             // 
             // btnGuest
             // 
-            this.btnGuest.Location = new System.Drawing.Point(90, 175);
-            this.btnGuest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGuest.Location = new System.Drawing.Point(97, 175);
+            this.btnGuest.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuest.Name = "btnGuest";
-            this.btnGuest.Size = new System.Drawing.Size(124, 27);
+            this.btnGuest.Size = new System.Drawing.Size(117, 27);
             this.btnGuest.TabIndex = 7;
             this.btnGuest.Text = "Continue as Guest";
             this.btnGuest.UseVisualStyleBackColor = true;
@@ -132,16 +134,17 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnShowPassword
+            // picLock
             // 
-            this.btnShowPassword.Location = new System.Drawing.Point(236, 105);
-            this.btnShowPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnShowPassword.Name = "btnShowPassword";
-            this.btnShowPassword.Size = new System.Drawing.Size(42, 21);
-            this.btnShowPassword.TabIndex = 9;
-            this.btnShowPassword.Text = "Show";
-            this.btnShowPassword.UseVisualStyleBackColor = true;
-            this.btnShowPassword.Click += new System.EventHandler(this.btnShowPassword_Click);
+            this.picLock.BackgroundImage = global::CarDealership.Properties.Resources.Free_Flat_Lock_Closed_Icon;
+            this.picLock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picLock.Location = new System.Drawing.Point(235, 94);
+            this.picLock.Name = "picLock";
+            this.picLock.Size = new System.Drawing.Size(30, 30);
+            this.picLock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLock.TabIndex = 10;
+            this.picLock.TabStop = false;
+            this.picLock.Click += new System.EventHandler(this.picLock_Click);
             // 
             // frmLogin
             // 
@@ -150,7 +153,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(322, 235);
-            this.Controls.Add(this.btnShowPassword);
+            this.Controls.Add(this.picLock);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnGuest);
             this.Controls.Add(this.btnLogin);
@@ -160,10 +163,12 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblTitle);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)(this.picLock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,6 +185,6 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnGuest;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnShowPassword;
+        private System.Windows.Forms.PictureBox picLock;
     }
 }

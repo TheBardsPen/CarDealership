@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarDealership.Business_MiddleLayer_;
+using CarDealership.Properties;
 
 namespace CarDealership
 {
@@ -71,11 +72,7 @@ namespace CarDealership
 
         private void btnShowPassword_Click(object sender, EventArgs e)
         {
-            passwordVisible = !passwordVisible; // Toggle the visibility of the password
-
-            txbPassword.UseSystemPasswordChar = !passwordVisible; // Set the UseSystemPasswordChar property based on the visibility state
-
-            btnShowPassword.Text = passwordVisible ? "Hide Password" : "Show Password"; // Update the button text based on the visibility state
+            
         }
 
         public void ClearPassword()
@@ -89,6 +86,16 @@ namespace CarDealership
             txbPassword.Clear();
             txbUsername.Clear();
             txbUsername.Focus();
+        }
+
+        private void picLock_Click(object sender, EventArgs e)
+        {
+            passwordVisible = !passwordVisible; // Toggle the visibility of the password
+
+            txbPassword.UseSystemPasswordChar = !passwordVisible; // Set the UseSystemPasswordChar property based on the visibility state
+
+            picLock.BackgroundImage = passwordVisible ?
+                Resources.Free_Flat_Lock_Open_Icon : Resources.Free_Flat_Lock_Closed_Icon; // Update the button image based on the visibility state
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListing));
             this.gbListing = new System.Windows.Forms.GroupBox();
             this.lblSold = new System.Windows.Forms.Label();
             this.lblPostedByChange = new System.Windows.Forms.Label();
@@ -245,6 +246,7 @@
             this.Controls.Add(this.btnPost);
             this.Controls.Add(this.txtComments);
             this.Controls.Add(this.gbListing);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListing";
             this.Text = "{listing}";
             this.gbListing.ResumeLayout(false);
