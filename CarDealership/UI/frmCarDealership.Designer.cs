@@ -37,8 +37,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mtsAccount = new System.Windows.Forms.ToolStripMenuItem();
             this.msiAddCar = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiDeleteCar = new System.Windows.Forms.ToolStripMenuItem();
-            this.msiBookmarks = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.msiLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.msiProfile = new System.Windows.Forms.ToolStripMenuItem();
@@ -134,8 +132,6 @@
             // 
             this.mtsAccount.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.msiAddCar,
-            this.msiDeleteCar,
-            this.msiBookmarks,
             this.toolStripSeparator1,
             this.msiLogin,
             this.msiProfile,
@@ -147,46 +143,33 @@
             // msiAddCar
             // 
             this.msiAddCar.Name = "msiAddCar";
-            this.msiAddCar.Size = new System.Drawing.Size(137, 22);
+            this.msiAddCar.Size = new System.Drawing.Size(180, 22);
             this.msiAddCar.Text = "Add Car...";
             this.msiAddCar.Click += new System.EventHandler(this.msiAddCar_Click);
-            // 
-            // msiDeleteCar
-            // 
-            this.msiDeleteCar.Name = "msiDeleteCar";
-            this.msiDeleteCar.Size = new System.Drawing.Size(137, 22);
-            this.msiDeleteCar.Text = "Delete Car...";
-            this.msiDeleteCar.Click += new System.EventHandler(this.msiDeleteCar_Click);
-            // 
-            // msiBookmarks
-            // 
-            this.msiBookmarks.Name = "msiBookmarks";
-            this.msiBookmarks.Size = new System.Drawing.Size(137, 22);
-            this.msiBookmarks.Text = "Bookmarks";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(134, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // msiLogin
             // 
             this.msiLogin.Name = "msiLogin";
-            this.msiLogin.Size = new System.Drawing.Size(137, 22);
+            this.msiLogin.Size = new System.Drawing.Size(180, 22);
             this.msiLogin.Text = "Login...";
             this.msiLogin.Click += new System.EventHandler(this.msiLogin_Click);
             // 
             // msiProfile
             // 
             this.msiProfile.Name = "msiProfile";
-            this.msiProfile.Size = new System.Drawing.Size(137, 22);
+            this.msiProfile.Size = new System.Drawing.Size(180, 22);
             this.msiProfile.Text = "Profile...";
             this.msiProfile.Click += new System.EventHandler(this.msiProfile_Click);
             // 
             // msiLogout
             // 
             this.msiLogout.Name = "msiLogout";
-            this.msiLogout.Size = new System.Drawing.Size(137, 22);
+            this.msiLogout.Size = new System.Drawing.Size(180, 22);
             this.msiLogout.Text = "Logout";
             this.msiLogout.Click += new System.EventHandler(this.msiLogout_Click);
             // 
@@ -260,6 +243,8 @@
             // 
             // trackMin
             // 
+            this.trackMin.BackColor = System.Drawing.SystemColors.Control;
+            this.trackMin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.trackMin.Enabled = false;
             this.trackMin.Location = new System.Drawing.Point(498, 90);
             this.trackMin.Maximum = 20;
@@ -291,6 +276,7 @@
             // 
             // trackMax
             // 
+            this.trackMax.Cursor = System.Windows.Forms.Cursors.Hand;
             this.trackMax.Enabled = false;
             this.trackMax.Location = new System.Drawing.Point(497, 141);
             this.trackMax.Maximum = 20;
@@ -344,8 +330,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mtsAccount;
         private System.Windows.Forms.ToolStripMenuItem msiAddCar;
-        private System.Windows.Forms.ToolStripMenuItem msiDeleteCar;
-        private System.Windows.Forms.ToolStripMenuItem msiBookmarks;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem msiLogin;
         private System.Windows.Forms.ToolStripMenuItem msiLogout;

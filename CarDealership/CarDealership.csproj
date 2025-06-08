@@ -158,5 +158,14 @@
   <ItemGroup>
     <None Include="Resources\Free Flat Lock Open Icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Free Flat Chat 1 Bars Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Free Flat Heart Empty Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Free Flat Heart Filled Icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -72,6 +72,12 @@ namespace CarDealership
                 lvi.SubItems.Add(c.Color);
                 lvi.SubItems.Add(c.Price.ToString("c"));
                 lvi.SubItems.Add(c.DateAdded.ToShortDateString());
+                if (c.IsSold)
+                {
+                    Font newFont = new Font(lvi.Font, lvi.Font.Style | FontStyle.Strikeout);
+                    lvi.Font = newFont;
+                }
+
                 lvListings.Items.Add(lvi);
             }
         }
@@ -96,6 +102,12 @@ namespace CarDealership
                 lvi.SubItems.Add(c.Color);
                 lvi.SubItems.Add(c.Price.ToString("c"));
                 lvi.SubItems.Add(c.DateAdded.ToShortDateString());
+                if (c.IsSold)
+                {
+                    Font newFont = new Font(lvi.Font, lvi.Font.Style | FontStyle.Strikeout);
+                    lvi.Font = newFont;
+                }
+
                 lvBookmarks.Items.Add(lvi);
             }
         }
@@ -129,6 +141,9 @@ namespace CarDealership
                 frmListing frm  = new frmListing((Car)lvListings.SelectedItems[0].Tag);
 
                 frm.ShowDialog();
+                
+                RefreshListings();
+                RefreshBookmarks();
             }
         }
 
@@ -139,6 +154,9 @@ namespace CarDealership
                 frmListing frm = new frmListing((Car)lvBookmarks.SelectedItems[0].Tag);
 
                 frm.ShowDialog();
+
+                RefreshListings();
+                RefreshBookmarks();
             }
         }
     }
