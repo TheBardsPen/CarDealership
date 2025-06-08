@@ -69,7 +69,7 @@ namespace CarDealership
             // lblModel
             // 
             this.lblModel.AutoSize = true;
-            this.lblModel.Location = new System.Drawing.Point(12, 51);
+            this.lblModel.Location = new System.Drawing.Point(12, 55);
             this.lblModel.Name = "lblModel";
             this.lblModel.Size = new System.Drawing.Size(39, 13);
             this.lblModel.TabIndex = 9;
@@ -77,14 +77,14 @@ namespace CarDealership
             // 
             // txtModel
             // 
-            this.txtModel.Location = new System.Drawing.Point(80, 48);
+            this.txtModel.Location = new System.Drawing.Point(80, 52);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(121, 20);
             this.txtModel.TabIndex = 1;
             // 
             // txtColor
             // 
-            this.txtColor.Location = new System.Drawing.Point(80, 74);
+            this.txtColor.Location = new System.Drawing.Point(80, 82);
             this.txtColor.Name = "txtColor";
             this.txtColor.Size = new System.Drawing.Size(121, 20);
             this.txtColor.TabIndex = 2;
@@ -92,7 +92,7 @@ namespace CarDealership
             // lblColor
             // 
             this.lblColor.AutoSize = true;
-            this.lblColor.Location = new System.Drawing.Point(12, 77);
+            this.lblColor.Location = new System.Drawing.Point(12, 85);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(34, 13);
             this.lblColor.TabIndex = 10;
@@ -100,7 +100,7 @@ namespace CarDealership
             // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(80, 100);
+            this.txtYear.Location = new System.Drawing.Point(80, 112);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(121, 20);
             this.txtYear.TabIndex = 3;
@@ -108,7 +108,7 @@ namespace CarDealership
             // lblYear
             // 
             this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(12, 103);
+            this.lblYear.Location = new System.Drawing.Point(12, 115);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(32, 13);
             this.lblYear.TabIndex = 11;
@@ -116,7 +116,7 @@ namespace CarDealership
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(80, 126);
+            this.txtPrice.Location = new System.Drawing.Point(80, 142);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(121, 20);
             this.txtPrice.TabIndex = 4;
@@ -124,7 +124,7 @@ namespace CarDealership
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(12, 129);
+            this.lblPrice.Location = new System.Drawing.Point(12, 145);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(34, 13);
             this.lblPrice.TabIndex = 12;
@@ -132,7 +132,7 @@ namespace CarDealership
             // 
             // txtModelSpecific
             // 
-            this.txtModelSpecific.Location = new System.Drawing.Point(80, 152);
+            this.txtModelSpecific.Location = new System.Drawing.Point(80, 172);
             this.txtModelSpecific.Name = "txtModelSpecific";
             this.txtModelSpecific.Size = new System.Drawing.Size(121, 20);
             this.txtModelSpecific.TabIndex = 5;
@@ -141,14 +141,14 @@ namespace CarDealership
             // lblModelSpecific
             // 
             this.lblModelSpecific.AutoSize = true;
-            this.lblModelSpecific.Location = new System.Drawing.Point(12, 155);
+            this.lblModelSpecific.Location = new System.Drawing.Point(12, 175);
             this.lblModelSpecific.Name = "lblModelSpecific";
             this.lblModelSpecific.Size = new System.Drawing.Size(0, 13);
             this.lblModelSpecific.TabIndex = 13;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(45, 201);
+            this.btnSave.Location = new System.Drawing.Point(45, 211);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 6;
@@ -159,7 +159,7 @@ namespace CarDealership
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(126, 201);
+            this.btnCancel.Location = new System.Drawing.Point(126, 211);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 7;
@@ -173,7 +173,7 @@ namespace CarDealership
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(232, 240);
+            this.ClientSize = new System.Drawing.Size(232, 250);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtModelSpecific);

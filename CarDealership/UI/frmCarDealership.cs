@@ -150,6 +150,12 @@ namespace CarDealership
                 frmListing frm = new frmListing((Car)lvListings.SelectedItems[0].Tag);
 
                 frm.ShowDialog();
+
+                if (frm.Tag != null)
+                    if (frm.Tag.ToString() == "Delete" || frm.Tag.ToString() == "Sold")
+                    {
+                        ViewAll();
+                    }
             }
         }
 
@@ -192,26 +198,13 @@ namespace CarDealership
             }
         }
 
-        private void msiDeleteCar_Click(object sender, EventArgs e)
-        {
-            frmDeleteCar deleteCar = new frmDeleteCar();
-            deleteCar.cars = cars;
-            deleteCar.ShowDialog();
-
-            if (deleteCar.DialogResult == DialogResult.OK)
-            {
-                cars.RemoveAt((int)deleteCar.Tag);
-            }
-
-            ViewAll();
-            cars.Save();
-        }
-
         private void msiProfile_Click(object sender, EventArgs e)
         {
             frmProfile profileForm = new frmProfile();
 
             profileForm.ShowDialog();
+
+            ViewAll();
 
             if (profileForm.DialogResult == DialogResult.Abort)
             {
@@ -239,8 +232,6 @@ namespace CarDealership
             if (User.IsLoggedIn)
             {
                 msiAddCar.Enabled = true;
-                msiDeleteCar.Enabled = true;
-                msiBookmarks.Enabled = true;
                 msiLogout.Enabled = true;
                 msiProfile.Enabled = true;
                 msiLogin.Enabled = false;
@@ -248,11 +239,7 @@ namespace CarDealership
             else
             {
                 msiAddCar.Enabled = false;
-                msiAddCar.ToolTipText = "Must be logged in to list cars.";
-                msiDeleteCar.Enabled = false;
-                msiDeleteCar.ToolTipText = "Must be logged in to remove cars.";
-                msiBookmarks.Enabled = false;
-                msiBookmarks.ToolTipText = "Must be logged in to bookmark cars.";
+                msiAddCar.ToolTipText = "Must be logged in to list a car.";
                 msiLogout.Enabled = false;
                 msiProfile.Enabled = false;
                 msiLogin.Enabled = true;

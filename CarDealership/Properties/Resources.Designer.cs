@@ -63,6 +63,36 @@ namespace CarDealership.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Free_Flat_Chat_1_Bars_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Free Flat Chat 1 Bars Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Free_Flat_Heart_Empty_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Free Flat Heart Empty Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Free_Flat_Heart_Filled_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Free Flat Heart Filled Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Free_Flat_Lock_Closed_Icon {
             get {
                 object obj = ResourceManager.GetObject("Free Flat Lock Closed Icon", resourceCulture);

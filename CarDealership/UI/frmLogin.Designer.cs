@@ -103,7 +103,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(174, 144);
+            this.btnLogin.Location = new System.Drawing.Point(177, 144);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(53, 22);
@@ -114,7 +114,7 @@
             // 
             // btnGuest
             // 
-            this.btnGuest.Location = new System.Drawing.Point(97, 175);
+            this.btnGuest.Location = new System.Drawing.Point(97, 173);
             this.btnGuest.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuest.Name = "btnGuest";
             this.btnGuest.Size = new System.Drawing.Size(117, 27);
@@ -138,9 +138,10 @@
             // 
             this.picLock.BackgroundImage = global::CarDealership.Properties.Resources.Free_Flat_Lock_Closed_Icon;
             this.picLock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picLock.Location = new System.Drawing.Point(235, 94);
+            this.picLock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picLock.Location = new System.Drawing.Point(235, 100);
             this.picLock.Name = "picLock";
-            this.picLock.Size = new System.Drawing.Size(30, 30);
+            this.picLock.Size = new System.Drawing.Size(24, 24);
             this.picLock.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picLock.TabIndex = 10;
             this.picLock.TabStop = false;

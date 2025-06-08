@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListing));
             this.gbListing = new System.Windows.Forms.GroupBox();
+            this.picBookmark = new System.Windows.Forms.PictureBox();
             this.lblSold = new System.Windows.Forms.Label();
             this.lblPostedByChange = new System.Windows.Forms.Label();
             this.lblPostedBy = new System.Windows.Forms.Label();
@@ -41,17 +42,19 @@
             this.lblYear = new System.Windows.Forms.Label();
             this.lblPriceChange = new System.Windows.Forms.Label();
             this.txtComments = new System.Windows.Forms.RichTextBox();
-            this.btnPost = new System.Windows.Forms.Button();
             this.txtPost = new System.Windows.Forms.RichTextBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSold = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.cbBookmark = new System.Windows.Forms.CheckBox();
+            this.picComment = new System.Windows.Forms.PictureBox();
             this.gbListing.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBookmark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picComment)).BeginInit();
             this.SuspendLayout();
             // 
             // gbListing
             // 
+            this.gbListing.Controls.Add(this.picBookmark);
             this.gbListing.Controls.Add(this.lblSold);
             this.gbListing.Controls.Add(this.lblPostedByChange);
             this.gbListing.Controls.Add(this.lblPostedBy);
@@ -68,6 +71,19 @@
             this.gbListing.TabIndex = 0;
             this.gbListing.TabStop = false;
             this.gbListing.Text = "{make + model}";
+            // 
+            // picBookmark
+            // 
+            this.picBookmark.BackgroundImage = global::CarDealership.Properties.Resources.Free_Flat_Heart_Empty_Icon;
+            this.picBookmark.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picBookmark.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picBookmark.Location = new System.Drawing.Point(154, 12);
+            this.picBookmark.Name = "picBookmark";
+            this.picBookmark.Size = new System.Drawing.Size(32, 32);
+            this.picBookmark.TabIndex = 10;
+            this.picBookmark.TabStop = false;
+            this.picBookmark.Visible = false;
+            this.picBookmark.Click += new System.EventHandler(this.picBookmark_Click);
             // 
             // lblSold
             // 
@@ -171,17 +187,6 @@
             this.txtComments.TabIndex = 1;
             this.txtComments.Text = "";
             // 
-            // btnPost
-            // 
-            this.btnPost.Enabled = false;
-            this.btnPost.Location = new System.Drawing.Point(487, 17);
-            this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(35, 47);
-            this.btnPost.TabIndex = 3;
-            this.btnPost.Text = ">";
-            this.btnPost.UseVisualStyleBackColor = true;
-            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
-            // 
             // txtPost
             // 
             this.txtPost.Location = new System.Drawing.Point(211, 17);
@@ -189,7 +194,6 @@
             this.txtPost.Size = new System.Drawing.Size(270, 47);
             this.txtPost.TabIndex = 4;
             this.txtPost.Text = "";
-            this.txtPost.TextChanged += new System.EventHandler(this.txtPost_TextChanged);
             // 
             // btnDelete
             // 
@@ -200,6 +204,7 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSold
             // 
@@ -220,30 +225,30 @@
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // cbBookmark
+            // picComment
             // 
-            this.cbBookmark.AutoSize = true;
-            this.cbBookmark.Location = new System.Drawing.Point(18, 236);
-            this.cbBookmark.Name = "cbBookmark";
-            this.cbBookmark.Size = new System.Drawing.Size(74, 17);
-            this.cbBookmark.TabIndex = 11;
-            this.cbBookmark.Text = "Bookmark";
-            this.cbBookmark.UseVisualStyleBackColor = true;
-            this.cbBookmark.Visible = false;
-            this.cbBookmark.CheckedChanged += new System.EventHandler(this.cbBookmark_CheckedChanged);
+            this.picComment.BackgroundImage = global::CarDealership.Properties.Resources.Free_Flat_Chat_1_Bars_Icon;
+            this.picComment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picComment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picComment.Location = new System.Drawing.Point(487, 22);
+            this.picComment.Name = "picComment";
+            this.picComment.Size = new System.Drawing.Size(35, 35);
+            this.picComment.TabIndex = 12;
+            this.picComment.TabStop = false;
+            this.picComment.Click += new System.EventHandler(this.picComment_Click);
             // 
             // frmListing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 267);
-            this.Controls.Add(this.cbBookmark);
+            this.Controls.Add(this.picComment);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSold);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtPost);
-            this.Controls.Add(this.btnPost);
             this.Controls.Add(this.txtComments);
             this.Controls.Add(this.gbListing);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -251,8 +256,9 @@
             this.Text = "{listing}";
             this.gbListing.ResumeLayout(false);
             this.gbListing.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBookmark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picComment)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -260,7 +266,6 @@
 
         private System.Windows.Forms.GroupBox gbListing;
         private System.Windows.Forms.RichTextBox txtComments;
-        private System.Windows.Forms.Button btnPost;
         private System.Windows.Forms.RichTextBox txtPost;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSold;
@@ -275,6 +280,7 @@
         private System.Windows.Forms.Label lblSold;
         private System.Windows.Forms.Label lblPostedByChange;
         private System.Windows.Forms.Label lblPostedBy;
-        private System.Windows.Forms.CheckBox cbBookmark;
+        private System.Windows.Forms.PictureBox picComment;
+        private System.Windows.Forms.PictureBox picBookmark;
     }
 }

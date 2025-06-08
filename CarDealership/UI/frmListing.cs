@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarDealership.Business_MiddleLayer_;
+using CarDealership.Properties;
 using ValidationLibrary;
 
 namespace CarDealership.UI
@@ -79,11 +80,11 @@ namespace CarDealership.UI
 
             if (User.IsLoggedIn)
             {
-                cbBookmark.Visible = true;
-                if (User.BookmarkIDs.Contains(listing.CarID))
-                {
-                    cbBookmark.Checked = true;
-                }
+                picBookmark.Visible = true;
+
+                picBookmark.BackgroundImage = User.BookmarkIDs.Contains(listing.CarID) ?
+                    Resources.Free_Flat_Heart_Filled_Icon :
+                    Resources.Free_Flat_Heart_Empty_Icon;
             }
         }
 
@@ -122,39 +123,18 @@ namespace CarDealership.UI
         private void btnSold_Click(object sender, EventArgs e)
         {
             if (!listing.IsSold)
+            {
                 MarkSold();
+                this.Tag = "Sold";
+            }
             else
+            {
                 MarkUnsold();
-        }
-
-        private void cbBookmark_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbBookmark.Checked == true)
-            {
-                if (!User.BookmarkIDs.Contains(listing.CarID))
-                User.BookmarkIDs.Add(listing.CarID);
-                User.Save();
-                Console.WriteLine("ADDED BOOKMARK");
-                Console.WriteLine($"Current bookmark count: '{User.BookmarkIDs.Count}'");
-            }
-            else
-            {
-                User.BookmarkIDs.Remove(listing.CarID);
-                User.Save();
-                Console.WriteLine("REMOVED BOOKMARK");
-                Console.WriteLine($"Current bookmark count: '{User.BookmarkIDs.Count}'");
+                this.Tag = null;
             }
         }
 
-        private void txtPost_TextChanged(object sender, EventArgs e)
-        {
-            if (txtPost.Text != "")
-                btnPost.Enabled = true;
-            else
-                btnPost.Enabled = false;
-        }
-
-        private void btnPost_Click(object sender, EventArgs e)
+        private void picComment_Click(object sender, EventArgs e)
         {
             if (Validator.IsRichTextboxString("Comment", txtPost))
             {
@@ -166,6 +146,39 @@ namespace CarDealership.UI
 
             frmCarDealership.cars.Save();
             UpdateComments();
+        }
+
+        private void picBookmark_Click(object sender, EventArgs e)
+        {
+            if (User.BookmarkIDs.Contains(listing.CarID))
+                User.BookmarkIDs.Remove(listing.CarID);
+            else
+                User.BookmarkIDs.Add(listing.CarID);
+
+            User.Save();
+
+            picBookmark.BackgroundImage = User.BookmarkIDs.Contains(listing.CarID) ?
+                        Resources.Free_Flat_Heart_Filled_Icon :
+                        Resources.Free_Flat_Heart_Empty_Icon;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("Are you sure you wish to delete this listing?", "Confirm Delete",
+                            MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.OK)
+            {
+                frmCarDealership.cars.Remove(listing);
+
+                this.Tag = "Delete";
+                this.Close();
+            }
         }
     }
 }
