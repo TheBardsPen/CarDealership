@@ -13,9 +13,9 @@ using ValidationLibrary;
 
 namespace CarDealership.UI
 {
-    public partial class frmListing: Form
+    public partial class frmListing : Form
     {
-        Car listing;
+        private Car listing;
 
         public frmListing(Car _listing)
         {
@@ -43,21 +43,25 @@ namespace CarDealership.UI
                     lblMakeSpecificChange.Text = listing.ModelSpecificString();
 
                     break;
+
                 case "Ford":
                     lblMakeSpecific.Text = "Trim:";
                     lblMakeSpecificChange.Text = listing.ModelSpecificString();
 
                     break;
+
                 case "Nissan":
                     lblMakeSpecific.Text = "Transmission:";
                     lblMakeSpecificChange.Text = listing.ModelSpecificString();
 
                     break;
+
                 case "Toyota":
                     lblMakeSpecific.Text = "Mileage:";
                     lblMakeSpecificChange.Text = listing.ModelSpecificString();
 
                     break;
+
                 default:
                     lblMakeSpecific.Visible = false;
                     lblMakeSpecificChange.Visible = false;
@@ -71,6 +75,10 @@ namespace CarDealership.UI
             }
 
             UpdateComments();
+
+            picBookmark.Visible = User.IsLoggedIn;
+            btnSold.Visible = User.IsLoggedIn;
+            btnDelete.Visible = User.IsLoggedIn;
 
             if (listing.PostedBy == User.Username)
             {
