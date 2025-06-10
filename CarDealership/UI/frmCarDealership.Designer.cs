@@ -247,7 +247,7 @@
             this.trackMin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.trackMin.Enabled = false;
             this.trackMin.Location = new System.Drawing.Point(498, 90);
-            this.trackMin.Maximum = 20;
+            this.trackMin.Maximum = 100;
             this.trackMin.Name = "trackMin";
             this.trackMin.Size = new System.Drawing.Size(125, 45);
             this.trackMin.TabIndex = 13;
@@ -279,13 +279,13 @@
             this.trackMax.Cursor = System.Windows.Forms.Cursors.Hand;
             this.trackMax.Enabled = false;
             this.trackMax.Location = new System.Drawing.Point(497, 141);
-            this.trackMax.Maximum = 20;
+            this.trackMax.Maximum = 100;
             this.trackMax.Name = "trackMax";
             this.trackMax.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackMax.Size = new System.Drawing.Size(125, 45);
             this.trackMax.TabIndex = 15;
             this.trackMax.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackMax.Value = 20;
+            this.trackMax.Value = 100;
             this.trackMax.Scroll += new System.EventHandler(this.trackMax_Scroll);
             // 
             // frmCarDealership
