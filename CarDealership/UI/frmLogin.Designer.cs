@@ -50,7 +50,7 @@
             this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(235, 24);
-            this.lblTitle.TabIndex = 0;
+            this.lblTitle.TabIndex = 6;
             this.lblTitle.Text = "Welcome to Car Express";
             // 
             // lblUsername
@@ -60,7 +60,7 @@
             this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(58, 13);
-            this.lblUsername.TabIndex = 1;
+            this.lblUsername.TabIndex = 7;
             this.lblUsername.Text = "Username:";
             // 
             // lblPassword
@@ -70,7 +70,7 @@
             this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
-            this.lblPassword.TabIndex = 2;
+            this.lblPassword.TabIndex = 8;
             this.lblPassword.Text = "Password:";
             // 
             // txbUsername
@@ -79,7 +79,7 @@
             this.txbUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(100, 20);
-            this.txbUsername.TabIndex = 3;
+            this.txbUsername.TabIndex = 0;
             // 
             // txbPassword
             // 
@@ -87,7 +87,7 @@
             this.txbPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(100, 20);
-            this.txbPassword.TabIndex = 4;
+            this.txbPassword.TabIndex = 1;
             this.txbPassword.UseSystemPasswordChar = true;
             // 
             // btnRegister
@@ -96,7 +96,7 @@
             this.btnRegister.Margin = new System.Windows.Forms.Padding(2);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(55, 22);
-            this.btnRegister.TabIndex = 5;
+            this.btnRegister.TabIndex = 2;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -107,7 +107,7 @@
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(53, 22);
-            this.btnLogin.TabIndex = 6;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -118,7 +118,7 @@
             this.btnGuest.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuest.Name = "btnGuest";
             this.btnGuest.Size = new System.Drawing.Size(117, 27);
-            this.btnGuest.TabIndex = 7;
+            this.btnGuest.TabIndex = 4;
             this.btnGuest.Text = "Continue as Guest";
             this.btnGuest.UseVisualStyleBackColor = true;
             this.btnGuest.Click += new System.EventHandler(this.btnGuest_Click);
@@ -129,7 +129,7 @@
             this.btnExit.Location = new System.Drawing.Point(97, 207);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(117, 23);
-            this.btnExit.TabIndex = 8;
+            this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);

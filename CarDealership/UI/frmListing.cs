@@ -146,6 +146,9 @@ namespace CarDealership.UI
                     listing.AddComment(txtPost.Text, User.Username, DateTime.Now);
                 else
                     listing.AddComment(txtPost.Text);
+
+                txtPost.Clear();
+                txtPost.Focus();
             }
 
             frmCarDealership.cars.Save();

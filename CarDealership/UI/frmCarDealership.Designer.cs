@@ -70,7 +70,7 @@
             this.cboFilterType.Location = new System.Drawing.Point(497, 27);
             this.cboFilterType.Name = "cboFilterType";
             this.cboFilterType.Size = new System.Drawing.Size(126, 21);
-            this.cboFilterType.TabIndex = 1;
+            this.cboFilterType.TabIndex = 0;
             this.cboFilterType.Text = "Filter By...";
             this.cboFilterType.SelectedIndexChanged += new System.EventHandler(this.cboFilterType_SelectedIndexChanged);
             // 
@@ -82,7 +82,7 @@
             this.cboFilter.Location = new System.Drawing.Point(497, 59);
             this.cboFilter.Name = "cboFilter";
             this.cboFilter.Size = new System.Drawing.Size(126, 21);
-            this.cboFilter.TabIndex = 2;
+            this.cboFilter.TabIndex = 1;
             this.cboFilter.SelectedIndexChanged += new System.EventHandler(this.cboFilter_SelectedIndexChanged);
             // 
             // btnExit
@@ -102,7 +102,7 @@
             this.btnFilter.Location = new System.Drawing.Point(548, 195);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
-            this.btnFilter.TabIndex = 3;
+            this.btnFilter.TabIndex = 4;
             this.btnFilter.Text = "Filter";
             this.btnFilter.UseVisualStyleBackColor = true;
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
@@ -112,7 +112,7 @@
             this.btnViewAll.Location = new System.Drawing.Point(548, 226);
             this.btnViewAll.Name = "btnViewAll";
             this.btnViewAll.Size = new System.Drawing.Size(75, 23);
-            this.btnViewAll.TabIndex = 0;
+            this.btnViewAll.TabIndex = 5;
             this.btnViewAll.Text = "View All";
             this.btnViewAll.UseVisualStyleBackColor = true;
             this.btnViewAll.Click += new System.EventHandler(this.btnViewAll_Click);
@@ -143,33 +143,33 @@
             // msiAddCar
             // 
             this.msiAddCar.Name = "msiAddCar";
-            this.msiAddCar.Size = new System.Drawing.Size(180, 22);
+            this.msiAddCar.Size = new System.Drawing.Size(126, 22);
             this.msiAddCar.Text = "Add Car...";
             this.msiAddCar.Click += new System.EventHandler(this.msiAddCar_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(123, 6);
             // 
             // msiLogin
             // 
             this.msiLogin.Name = "msiLogin";
-            this.msiLogin.Size = new System.Drawing.Size(180, 22);
+            this.msiLogin.Size = new System.Drawing.Size(126, 22);
             this.msiLogin.Text = "Login...";
             this.msiLogin.Click += new System.EventHandler(this.msiLogin_Click);
             // 
             // msiProfile
             // 
             this.msiProfile.Name = "msiProfile";
-            this.msiProfile.Size = new System.Drawing.Size(180, 22);
+            this.msiProfile.Size = new System.Drawing.Size(126, 22);
             this.msiProfile.Text = "Profile...";
             this.msiProfile.Click += new System.EventHandler(this.msiProfile_Click);
             // 
             // msiLogout
             // 
             this.msiLogout.Name = "msiLogout";
-            this.msiLogout.Size = new System.Drawing.Size(180, 22);
+            this.msiLogout.Size = new System.Drawing.Size(126, 22);
             this.msiLogout.Text = "Logout";
             this.msiLogout.Click += new System.EventHandler(this.msiLogout_Click);
             // 
@@ -250,7 +250,7 @@
             this.trackMin.Maximum = 100;
             this.trackMin.Name = "trackMin";
             this.trackMin.Size = new System.Drawing.Size(125, 45);
-            this.trackMin.TabIndex = 13;
+            this.trackMin.TabIndex = 2;
             this.trackMin.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackMin.Scroll += new System.EventHandler(this.trackMin_Scroll);
             // 
@@ -283,7 +283,7 @@
             this.trackMax.Name = "trackMax";
             this.trackMax.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackMax.Size = new System.Drawing.Size(125, 45);
-            this.trackMax.TabIndex = 15;
+            this.trackMax.TabIndex = 3;
             this.trackMax.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackMax.Value = 100;
             this.trackMax.Scroll += new System.EventHandler(this.trackMax_Scroll);

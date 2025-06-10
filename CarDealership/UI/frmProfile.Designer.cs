@@ -61,6 +61,8 @@
             this.lblUsername.Location = new System.Drawing.Point(26, 25);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(99, 36);
+            this.lblUsername.TabIndex = 3;
             this.lblUsername.Size = new System.Drawing.Size(196, 73);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "{username}";
@@ -71,6 +73,8 @@
             this.btnClose.Location = new System.Drawing.Point(860, 469);
             this.btnClose.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 2;
             this.btnClose.Size = new System.Drawing.Size(150, 44);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
@@ -86,6 +90,8 @@
             this.btnDelete.Location = new System.Drawing.Point(32, 479);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(81, 13);
+            this.btnDelete.TabIndex = 0;
             this.btnDelete.Size = new System.Drawing.Size(160, 26);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete Account";

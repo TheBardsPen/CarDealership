@@ -206,6 +206,8 @@
             this.txtPost.Location = new System.Drawing.Point(422, 33);
             this.txtPost.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtPost.Name = "txtPost";
+            this.txtPost.Size = new System.Drawing.Size(270, 47);
+            this.txtPost.TabIndex = 3;
             this.txtPost.Size = new System.Drawing.Size(536, 87);
             this.txtPost.TabIndex = 4;
             this.txtPost.Text = "";
@@ -262,7 +264,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 513);
+            this.CancelButton = this.btnClose;
+            this.ClientSize = new System.Drawing.Size(534, 267);
             this.Controls.Add(this.picComment);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSold);
