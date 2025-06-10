@@ -76,10 +76,6 @@ namespace CarDealership.UI
 
             UpdateComments();
 
-            picBookmark.Visible = User.IsLoggedIn;
-            btnSold.Visible = User.IsLoggedIn;
-            btnDelete.Visible = User.IsLoggedIn;
-
             if (listing.PostedBy == User.Username)
             {
                 btnDelete.Visible = true;
