@@ -35,8 +35,6 @@ namespace CarDealership
 
         public abstract object Clone();
 
-        public abstract string GetDisplayText(string sep = "\n");
-
         public abstract string ToDataString(string sep);
 
         /// <summary>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CarDealership.Interfaces
 {
-    public interface ICar : IStorable, IDisplayable, ICloneable
+    public interface ICar : IStorable, ICloneable
     {
         // Set public fields as read/write
         string Make { get; set; }

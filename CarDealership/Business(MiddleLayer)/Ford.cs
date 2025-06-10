@@ -14,21 +14,6 @@ namespace CarDealership
             Trim = trim;
         }
 
-        public override string GetDisplayText(string sep)
-        {
-            string display =
-                $"Date Added: {DateAdded}{sep}" +
-                $"Make: {Make}{sep}" +
-                $"Model: {Model}{sep}" +
-                $"Color: {Color}{sep}" +
-                $"Year: {Year}{sep}" +
-                $"Price: {Price.ToString("c")}{sep}" +
-                $"Trim: {Trim}{sep}" +
-                $"Seller: {PostedBy}";
-
-            return display + sep + "\n";
-        }
-
         // This method is used to convert the object to a string format for storage
         public override string ToDataString(string sep)
         {
