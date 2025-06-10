@@ -58,18 +58,20 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Javanese Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(13, 13);
+            this.lblUsername.Location = new System.Drawing.Point(26, 25);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(99, 36);
+            this.lblUsername.Size = new System.Drawing.Size(196, 73);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "{username}";
             // 
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(430, 244);
+            this.btnClose.Location = new System.Drawing.Point(860, 469);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(150, 44);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -81,9 +83,10 @@
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Red;
-            this.btnDelete.Location = new System.Drawing.Point(16, 249);
+            this.btnDelete.Location = new System.Drawing.Point(32, 479);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(81, 13);
+            this.btnDelete.Size = new System.Drawing.Size(160, 26);
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "Delete Account";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -92,19 +95,21 @@
             // 
             this.tabsProfile.Controls.Add(this.tabListings);
             this.tabsProfile.Controls.Add(this.tabBookmarks);
-            this.tabsProfile.Location = new System.Drawing.Point(12, 52);
+            this.tabsProfile.Location = new System.Drawing.Point(24, 100);
+            this.tabsProfile.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tabsProfile.Name = "tabsProfile";
             this.tabsProfile.SelectedIndex = 0;
-            this.tabsProfile.Size = new System.Drawing.Size(493, 184);
+            this.tabsProfile.Size = new System.Drawing.Size(986, 354);
             this.tabsProfile.TabIndex = 6;
             // 
             // tabListings
             // 
             this.tabListings.Controls.Add(this.lvListings);
-            this.tabListings.Location = new System.Drawing.Point(4, 22);
+            this.tabListings.Location = new System.Drawing.Point(8, 39);
+            this.tabListings.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tabListings.Name = "tabListings";
-            this.tabListings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabListings.Size = new System.Drawing.Size(485, 158);
+            this.tabListings.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabListings.Size = new System.Drawing.Size(970, 307);
             this.tabListings.TabIndex = 0;
             this.tabListings.Text = "Listings";
             this.tabListings.UseVisualStyleBackColor = true;
@@ -120,10 +125,11 @@
             this.clmDate});
             this.lvListings.FullRowSelect = true;
             this.lvListings.HideSelection = false;
-            this.lvListings.Location = new System.Drawing.Point(3, 3);
+            this.lvListings.Location = new System.Drawing.Point(6, 6);
+            this.lvListings.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lvListings.MultiSelect = false;
             this.lvListings.Name = "lvListings";
-            this.lvListings.Size = new System.Drawing.Size(479, 152);
+            this.lvListings.Size = new System.Drawing.Size(954, 289);
             this.lvListings.TabIndex = 13;
             this.lvListings.UseCompatibleStateImageBehavior = false;
             this.lvListings.View = System.Windows.Forms.View.Details;
@@ -166,10 +172,11 @@
             // tabBookmarks
             // 
             this.tabBookmarks.Controls.Add(this.lvBookmarks);
-            this.tabBookmarks.Location = new System.Drawing.Point(4, 22);
+            this.tabBookmarks.Location = new System.Drawing.Point(8, 39);
+            this.tabBookmarks.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tabBookmarks.Name = "tabBookmarks";
-            this.tabBookmarks.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBookmarks.Size = new System.Drawing.Size(485, 158);
+            this.tabBookmarks.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tabBookmarks.Size = new System.Drawing.Size(970, 307);
             this.tabBookmarks.TabIndex = 1;
             this.tabBookmarks.Text = "Bookmarks";
             this.tabBookmarks.UseVisualStyleBackColor = true;
@@ -185,10 +192,11 @@
             this.columnHeader6});
             this.lvBookmarks.FullRowSelect = true;
             this.lvBookmarks.HideSelection = false;
-            this.lvBookmarks.Location = new System.Drawing.Point(3, 3);
+            this.lvBookmarks.Location = new System.Drawing.Point(6, 6);
+            this.lvBookmarks.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lvBookmarks.MultiSelect = false;
             this.lvBookmarks.Name = "lvBookmarks";
-            this.lvBookmarks.Size = new System.Drawing.Size(479, 152);
+            this.lvBookmarks.Size = new System.Drawing.Size(954, 289);
             this.lvBookmarks.TabIndex = 14;
             this.lvBookmarks.UseCompatibleStateImageBehavior = false;
             this.lvBookmarks.View = System.Windows.Forms.View.Details;
@@ -230,16 +238,18 @@
             // 
             // frmProfile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(518, 279);
+            this.ClientSize = new System.Drawing.Size(1036, 537);
             this.Controls.Add(this.tabsProfile);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblUsername);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmProfile";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profile";
             this.Load += new System.EventHandler(this.frmProfile_Load);
             this.tabsProfile.ResumeLayout(false);
