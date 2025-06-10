@@ -89,9 +89,6 @@ namespace CarDealership
                     trackMin.Enabled = true;
                     trackMax.Enabled = true;
 
-                    trackMin.Value = 0;
-                    trackMax.Value = 20;
-
                     minTracker = 0;
                     maxTracker = 100000;
 
@@ -108,11 +105,8 @@ namespace CarDealership
                     trackMin.Enabled = true;
                     trackMax.Enabled = true;
 
-                    trackMin.Value = 0;
-                    trackMax.Value = 20;
-
                     minTracker = 0;
-                    maxTracker = 40;
+                    maxTracker = 100;
 
                     lblFilterMin.Visible = true;
                     lblFilterMax.Visible = true;
@@ -391,13 +385,13 @@ namespace CarDealership
         {
             if (cboFilterType.Text == "Price")
             {
-                minTracker = trackMin.Value * 5000;
+                minTracker = trackMin.Value * 1000;
 
                 lblFilterMin.Text = $"Min Price: {minTracker.ToString("c")}";
             }
             else if (cboFilterType.Text == "Age")
             {
-                minTracker = trackMin.Value * 2;
+                minTracker = trackMin.Value;
 
                 lblFilterMin.Text = $"Min Age: {minTracker}";
             }
@@ -410,13 +404,13 @@ namespace CarDealership
         {
             if (cboFilterType.Text == "Price")
             {
-                maxTracker = trackMax.Value * 5000;
+                maxTracker = trackMax.Value * 1000;
 
                 lblFilterMax.Text = $"Max Price: {maxTracker.ToString("c")}";
             }
             else if (cboFilterType.Text == "Age")
             {
-                maxTracker = trackMax.Value * 2;
+                maxTracker = trackMax.Value;
 
                 lblFilterMax.Text = $"Max Age: {maxTracker}";
             }
